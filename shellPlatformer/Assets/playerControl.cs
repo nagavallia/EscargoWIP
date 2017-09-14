@@ -31,6 +31,8 @@ public class playerControl : MonoBehaviour
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump"))
 			jump = true;
+		if (Input.GetButton ("Fire1"))
+			EnemyCollide ();
 	}
 
 
@@ -58,5 +60,10 @@ public class playerControl : MonoBehaviour
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
 		}
+	}
+
+	void EnemyCollide ()
+	{
+		transform.SetPositionAndRotation (new Vector3 (-4.84f, -2.748991f, 0f), transform.rotation);
 	}
 }
