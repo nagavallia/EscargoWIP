@@ -19,7 +19,7 @@ public class Exit : MonoBehaviour {
         playerControl player = collision.gameObject.GetComponent<playerControl>(); //get playerControl component from colliding object
         if (player != null) //if playerControl existed, ie actually collided with player
         {
-            Messenger.Broadcast("LEVEL_COMPLETE"); //broadcast level complete message
+            Messenger.Broadcast(GameEvent.LEVEL_COMPLETE); //broadcast level complete message
         }
     }
 }

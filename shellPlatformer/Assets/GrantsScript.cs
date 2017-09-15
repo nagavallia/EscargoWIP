@@ -16,12 +16,12 @@ public class GrantsScript : MonoBehaviour {
 
     private void Awake()
     {
-        Messenger.AddListener("LEVEL_COMPLETE", LevelFinish); //create message listener, pick function to call in response
+        Messenger.AddListener(GameEvent.LEVEL_COMPLETE, LevelFinish); //create message listener, pick function to call in response
     }
 
     private void OnDestroy()
     {
-        Messenger.RemoveListener("LEVEL_COMPLETE", LevelFinish);
+        Messenger.RemoveListener(GameEvent.LEVEL_COMPLETE, LevelFinish);
     }
 
     private void LevelFinish() //fill in code for finishing level 
