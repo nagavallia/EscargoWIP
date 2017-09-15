@@ -10,6 +10,13 @@ Grant - Shell Spawner
 Justin + George - Level/Mechanics mockups  
 
 
+Organization
+-------------
+Folders are cool. Put things in a Resources folder if you need to spawn it in code. Any Resources folder anywhere in Assests works. But it has to be called "Resources" exactly.  
+
+Use the sandbox scene for messing aboot and implementing features, builder should be where actual levels are made. Controllers and UI should be added eventually but most features will live in prefabs (and scripts on those prefabs) anyway.  
+
+
 Methods to Read Up On  
 ---------------------  
 `Resources.Load("[prefab name]")` - Instantiate a prefab in code  
