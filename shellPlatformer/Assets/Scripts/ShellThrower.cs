@@ -26,12 +26,14 @@ public class ShellThrower : MonoBehaviour {
         foreach (CircleCollider2D collider in shell.GetComponents<CircleCollider2D>()) {
             if (!collider.isTrigger) { shellHitbox = collider; }
         }
-        shellHitbox.enabled = false;
         shellRigidBody = shell.GetComponent<Rigidbody2D>();
-        shellRigidBody.isKinematic = true;
         player = GameObject.FindWithTag("Player").transform;
-        transform.parent = player;
-        transform.localPosition = defaultShellPos;
+
+        if (transform.parent == null) {
+            ReleaseShell();
+        } else {
+            PickUpShell();
+        }
 	}
 
     private void Update() {
