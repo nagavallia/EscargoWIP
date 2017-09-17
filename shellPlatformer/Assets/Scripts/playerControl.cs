@@ -4,64 +4,101 @@ using UnityEngine;
 
 public class playerControl : MonoBehaviour
 {
-	[HideInInspector]
-	public bool jump = false;				// Condition for whether the player should jump.
+	private Rigidbody2D myRigidbody;
 
+	[SerializeField]
+	private float movementSpeed;
 
-	public float moveForce = 365f;			// Amount of force added to move the player left and right.
-	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
-	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
-	private Transform groundCheck;			// A position marking where to check if the player is grounded.
+	private bool facingRight;
 
-	private bool grounded = false;			// Whether or not the player is grounded.
+	[SerializeField]
+	private Transform[] groundPoints;
 
+	[SerializeField]
+	private float groundRadius;
 
-	void Awake()
+	[SerializeField]
+	private LayerMask whatIsGround;
+
+	private bool isGrounded;
+
+	private bool jump;
+
+	[SerializeField]
+	private float jumpForce;
+
+	void Start()
 	{
-		// Setting up references.
-		groundCheck = transform.Find("groundCheck");
+		myRigidbody = GetComponent<Rigidbody2D> ();
+		facingRight = false;
+	}
+		
+	void Update(){
+		HandleInput ();
 	}
 
-
-	void Update()
+	void FixedUpdate()
 	{
-//		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-//		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
+		float horizontal = Input.GetAxis ("Horizontal");
+		isGrounded = IsGrounded ();
+		move (horizontal);
+		Flip (horizontal);
 
-		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetButtonDown("Jump"))
+		ResetValues ();
+	}
+
+	private void move (float horizontal)
+	{
+		myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, myRigidbody.velocity.y);
+
+		if (isGrounded && jump) {
+			isGrounded = false;
+			myRigidbody.AddForce (new Vector2 (0, jumpForce));
+		}
+
+	}
+
+	private void HandleInput(){
+
+		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)){
 			jump = true;
-		//if (Input.GetButton ("Fire1"))
-			//EnemyCollide ();
+		}
+			
 	}
 
-
-	void FixedUpdate ()
+	private void Flip (float horizontal)
 	{
-		// Cache the horizontal input.
-		float h = Input.GetAxis("Horizontal");
+		if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight) {
+			facingRight = !facingRight;
 
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
-			// ... add a force to the player.
-			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce);
+			Vector3 theScale = transform.localScale;
 
-		// If the player's horizontal velocity is greater than the maxSpeed...
-		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
-			// ... set the player's velocity to the maxSpeed in the x axis.
-			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+			theScale.x *= -1;
 
-		// If the player should jump...
-		if(jump)
-		{
-			// Add a vertical force to the player.
-			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
-
-			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
-			jump = false;
+			transform.localScale = theScale;
 		}
 	}
 
+	private void ResetValues (){
+		jump = false;
+	}
+
+	private bool IsGrounded()
+	{
+		if (myRigidbody.velocity.y <= 0) 
+		{
+			foreach (Transform point in groundPoints) {
+				Collider2D[] colliders = Physics2D.OverlapCircleAll (point.position, groundRadius, whatIsGround);
+				for (int i = 0; i < colliders.Length; i++) {
+					if (colliders [i].gameObject != gameObject) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+		
 	void EnemyCollide ()
 	{
 		transform.SetPositionAndRotation (new Vector3 (-4.84f, -2.748991f, 0f), transform.rotation);
