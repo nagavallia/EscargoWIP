@@ -14,6 +14,10 @@ public class ShellThrower : MonoBehaviour {
     private CircleCollider2D shellHitbox;
     private Rigidbody2D shellRigidBody;
 
+    private Transform player;
+    [SerializeField] private Vector3 defaultShellPos;
+    [SerializeField] private float interactDist;
+
 	// Use this for initialization
 	void Start () {
         //shell = transform.Find("Shell").gameObject;
@@ -25,7 +29,19 @@ public class ShellThrower : MonoBehaviour {
         shellHitbox.enabled = false;
         shellRigidBody = shell.GetComponent<Rigidbody2D>();
         shellRigidBody.isKinematic = true;
+        player = GameObject.FindWithTag("Player").transform;
+        transform.parent = player;
+        transform.localPosition = defaultShellPos;
 	}
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.E)) {
+            if (transform.parent == null && shellRigidBody.velocity.magnitude < 1f  
+                && (player.position - transform.position).magnitude < interactDist) {
+                PickUpShell();
+            }
+        }
+    }
 
     // Called when mouse is clicked within collider
     private void OnMouseDown() {
@@ -52,10 +68,21 @@ public class ShellThrower : MonoBehaviour {
     private void OnMouseUp() {
         if (transform.parent != null) {
             Debug.Log("drag finished");
-            shell.transform.parent = null;
-            shellHitbox.enabled = true;
-            shellRigidBody.isKinematic = false;
+            ReleaseShell();
             shell.GetComponent<Rigidbody2D>().AddForce(throwVec);
         }
+    }
+
+    private void PickUpShell() {
+        shell.transform.parent = player;
+        shellHitbox.enabled = false;
+        shellRigidBody.isKinematic = true;
+        shell.transform.localPosition = defaultShellPos;
+    }
+
+    private void ReleaseShell() {
+        shell.transform.parent = null;
+        shellHitbox.enabled = true;
+        shellRigidBody.isKinematic = false;
     }
 }
