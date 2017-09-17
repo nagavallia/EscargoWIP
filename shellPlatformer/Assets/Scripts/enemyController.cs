@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour {
     [SerializeField] private float moveDist;
     [SerializeField] private float speed;
     private float curMove;

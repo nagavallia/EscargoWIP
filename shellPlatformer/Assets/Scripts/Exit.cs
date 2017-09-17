@@ -19,12 +19,13 @@ public class Exit : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
 		//get playerControl component from colliding object
-        playerControl player = collision.gameObject.GetComponent<playerControl>();         
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();         
 		//if playerControl existed, ie actually collided with player
 		if (player != null) 
         {
 			//broadcast level complete message
             Messenger.Broadcast(GameEvent.LEVEL_COMPLETE); 
+			player.gameObject.transform.SetPositionAndRotation (new Vector3 (-4.84f, -2.748991f, 0f), transform.rotation);
         }
     }
 }

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrantsScript : MonoBehaviour 
+public class FinishPopup : MonoBehaviour 
 {
 
 	// Use this for initialization
 	void Start () 
 	{
-		
+		this.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -31,6 +31,6 @@ public class GrantsScript : MonoBehaviour
 	//TODO: fill in code for finishing level
     private void LevelFinish()  
     {
-        Debug.Log("u did it");
+		this.gameObject.SetActive (true);
     }
 }
