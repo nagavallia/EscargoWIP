@@ -45,9 +45,6 @@ public class playerControl : MonoBehaviour
 		Flip (horizontal);
 
 		ResetValues ();
-
-		if (Input.GetButton ("Fire1"))
-			EnemyCollide ();
 	}
 
 	private void move (float horizontal)
