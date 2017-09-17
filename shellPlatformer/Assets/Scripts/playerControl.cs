@@ -31,8 +31,8 @@ public class playerControl : MonoBehaviour
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump"))
 			jump = true;
-		if (Input.GetButton ("Fire1"))
-			EnemyCollide ();
+		//if (Input.GetButton ("Fire1"))
+			//EnemyCollide ();
 	}
 
 
