@@ -1,5 +1,6 @@
 shellPlatformer/ProjectSettings/ProjectVersion.txt
 .editorconfig
+shellPlatformer/Assets/Scenes/sandbox*
 
 **/[Ll]ibrary/
 **/[Tt]emp/
