@@ -21,7 +21,7 @@ Methods to Read Up On
 ---------------------  
 `Resources.Load("[prefab name]")` - Instantiate a prefab in code  
 `GetComponent<[Component Name]>()` - Get component instance from game object  
-Transform - SUPER important component attached to every GameObject, tons of useful methods  
+'Transform'- SUPER important component attached to every GameObject, tons of useful methods  
 MonoBehaviour inherited methods - Update(), Awake(), OnCollisionEnter(), etc. Methods that are invoked when certain built-in Unity things happen.  
 `[SerializeField] private <var type> <var name>` - makes a field editable in Unity editor but still private (can't be changed by other classes at runtime)  
 `Destroy(this.gameObject)` - Deletes gameObject attached to "this". MAKE SURE TO USE this.gameObject IF CALLING FROM COMPONENT  

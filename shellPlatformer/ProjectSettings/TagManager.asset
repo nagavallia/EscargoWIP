@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Shell
+  - ShellSpawner
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - 
   - 
   - Player
-  - Ground
-  - 
+  - Background
+  - Foreground
   - 
   - 
   - 
@@ -41,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 559873281
+    locked: 0
+  - name: Player
+    uniqueID: 3422076687
+    locked: 0
+  - name: Foreground
+    uniqueID: 424480341
     locked: 0
