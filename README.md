@@ -52,7 +52,7 @@ In the "Button" script we should have code like this
     }
 ```
     
-Attatch the Button component to a `GameObject` that will represent the button and there will be a new blank field.  
+Attach the Button component to a `GameObject` that will represent the button and there will be a new blank field.  
 Link the `GameObject` that represents the door to the empty field and now code like this will work.  
 
 ```C#
