@@ -15,13 +15,7 @@ public class ShellSpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		shell = GameObject.FindWithTag ("Shell");
-		if (shell == null) 
-		{
-			shell = (GameObject) Resources.Load ("Shell");
-			shell.transform.SetParent (this.gameObject.transform);
-			shell.transform.localPosition = new Vector3 (0f, .25f, 0f);
-		}
+
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
