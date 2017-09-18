@@ -12,6 +12,7 @@ public class ShellThrower : MonoBehaviour {
 
     private GameObject shell;
     private CircleCollider2D shellHitbox;
+    private CircleCollider2D shellClickbox;
     private Rigidbody2D shellRigidBody;
 
     private Transform player;
@@ -25,6 +26,7 @@ public class ShellThrower : MonoBehaviour {
         throwVec = new Vector2();
         foreach (CircleCollider2D collider in shell.GetComponents<CircleCollider2D>()) {
             if (!collider.isTrigger) { shellHitbox = collider; }
+            else { shellClickbox = collider; }
         }
         shellRigidBody = shell.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
@@ -78,6 +80,7 @@ public class ShellThrower : MonoBehaviour {
     private void PickUpShell() {
         shell.transform.parent = player;
         shellHitbox.enabled = false;
+        shellClickbox.enabled = true;
         shellRigidBody.isKinematic = true;
         shell.transform.localPosition = defaultShellPos;
     }
@@ -85,6 +88,7 @@ public class ShellThrower : MonoBehaviour {
     private void ReleaseShell() {
         shell.transform.parent = null;
         shellHitbox.enabled = true;
+        shellClickbox.enabled = false;
         shellRigidBody.isKinematic = false;
     }
 }

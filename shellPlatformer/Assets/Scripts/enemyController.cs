@@ -42,4 +42,10 @@ public class EnemyController : MonoBehaviour {
     {
         collision.gameObject.SendMessage("EnemyCollide", SendMessageOptions.DontRequireReceiver);
     }
+
+    private void ShellCollide(GameObject shell) {
+        Debug.Log("enemy hit by shell");
+        shell.SendMessage("ShellDestroy");
+        Destroy(this.gameObject);
+    }
 }
