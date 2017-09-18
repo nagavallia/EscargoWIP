@@ -20,5 +20,6 @@ public class Shell : MonoBehaviour {
         // do code here for when the shell should be destroyed
         // probably broadcast a SHELL_DESTROYED message that will be intercepted by a shell spawner
 		this.gameObject.transform.SetParent(shellSpawner.transform);
+		this.gameObject.transform.localPosition = new Vector3 (0f, 0f, 0);
     }
 }
