@@ -17,6 +17,7 @@ public class ShellThrower : MonoBehaviour {
 
     private Transform player;
     [SerializeField] private Vector3 defaultShellPos;
+    [SerializeField] private float shellPickupSpeed;
     [SerializeField] private float interactDist;
 
 	// Use this for initialization
@@ -31,6 +32,8 @@ public class ShellThrower : MonoBehaviour {
         shellRigidBody = shell.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
 
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), shellHitbox);
+
         if (transform.parent == null) {
             ReleaseShell();
         } else {
@@ -40,9 +43,14 @@ public class ShellThrower : MonoBehaviour {
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.E)) {
-            if (transform.parent == null && shellRigidBody.velocity.magnitude < 1f  
+            if (transform.parent == null && shellRigidBody.velocity.magnitude < shellPickupSpeed  
                 && (player.position - transform.position).magnitude < interactDist) {
+                Vector3 shellPos = transform.localScale;
+                shellPos.x = Mathf.Sign(player.localScale.x) * Mathf.Abs(shellPos.x);
+                transform.localScale = shellPos;
                 PickUpShell();
+            } else if (transform.parent != null && transform.parent.GetComponent<PlayerController>() != null) {
+                ReleaseShell();
             }
         }
     }
@@ -82,6 +90,7 @@ public class ShellThrower : MonoBehaviour {
         shellHitbox.enabled = false;
         shellClickbox.enabled = true;
         shellRigidBody.isKinematic = true;
+        shellRigidBody.velocity = Vector3.zero;
         shell.transform.localPosition = defaultShellPos;
     }
 
