@@ -45,6 +45,9 @@ public class ShellThrower : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (transform.parent == null && shellRigidBody.velocity.magnitude < shellPickupSpeed  
                 && (player.position - transform.position).magnitude < interactDist) {
+                Vector3 shellPos = transform.localScale;
+                shellPos.x = Mathf.Sign(player.localScale.x) * Mathf.Abs(shellPos.x);
+                transform.localScale = shellPos;
                 PickUpShell();
             } else if (transform.parent != null && transform.parent.GetComponent<PlayerController>() != null) {
                 ReleaseShell();
