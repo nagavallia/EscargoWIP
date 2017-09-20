@@ -111,6 +111,7 @@ MonoBehaviour:
   defaultShellPos: {x: 0.5, y: 0.2, z: -1}
   shellPickupSpeed: 5
   interactDist: 1.5
+  throwMode: 3
 --- !u!114 &114943767043332196
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,6 +20,14 @@ public class ShellThrower : MonoBehaviour {
     [SerializeField] private float shellPickupSpeed;
     [SerializeField] private float interactDist;
 
+    public enum ThrowMode {
+        YoshiThrowing,
+        MomentumThrowing,
+        FixedThrowing,
+        MouseThrowing
+    }
+    [SerializeField] private ThrowMode throwMode;
+
 	// Use this for initialization
 	void Start () {
         //shell = transform.Find("Shell").gameObject;
@@ -52,6 +60,21 @@ public class ShellThrower : MonoBehaviour {
             } else if (transform.parent != null && transform.parent.GetComponent<PlayerController>() != null) {
                 ReleaseShell();
             }
+        } else if (Input.GetKeyDown(KeyCode.F)) {
+            switch (throwMode) {
+                case ThrowMode.YoshiThrowing:
+                    //handle yoshi throwing
+                    break;
+                case ThrowMode.FixedThrowing:
+                    //handle fixe throwing
+                    break;
+                case ThrowMode.MomentumThrowing:
+                    // handle momentum throwing
+                    break;
+                default:
+                    Debug.Log("you forgot to set throw mode of shell in editor!");
+                    break;
+            }
         }
     }
 
@@ -78,7 +101,7 @@ public class ShellThrower : MonoBehaviour {
 
     // Called when mouse button is released after clicking in collider
     private void OnMouseUp() {
-        if (transform.parent != null) {
+        if (throwMode == ThrowMode.MouseThrowing && transform.parent != null) {
             Debug.Log("drag finished");
             ReleaseShell();
             shell.GetComponent<Rigidbody2D>().AddForce(throwVec);

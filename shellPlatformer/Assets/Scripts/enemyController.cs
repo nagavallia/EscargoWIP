@@ -40,7 +40,7 @@ public class EnemyController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.gameObject.SendMessage("EnemyCollide", SendMessageOptions.DontRequireReceiver);
+        collision.gameObject.SendMessage("KillPlayer", SendMessageOptions.DontRequireReceiver);
     }
 
     private void ShellCollide(GameObject shell) {
