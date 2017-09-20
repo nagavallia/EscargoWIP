@@ -108,7 +108,7 @@ public class ShellThrower : MonoBehaviour {
         }
     }
 
-    private void PickUpShell() {
+	public void PickUpShell() {
         shell.transform.parent = player;
         shellHitbox.enabled = false;
         shellClickbox.enabled = true;
