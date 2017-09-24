@@ -17,7 +17,25 @@ public class ShellThrower : MonoBehaviour {
 
     private Transform player;
     [SerializeField] private Vector3 defaultShellPos;
+    [SerializeField] private float shellPickupSpeed;
     [SerializeField] private float interactDist;
+
+    [SerializeField] private GameObject trajectoryPointPrefab;
+    [SerializeField] private int numTrajectoryPoints;
+    private List<GameObject> trajectoryPoints;
+
+    [SerializeField] private float minYoshiAngle; //angle in degrees
+    [SerializeField] private float maxYoshiAngle;
+    private float yoshiStep = 1f;
+    private float yoshiStrength = 400f;
+
+    public enum ThrowMode {
+        YoshiThrowing,
+        MomentumThrowing,
+        FixedThrowing,
+        MouseThrowing
+    }
+    [SerializeField] private ThrowMode throwMode;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +49,15 @@ public class ShellThrower : MonoBehaviour {
         shellRigidBody = shell.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
 
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), shellHitbox);
+
+        trajectoryPoints = new List<GameObject>();
+        for (int i = 0; i < numTrajectoryPoints; i++) {
+            GameObject dot = Instantiate(trajectoryPointPrefab) as GameObject;
+            dot.SetActive(false);
+            trajectoryPoints.Add(dot);
+        }
+
         if (transform.parent == null) {
             ReleaseShell();
         } else {
@@ -40,10 +67,54 @@ public class ShellThrower : MonoBehaviour {
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.E)) {
-            if (transform.parent == null && shellRigidBody.velocity.magnitude < 1f  
+            if (transform.parent == null && shellRigidBody.velocity.magnitude < shellPickupSpeed  
                 && (player.position - transform.position).magnitude < interactDist) {
+                Vector3 shellPos = transform.localScale;
+                shellPos.x = Mathf.Sign(player.localScale.x) * Mathf.Abs(shellPos.x);
+                transform.localScale = shellPos;
                 PickUpShell();
+            } else if (transform.parent != null && transform.parent.GetComponent<PlayerController>() != null) {
+                ReleaseShell();
             }
+        } else if (Input.GetKeyDown(KeyCode.F)) {
+            switch (throwMode) {
+                case ThrowMode.YoshiThrowing:
+                    //handle yoshi throwing
+                    StartCoroutine("YoshiThrow");
+                    break;
+                case ThrowMode.FixedThrowing:
+                    //handle fixe throwing
+                    break;
+                case ThrowMode.MomentumThrowing:
+                    // handle momentum throwing
+                    break;
+                default:
+                    Debug.Log("you forgot to set throw mode of shell in editor!");
+                    break;
+            }
+        }
+    }
+
+    private IEnumerator YoshiThrow() {
+        if (transform.parent != null) {
+            var increasing = true;
+            var angle = minYoshiAngle;
+            while (Input.GetKey(KeyCode.F)) {
+                if (increasing) {
+                    angle += yoshiStep;
+                } else {
+                    angle -= yoshiStep;
+                }
+                if (angle >= maxYoshiAngle || angle <= minYoshiAngle) { increasing = !increasing; }
+
+                throwVec.Set(Mathf.Cos(angle * Mathf.Deg2Rad) * yoshiStrength * -Mathf.Sign(player.localScale.x), 
+                    Mathf.Sin(angle * Mathf.Deg2Rad) * yoshiStrength);
+                DrawTrajectory(shell.transform.position, (throwVec/shellRigidBody.mass)*Time.fixedDeltaTime);
+                yield return null;
+            }
+            ReleaseShell();
+            DeleteTrajectory();
+            shellRigidBody.AddForce(throwVec);
         }
     }
 
@@ -57,7 +128,7 @@ public class ShellThrower : MonoBehaviour {
 
     // Called every frame mouse button is down after clicking in collider
     private void OnMouseDrag() {
-        if (transform.parent != null) {
+        if (throwMode == ThrowMode.MouseThrowing && transform.parent != null) {
             Debug.Log("moving mouse, throwVec: " + throwVec.magnitude);
             curPos = Input.mousePosition;
             var tempVec = -(curPos - startPos);
@@ -65,23 +136,26 @@ public class ShellThrower : MonoBehaviour {
             float oldMag = throwVec.magnitude;
             throwVec.Normalize();
             throwVec *= Mathf.Min(oldMag, MAX_DRAG_DIST) * MAX_SPEED / MAX_DRAG_DIST;
+            DrawTrajectory(shell.transform.position, (throwVec/shellRigidBody.mass)*Time.fixedDeltaTime);
         }
     }
 
     // Called when mouse button is released after clicking in collider
     private void OnMouseUp() {
-        if (transform.parent != null) {
+        if (throwMode == ThrowMode.MouseThrowing && transform.parent != null) {
             Debug.Log("drag finished");
+            DeleteTrajectory();
             ReleaseShell();
-            shell.GetComponent<Rigidbody2D>().AddForce(throwVec);
+            shellRigidBody.AddForce(throwVec);
         }
     }
 
-    private void PickUpShell() {
+	public void PickUpShell() {
         shell.transform.parent = player;
         shellHitbox.enabled = false;
         shellClickbox.enabled = true;
         shellRigidBody.isKinematic = true;
+        shellRigidBody.velocity = Vector3.zero;
         shell.transform.localPosition = defaultShellPos;
     }
 
@@ -90,5 +164,27 @@ public class ShellThrower : MonoBehaviour {
         shellHitbox.enabled = true;
         shellClickbox.enabled = false;
         shellRigidBody.isKinematic = false;
+    }
+
+    private void DrawTrajectory(Vector3 trajStartPos, Vector2 trajVelocity) {
+        float velocity = Mathf.Sqrt(Mathf.Pow(trajVelocity.x, 2) + Mathf.Pow(trajVelocity.y, 2));
+        float angle = Mathf.Atan2(trajVelocity.y, trajVelocity.x);
+
+        float t = 0.1f;
+        for (int i = 0; i < numTrajectoryPoints; i++) {
+            float dx = velocity * t * Mathf.Cos(angle);
+            float dy = velocity * t * Mathf.Sin(angle) - (Physics2D.gravity.magnitude * Mathf.Pow(t, 2) / 2.0f);
+            Vector3 pos = new Vector3(trajStartPos.x + dx, trajStartPos.y + dy, -3);
+            trajectoryPoints[i].transform.position = pos;
+            trajectoryPoints[i].SetActive(true);
+            trajectoryPoints[i].transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(trajVelocity.y - (Physics.gravity.magnitude) * t, trajVelocity.x) * Mathf.Rad2Deg);
+            t += 0.1f;
+        }
+    }
+
+    void DeleteTrajectory() {
+        for (int i = 0; i < numTrajectoryPoints; i++) {
+            trajectoryPoints[i].SetActive(false);
+        }
     }
 }

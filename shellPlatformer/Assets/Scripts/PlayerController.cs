@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
 
 	private bool jump;
 
+	private bool doubleJump;
+
+	private int jumpCount = 0;
+
 	[SerializeField]
 	private float jumpForce;
 
@@ -35,6 +39,12 @@ public class PlayerController : MonoBehaviour
 		
 	void Update(){
 		HandleInput ();
+
+		if (this.transform.Find ("Shell") == null) {
+			doubleJump = true;
+		} else {
+			doubleJump = false;
+		}
 	}
 
 	void FixedUpdate()
@@ -50,6 +60,13 @@ public class PlayerController : MonoBehaviour
 	private void move (float horizontal)
 	{
 		myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, myRigidbody.velocity.y);
+
+		if (!isGrounded && doubleJump && jump) {
+			if (jumpCount == 0) {
+				myRigidbody.AddForce (new Vector2 (0, jumpForce));
+				jumpCount += 1;
+			}
+		}
 
 		if (isGrounded && jump) {
 			isGrounded = false;
@@ -81,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
 	private void ResetValues (){
 		jump = false;
+		doubleJump = false;
 	}
 
 	private bool IsGrounded()
@@ -91,6 +109,7 @@ public class PlayerController : MonoBehaviour
 				Collider2D[] colliders = Physics2D.OverlapCircleAll (point.position, groundRadius, whatIsGround);
 				for (int i = 0; i < colliders.Length; i++) {
 					if (colliders [i].gameObject != gameObject) {
+						jumpCount = 0;
 						return true;
 					}
 				}
@@ -99,8 +118,8 @@ public class PlayerController : MonoBehaviour
 		return false;
 	}
 		
-	void EnemyCollide ()
+	void KillPlayer ()
 	{
-		transform.SetPositionAndRotation (new Vector3 (-4.84f, -2.748991f, 0f), transform.rotation);
+        Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
 	}
 }
