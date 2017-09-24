@@ -87,6 +87,7 @@ public class ShellThrower : MonoBehaviour {
                     break;
                 case ThrowMode.MomentumThrowing:
                     // handle momentum throwing
+					StartCoroutine("MomentumThrow");
                     break;
                 default:
                     Debug.Log("you forgot to set throw mode of shell in editor!");
@@ -95,7 +96,16 @@ public class ShellThrower : MonoBehaviour {
         }
     }
 
-    private IEnumerator YoshiThrow() {
+	private void MomentumThrow ()
+	{
+		ReleaseShell ();
+		/*
+		throwVec.Set(
+			shellRigidBody.AddForce(player.);
+			*/
+	}
+    private IEnumerator YoshiThrow () 
+	{
         if (transform.parent != null) {
             var increasing = true;
             var angle = minYoshiAngle;
