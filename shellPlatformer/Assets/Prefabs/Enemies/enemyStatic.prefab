@@ -128,11 +128,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276288141524530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1996198ebf2ed49a9294919fc1b510, type: 3}
+  m_Script: {fileID: 11500000, guid: 37787ec8a2295ab4382b5defdf6d2996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDist: 1
+  moveDist: 0
   speed: 0
+  rotate: 0
+  toggle: 1
+  t: 0
+  duration: 5
 --- !u!114 &114648915856508806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleLauncher: {fileID: 198101225315960876}
+  intervalSecs: 2
 --- !u!198 &198101225315960876
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3278,3 +3283,4 @@ SpriteRenderer:
   m_Size: {x: 2.52, y: 2.82}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
