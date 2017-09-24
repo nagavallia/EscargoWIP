@@ -771,7 +771,7 @@ Prefab:
     - target: {fileID: 114163347379583900, guid: d58bbb966ec503e4a8b45b427be516c6,
         type: 2}
       propertyPath: throwMode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212391820533354746, guid: d58bbb966ec503e4a8b45b427be516c6,
         type: 2}
@@ -802,6 +802,11 @@ Prefab:
         type: 2}
       propertyPath: m_Mass
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163347379583900, guid: d58bbb966ec503e4a8b45b427be516c6,
+        type: 2}
+      propertyPath: velocityMultiplier
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d58bbb966ec503e4a8b45b427be516c6, type: 2}

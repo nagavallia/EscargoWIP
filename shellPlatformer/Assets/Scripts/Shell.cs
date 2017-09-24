@@ -10,7 +10,7 @@ public class Shell : MonoBehaviour {
 	void Start()
 	{
 		shellSpawner = GameObject.FindWithTag ("ShellSpawner");
-		isFull = false;
+		//isFull = false;
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)

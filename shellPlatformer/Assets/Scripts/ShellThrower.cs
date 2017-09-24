@@ -37,6 +37,7 @@ public class ShellThrower : MonoBehaviour {
     }
     [SerializeField] private ThrowMode throwMode;
 	[SerializeField] private Vector2 fixedThrowVec;
+	[SerializeField] private float velocityMultiplier;
 
 	// Use this for initialization
 	void Start () {
@@ -135,10 +136,8 @@ public class ShellThrower : MonoBehaviour {
 	private void MomentumThrow ()
 	{
 		ReleaseShell ();
-		/*
-		throwVec.Set(
-			shellRigidBody.AddForce(player.);
-			*/
+		Rigidbody2D playerRigidBody = player.gameObject.GetComponent<Rigidbody2D>();
+		shellRigidBody.velocity = playerRigidBody.velocity*velocityMultiplier;
 	}
 		
 
