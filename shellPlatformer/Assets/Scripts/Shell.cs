@@ -10,7 +10,7 @@ public class Shell : MonoBehaviour {
 	void Start()
 	{
 		shellSpawner = GameObject.FindWithTag ("ShellSpawner");
-		isFull = false;
+		//isFull = false;
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,5 +30,6 @@ public class Shell : MonoBehaviour {
         // probably broadcast a SHELL_DESTROYED message that will be intercepted by a shell spawner
 		this.gameObject.transform.SetParent(shellSpawner.transform);
 		this.gameObject.transform.localPosition = new Vector3 (0f, 0f, 0);
+		this.gameObject.transform.SetParent (null);
     }
 }

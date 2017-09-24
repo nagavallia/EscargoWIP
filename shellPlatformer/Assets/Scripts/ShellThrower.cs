@@ -36,6 +36,8 @@ public class ShellThrower : MonoBehaviour {
         MouseThrowing
     }
     [SerializeField] private ThrowMode throwMode;
+	[SerializeField] private Vector2 fixedThrowVec;
+	[SerializeField] private float velocityMultiplier;
 
 	// Use this for initialization
 	void Start () {
@@ -84,9 +86,11 @@ public class ShellThrower : MonoBehaviour {
                     break;
                 case ThrowMode.FixedThrowing:
                     //handle fixe throwing
+					StartCoroutine("FixedThrow");
                     break;
                 case ThrowMode.MomentumThrowing:
                     // handle momentum throwing
+					StartCoroutine("MomentumThrow");
                     break;
                 default:
                     Debug.Log("you forgot to set throw mode of shell in editor!");
@@ -94,8 +98,9 @@ public class ShellThrower : MonoBehaviour {
             }
         }
     }
-
-    private IEnumerator YoshiThrow() {
+		
+    private IEnumerator YoshiThrow () 
+	{
         if (transform.parent != null) {
             var increasing = true;
             var angle = minYoshiAngle;
@@ -117,6 +122,24 @@ public class ShellThrower : MonoBehaviour {
             shellRigidBody.AddForce(throwVec);
         }
     }
+
+	private void FixedThrow () 
+	{
+		if (transform.parent != null) 
+		{
+			float direction = transform.parent.localScale.x > 0 ? -1 : 1;
+			ReleaseShell ();
+			throwVec.Set (fixedThrowVec.x * direction, fixedThrowVec.y);
+			shellRigidBody.AddForce (throwVec);
+		}
+	}
+	private void MomentumThrow ()
+	{
+		ReleaseShell ();
+		Rigidbody2D playerRigidBody = player.gameObject.GetComponent<Rigidbody2D>();
+		shellRigidBody.velocity = playerRigidBody.velocity*velocityMultiplier;
+	}
+		
 
     // Called when mouse is clicked within collider
     private void OnMouseDown() {
