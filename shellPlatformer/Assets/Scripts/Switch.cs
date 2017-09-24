@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour {
+public class Switch : MonoBehaviour {
 	[SerializeField] private List<GameObject> interactables;
 
 	// Use this for initialization
 	void Start () {
+		
 	}
-
+	
 	// Update is called once per frame
-	void Update () 
-	{
+	void Update () {
 		
 	}
 
@@ -20,10 +20,4 @@ public class Button : MonoBehaviour {
 			i.SendMessage ("Interact");
 		}
 	} 
-
-	private void OnTriggerExit2D(Collider2D collision) {
-		foreach (GameObject i in interactables) {
-			i.SendMessage ("Interact");
-		}
-	}  
 }
