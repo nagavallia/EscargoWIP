@@ -9,6 +9,14 @@ public class EnemyController : MonoBehaviour {
     private float direction;
     private Vector3 startPos;
 
+	public bool rotate;
+
+	private Quaternion toRotation = Quaternion.Euler(0,0,-90);
+	private Quaternion fromRotation = Quaternion.Euler(0,0,0);
+	public bool toggle = true;
+	public float t = 0f;
+	public float duration = 5f;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -36,7 +44,25 @@ public class EnemyController : MonoBehaviour {
 			curMove = moveDist; 
 		}
 
-    }
+		if (rotate) {
+			if (transform.rotation.z >= fromRotation.z) {
+				toggle = true;
+				t = 0f;
+			} else if (transform.rotation.z <= toRotation.z) {
+				toggle = false;
+				t = 0f;
+			} 
+			t += Time.deltaTime;
+
+			if (toggle) {
+				transform.rotation = Quaternion.Lerp (fromRotation, toRotation, t/duration);
+			} else {
+				transform.rotation = Quaternion.Lerp (toRotation, fromRotation, t/duration);
+			}
+
+
+    	}
+	}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -48,4 +74,5 @@ public class EnemyController : MonoBehaviour {
         shell.SendMessage("ShellDestroy");
         Destroy(this.gameObject);
     }
+		
 }
