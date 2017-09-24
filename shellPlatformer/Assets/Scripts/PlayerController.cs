@@ -118,8 +118,8 @@ public class PlayerController : MonoBehaviour
 		return false;
 	}
 		
-	void EnemyCollide ()
+	void KillPlayer ()
 	{
-		transform.SetPositionAndRotation (new Vector3 (-4.84f, -2.748991f, 0f), transform.rotation);
+        Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
 	}
 }
