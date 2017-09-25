@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
     Scene curScene;
-    [SerializeField] string nextScene;
+    [SerializeField] private string nextScene;
 
     private void Awake() {
         Messenger.AddListener(GameEvent.LEVEL_COMPLETE, FinishLevel);
