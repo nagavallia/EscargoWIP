@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
 	private void HandleInput(){
 
-		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)){
+		if (Input.GetKeyDown(KeyCode.W)) {// || Input.GetKeyDown(KeyCode.Space)){
 			jump = true;
 		}
 			
