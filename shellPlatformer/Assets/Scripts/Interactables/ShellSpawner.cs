@@ -7,17 +7,6 @@ public class ShellSpawner : MonoBehaviour
 	private BoxCollider2D spawnerHitbox;
 	private PlayerController player;
 
-	// Use this for initialization
-	void Start ()
-	{
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-
-	}
-
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		/*if (collision.gameObject.tag == "Player" && this.transform.Find ("Shell") != null) {
