@@ -29,6 +29,9 @@ public class ShellThrower : MonoBehaviour {
     private float yoshiStep = 1f;
     private float yoshiStrength = 400f;
 
+    private KeyCode THROW_BUTTON = KeyCode.Space;
+    private KeyCode USE_BUTTON = KeyCode.E;
+
     public enum ThrowMode {
         YoshiThrowing,
         MomentumThrowing,
@@ -68,7 +71,7 @@ public class ShellThrower : MonoBehaviour {
 	}
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(USE_BUTTON)) {
             if (transform.parent == null && shellRigidBody.velocity.magnitude < shellPickupSpeed  
                 && (player.position - transform.position).magnitude < interactDist) {
                 Vector3 shellPos = transform.localScale;
@@ -78,7 +81,7 @@ public class ShellThrower : MonoBehaviour {
             } else if (transform.parent != null && transform.parent.GetComponent<PlayerController>() != null) {
                 ReleaseShell();
             }
-        } else if (Input.GetKeyDown(KeyCode.F)) {
+        } else if (Input.GetKeyDown(THROW_BUTTON)) {
             switch (throwMode) {
                 case ThrowMode.YoshiThrowing:
                     //handle yoshi throwing
@@ -104,7 +107,7 @@ public class ShellThrower : MonoBehaviour {
         if (transform.parent != null) {
             var increasing = true;
             var angle = minYoshiAngle;
-            while (Input.GetKey(KeyCode.F)) {
+            while (Input.GetKey(THROW_BUTTON)) {
                 if (increasing) {
                     angle += yoshiStep;
                 } else {
@@ -209,5 +212,9 @@ public class ShellThrower : MonoBehaviour {
         for (int i = 0; i < numTrajectoryPoints; i++) {
             trajectoryPoints[i].SetActive(false);
         }
+    }
+
+    public void SwitchThrowMode(int val) {
+        throwMode = (ThrowMode) val;
     }
 }

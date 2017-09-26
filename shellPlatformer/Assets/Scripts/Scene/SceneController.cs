@@ -34,4 +34,8 @@ public class SceneController : MonoBehaviour {
     private void FinishLevel() {
         if (nextScene != null) { SceneManager.LoadScene(nextScene); }
     }
+
+    public void LoadLevel(string name) {
+        SceneManager.LoadScene(name);
+    }
 }

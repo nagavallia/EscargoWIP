@@ -71,8 +71,8 @@ public class EnemyController : MonoBehaviour {
 
     private void ShellCollide(GameObject shell) {
         Debug.Log("enemy hit by shell");
-        shell.SendMessage("ShellDestroy");
-        Destroy(this.gameObject);
+        //shell.SendMessage("ShellDestroy");
+        //Destroy(this.gameObject);
     }
 		
 }
