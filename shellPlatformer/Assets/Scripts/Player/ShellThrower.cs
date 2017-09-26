@@ -11,8 +11,8 @@ public class ShellThrower : MonoBehaviour {
     [SerializeField] private float MAX_DRAG_DIST;
 
     private GameObject shell;
-    private CircleCollider2D shellHitbox;
-    private CircleCollider2D shellClickbox;
+    public CircleCollider2D shellHitbox { get; private set; }
+    public CircleCollider2D shellClickbox { get; private set; }
     private Rigidbody2D shellRigidBody;
 
     private Transform player;
@@ -89,11 +89,11 @@ public class ShellThrower : MonoBehaviour {
                     break;
                 case ThrowMode.FixedThrowing:
                     //handle fixe throwing
-					StartCoroutine("FixedThrow");
+                    FixedThrow();
                     break;
                 case ThrowMode.MomentumThrowing:
                     // handle momentum throwing
-					StartCoroutine("MomentumThrow");
+                    MomentumThrow();
                     break;
                 default:
                     Debug.Log("you forgot to set throw mode of shell in editor!");
@@ -131,10 +131,10 @@ public class ShellThrower : MonoBehaviour {
 		if (transform.parent != null) 
 		{
 			float direction = transform.parent.localScale.x > 0 ? -1 : 1;
-			ReleaseShell ();
-			throwVec.Set (fixedThrowVec.x * direction, fixedThrowVec.y);
+            ReleaseShell();
+            throwVec.Set (fixedThrowVec.x * direction, fixedThrowVec.y);
 			shellRigidBody.AddForce (throwVec);
-		}
+        }
 	}
 	private void MomentumThrow ()
 	{

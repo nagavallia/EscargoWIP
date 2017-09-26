@@ -17,6 +17,9 @@ public class EnemyController : MonoBehaviour {
 	public float t = 0f;
 	public float duration = 5f;
 
+    [SerializeField] private bool killable = false;
+    [SerializeField] private bool destroysShell = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -71,8 +74,8 @@ public class EnemyController : MonoBehaviour {
 
     private void ShellCollide(GameObject shell) {
         Debug.Log("enemy hit by shell");
-        //shell.SendMessage("ShellDestroy");
-        //Destroy(this.gameObject);
+        if (destroysShell) { shell.SendMessage("ShellDestroy"); }
+        if (killable) { Destroy(this.gameObject); }
     }
 		
 }

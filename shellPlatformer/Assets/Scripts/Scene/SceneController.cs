@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour {
     Scene curScene;
     [SerializeField] private string nextScene;
+    [SerializeField] private GameObject complete;
+
+    private float defaultTimeScale;
 
     private void Awake() {
         Messenger.AddListener(GameEvent.LEVEL_COMPLETE, FinishLevel);
         Messenger.AddListener(GameEvent.RELOAD_LEVEL, ReloadScene);
+        defaultTimeScale = Time.timeScale;
     }
 
     // Use this for initialization
@@ -32,10 +36,12 @@ public class SceneController : MonoBehaviour {
     }
 
     private void FinishLevel() {
-        if (nextScene != null) { SceneManager.LoadScene(nextScene); }
+        if (nextScene != "") { SceneManager.LoadScene(nextScene); }
+        else { complete.SetActive(true); }
     }
 
     public void LoadLevel(string name) {
         SceneManager.LoadScene(name);
+        Time.timeScale = defaultTimeScale;
     }
 }

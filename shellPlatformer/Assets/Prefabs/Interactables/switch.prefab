@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactables: []
+  switchCooldown: 0.5
 --- !u!212 &212397907177386624
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -120,4 +121,3 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
