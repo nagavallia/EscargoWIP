@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour {
     Scene curScene;
     [SerializeField] private string nextScene;
     [SerializeField] private GameObject complete;
+	[SerializeField] private Dropdown throwSelector;
 
     private float defaultTimeScale;
 
@@ -32,7 +34,10 @@ public class SceneController : MonoBehaviour {
 	}
 
     private void ReloadScene() {
+		int oldVal = throwSelector.value;
+		Debug.Log (oldVal);
         SceneManager.LoadScene(curScene.name);
+		throwSelector.value = oldVal;
     }
 
     private void FinishLevel() {
@@ -41,7 +46,9 @@ public class SceneController : MonoBehaviour {
     }
 
     public void LoadLevel(string name) {
+		var oldVal = throwSelector.value;
         SceneManager.LoadScene(name);
         Time.timeScale = defaultTimeScale;
+		throwSelector.value = oldVal;
     }
 }

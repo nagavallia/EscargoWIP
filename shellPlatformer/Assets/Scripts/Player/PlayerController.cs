@@ -50,6 +50,13 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate()
 	{
 		float horizontal = Input.GetAxis ("Horizontal");
+
+		if (horizontal < 0) {
+			horizontal = -1;
+		} else if (horizontal > 0) {
+			horizontal = 1;
+		} 
+
 		isGrounded = IsGrounded ();
 		move (horizontal);
 		Flip (horizontal);
@@ -63,7 +70,8 @@ public class PlayerController : MonoBehaviour
 
 		if (!isGrounded && doubleJump && jump) {
 			if (jumpCount == 0) {
-				myRigidbody.AddForce (new Vector2 (0, jumpForce));
+				myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, 0);
+				myRigidbody.AddForce (new Vector2 (0, (2 * jumpForce)/3));
 				jumpCount += 1;
 			}
 		}

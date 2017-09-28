@@ -6,6 +6,9 @@ public class Button : MonoBehaviour {
 	[SerializeField] private List<GameObject> interactables;
     private List<GameObject> touching; // List of gameObjects colliding with button
 
+	[SerializeField] private Sprite current;
+	[SerializeField] private Sprite change;
+
     private void Start() {
         touching = new List<GameObject>();
     }
@@ -17,6 +20,12 @@ public class Button : MonoBehaviour {
             foreach (GameObject i in interactables) {
                 i.SendMessage("Interact");
             }
+			// Change the image to reflect the interaction
+			if (gameObject.GetComponent<SpriteRenderer> ().sprite == current) {
+				gameObject.GetComponent<SpriteRenderer> ().sprite = change;
+			} else {
+				gameObject.GetComponent<SpriteRenderer> ().sprite = current;
+			}
         }
         touching.Add(collision.gameObject);
 	} 
@@ -27,6 +36,12 @@ public class Button : MonoBehaviour {
             foreach (GameObject i in interactables) {
                 i.SendMessage("Interact");
             }
+			// Change the image to reflect the interaction
+			if (gameObject.GetComponent<SpriteRenderer> ().sprite == current) {
+				gameObject.GetComponent<SpriteRenderer> ().sprite = change;
+			} else {
+				gameObject.GetComponent<SpriteRenderer> ().sprite = current;
+			}
         }
 	}  
 }

@@ -138,9 +138,11 @@ public class ShellThrower : MonoBehaviour {
 	}
 	private void MomentumThrow ()
 	{
-		ReleaseShell ();
-		Rigidbody2D playerRigidBody = player.gameObject.GetComponent<Rigidbody2D>();
-		shellRigidBody.velocity = playerRigidBody.velocity*velocityMultiplier;
+		if (transform.parent != null) {
+			ReleaseShell ();
+			Rigidbody2D playerRigidBody = player.gameObject.GetComponent<Rigidbody2D> ();
+			shellRigidBody.velocity = playerRigidBody.velocity * velocityMultiplier;
+		}
 	}
 		
 
