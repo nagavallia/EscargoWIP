@@ -28,7 +28,7 @@ public class Shell : MonoBehaviour {
     private void ShellDestroy() {
         // do code here for when the shell should be destroyed
         // probably broadcast a SHELL_DESTROYED message that will be intercepted by a shell spawner
-        Messenger<GameObject>.Broadcast(GameEvent.SHELL_DESTROYED, this.gameObject);
+        Messenger.Broadcast(GameEvent.SHELL_DESTROYED, MessengerMode.DONT_REQUIRE_LISTENER);
         Destroy(this.gameObject);
     }
 }

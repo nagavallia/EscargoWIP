@@ -15,6 +15,7 @@ public class SceneController : MonoBehaviour {
     private void Awake() {
         Messenger.AddListener(GameEvent.LEVEL_COMPLETE, FinishLevel);
         Messenger.AddListener(GameEvent.RELOAD_LEVEL, ReloadScene);
+        Messenger.AddListener(GameEvent.SHELL_DESTROYED, ShellDestroyed);
         defaultTimeScale = Time.timeScale;
     }
 
@@ -26,6 +27,7 @@ public class SceneController : MonoBehaviour {
     private void OnDestroy() {
         Messenger.RemoveListener(GameEvent.LEVEL_COMPLETE, FinishLevel);
         Messenger.RemoveListener(GameEvent.RELOAD_LEVEL, ReloadScene);
+        Messenger.RemoveListener(GameEvent.SHELL_DESTROYED, ShellDestroyed);
     }
 
     // Update is called once per frame
@@ -43,6 +45,10 @@ public class SceneController : MonoBehaviour {
     private void FinishLevel() {
         if (nextScene != "") { SceneManager.LoadScene(nextScene); }
         else { complete.SetActive(true); }
+    }
+
+    private void ShellDestroyed() {
+        Debug.Log("shell was destroyed");
     }
 
     public void LoadLevel(string name) {

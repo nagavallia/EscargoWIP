@@ -70,6 +70,10 @@ public class ShellThrower : MonoBehaviour {
         }
 	}
 
+    private void OnDestroy() {
+        foreach (GameObject point in trajectoryPoints) { Destroy(point); }
+    }
+
     private void Update() {
         if (Input.GetKeyDown(USE_BUTTON)) {
             if (transform.parent == null && shellRigidBody.velocity.magnitude < shellPickupSpeed  
@@ -192,6 +196,7 @@ public class ShellThrower : MonoBehaviour {
         shellHitbox.enabled = true;
         shellClickbox.enabled = false;
         shellRigidBody.isKinematic = false;
+        if (trajectoryPoints[0].activeInHierarchy) { DeleteTrajectory(); }
     }
 
     private void DrawTrajectory(Vector3 trajStartPos, Vector2 trajVelocity) {
