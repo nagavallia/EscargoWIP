@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Faucet : MonoBehaviour {
+public class SinkingPlatform : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,10 +13,4 @@ public class Faucet : MonoBehaviour {
 	void Update () {
 		
 	}
-
-	private void OnTriggerEnter2D (Collision2D collision)
-	{
-		collision.gameObject.SendMessage("FillShell", SendMessageOptions.DontRequireReceiver);
-	}
-		
 }

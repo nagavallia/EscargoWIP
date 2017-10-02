@@ -10,17 +10,11 @@ public class Shell : MonoBehaviour {
 	void Start()
 	{
 		shellSpawner = GameObject.FindWithTag ("ShellSpawner");
-		//isFull = false;
+		isFull = false;
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-		/*
-		if (collision.gameObject.tag == "Faucet") {
-			isFull = true;
-			Debug.Log ("Fill Her Up!");
-		}
-		*/
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         collision.gameObject.SendMessage("ShellCollide", this.gameObject, SendMessageOptions.DontRequireReceiver);
     }
@@ -31,4 +25,10 @@ public class Shell : MonoBehaviour {
         Messenger.Broadcast(GameEvent.SHELL_DESTROYED, MessengerMode.DONT_REQUIRE_LISTENER);
         Destroy(this.gameObject);
     }
+
+	private void FillShell() {
+		Debug.Log ("Filling Shell");
+		isFull = true;
+		this.GetComponent<SpriteRenderer> ().sprite = (Sprite) Resources.Load ("FullShell", typeof(Sprite));
+	}
 }
