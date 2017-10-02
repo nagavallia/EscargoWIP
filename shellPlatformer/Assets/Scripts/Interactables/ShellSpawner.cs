@@ -26,6 +26,7 @@ public class ShellSpawner : MonoBehaviour
 			shell.transform.SetParent (this.transform);
 			shell.GetComponent<Rigidbody2D> ().velocity = Vector3.zero;
 			shell.transform.localPosition = new Vector3(0,5,0);
+			shell.transform.SetParent (null);
 		}
 	}
 }

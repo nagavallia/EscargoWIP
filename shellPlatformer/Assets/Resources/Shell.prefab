@@ -116,6 +116,8 @@ MonoBehaviour:
   numTrajectoryPoints: 10
   fixedThrowAngle: 45
   throwForce: 250
+  addMomentum: 1
+  momentumMultiplier: 0
 --- !u!114 &114943767043332196
 MonoBehaviour:
   m_ObjectHideFlags: 1

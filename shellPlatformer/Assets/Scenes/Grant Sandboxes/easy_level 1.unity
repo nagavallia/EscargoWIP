@@ -522,6 +522,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 0.61708105
       objectReference: {fileID: 0}
+    - target: {fileID: 1422138652278572, guid: 12ef8b977683f944eb1155654da5b406, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12ef8b977683f944eb1155654da5b406, type: 2}
   m_IsPrefabParent: 0
@@ -990,6 +994,21 @@ Prefab:
     - target: {fileID: 4855780641086570, guid: d58bbb966ec503e4a8b45b427be516c6, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163347379583900, guid: d58bbb966ec503e4a8b45b427be516c6,
+        type: 2}
+      propertyPath: throwForce
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163347379583900, guid: d58bbb966ec503e4a8b45b427be516c6,
+        type: 2}
+      propertyPath: addMomentum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163347379583900, guid: d58bbb966ec503e4a8b45b427be516c6,
+        type: 2}
+      propertyPath: momentumMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d58bbb966ec503e4a8b45b427be516c6, type: 2}

@@ -16,6 +16,8 @@ public class ShellThrower : MonoBehaviour {
 	[SerializeField] private int numTrajectoryPoints;
 	[SerializeField] private float fixedThrowAngle;
 	[SerializeField] private float throwForce;
+	[SerializeField] private bool addMomentum;
+	[SerializeField] private float momentumMultiplier;
 
     private GameObject shell;
     public CircleCollider2D shellHitbox { get; private set; }
@@ -103,6 +105,10 @@ public class ShellThrower : MonoBehaviour {
             ReleaseShell();
             throwVec.Set (fixedThrowVec.x * direction, fixedThrowVec.y);
 			shellRigidBody.AddForce (throwVec);
+			if (addMomentum) {
+				Rigidbody2D playerRigidBody = player.gameObject.GetComponent<Rigidbody2D> ();
+				shellRigidBody.velocity += playerRigidBody.velocity * momentumMultiplier;
+			}
         }
 	}
 
