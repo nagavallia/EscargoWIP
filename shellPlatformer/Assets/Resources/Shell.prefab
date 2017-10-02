@@ -114,11 +114,8 @@ MonoBehaviour:
   trajectoryPointPrefab: {fileID: 100000, guid: 7168f1da7bd59dc46be0f93a0aa27b52,
     type: 2}
   numTrajectoryPoints: 10
-  minYoshiAngle: 20
-  maxYoshiAngle: 80
-  throwMode: 3
-  fixedThrowVec: {x: 400, y: 400}
-  velocityMultiplier: 2
+  fixedThrowAngle: 45
+  throwForce: 250
 --- !u!114 &114943767043332196
 MonoBehaviour:
   m_ObjectHideFlags: 1
