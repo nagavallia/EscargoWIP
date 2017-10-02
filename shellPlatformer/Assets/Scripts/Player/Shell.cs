@@ -5,12 +5,14 @@ using UnityEngine;
 public class Shell : MonoBehaviour {
 
 	private GameObject shellSpawner;
-	private bool isFull;
+	private int maxWaterLevel;
+	private int waterLevel;
 
 	void Start()
 	{
 		shellSpawner = GameObject.FindWithTag ("ShellSpawner");
-		isFull = false;
+		waterLevel = 0;
+		maxWaterLevel = 1;
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -28,7 +30,14 @@ public class Shell : MonoBehaviour {
 
 	public void FillShell() {
 		Debug.Log ("Filling Shell");
-		isFull = true;
-		this.GetComponent<SpriteRenderer> ().sprite = (Sprite) Resources.Load ("FullShell", typeof(Sprite));
+		if (waterLevel < maxWaterLevel) {
+			waterLevel++;
+			this.GetComponent<SpriteRenderer> ().sprite = (Sprite)Resources.Load ("FullShell", typeof(Sprite));
+		}
+	}
+
+	public void EmptyShell()
+	{
+		waterLevel = 0;
 	}
 }
