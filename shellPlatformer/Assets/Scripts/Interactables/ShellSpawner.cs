@@ -10,7 +10,7 @@ public class ShellSpawner : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		player = GameObject.Find ("Snail");
+		player = GameObject.Find ("snail");
 	}
 	
 	// Update is called once per frame
@@ -21,11 +21,12 @@ public class ShellSpawner : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject == player) {
+		if (collision.gameObject.tag == "Player" && player.transform.Find ("Shell") == null && this.transform.Find("Shell") == null) {
 			shell = GameObject.Find ("Shell");
-			shell.transform.SetParent (player.transform);
-			shell.transform.localPosition = new Vector2 (0, 0);
+			shell.transform.SetParent (this.transform);
+			shell.GetComponent<Rigidbody2D> ().velocity = Vector3.zero;
+			shell.transform.localPosition = new Vector3(0,5,0);
 		}
-	}	
+	}
 }
 
