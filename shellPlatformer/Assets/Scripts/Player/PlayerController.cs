@@ -145,4 +145,13 @@ public class PlayerController : MonoBehaviour
 	{
         Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
 	}
+
+	private void FillShell()
+	{
+		Shell shell = this.transform.Find ("Shell").gameObject.GetComponent<Shell>();
+
+		if (shell != null) {
+			shell.FillShell ();
+		}
+	}
 }

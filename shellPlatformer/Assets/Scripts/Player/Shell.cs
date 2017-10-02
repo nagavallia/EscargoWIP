@@ -26,7 +26,7 @@ public class Shell : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
-	private void FillShell() {
+	public void FillShell() {
 		Debug.Log ("Filling Shell");
 		isFull = true;
 		this.GetComponent<SpriteRenderer> ().sprite = (Sprite) Resources.Load ("FullShell", typeof(Sprite));

@@ -16,6 +16,7 @@ public class Faucet : MonoBehaviour {
 
 	private void OnTriggerEnter2D (Collision2D collision)
 	{
+		Debug.Log ("Faucet Trigger!");
 		collision.gameObject.SendMessage("FillShell", SendMessageOptions.DontRequireReceiver);
 	}
 		
