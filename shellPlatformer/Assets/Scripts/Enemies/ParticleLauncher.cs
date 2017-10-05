@@ -23,7 +23,6 @@ public class ParticleLauncher : MonoBehaviour {
 
 
 	void OnParticleCollision(GameObject other){
-        Debug.Log(other.name);
         other.SendMessage("KillPlayer", SendMessageOptions.DontRequireReceiver);
 	}
 

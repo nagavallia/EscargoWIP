@@ -22,7 +22,7 @@ public class SceneController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         curScene = SceneManager.GetActiveScene();
-        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemies"), LayerMask.NameToLayer("Player"));
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemies"), LayerMask.NameToLayer("Movement Hitbox"));
 	}
 
     private void OnDestroy() {
