@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Faucet : MonoBehaviour {
+    //[SerializeField] private GameObject head;
+    [SerializeField] private GameObject water;
+    [SerializeField] private bool startEnabled = false;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        if (startEnabled) water.SetActive(true);
+        else water.SetActive(false);
 	}
 
-	private void OnTriggerEnter2D (Collider2D collision)
+    private void OnTriggerEnter2D (Collider2D collision)
 	{
-		Debug.Log ("Faucet Trigger!");
-		collision.gameObject.SendMessage("FillShell", SendMessageOptions.DontRequireReceiver);
+        collision.gameObject.SendMessage("FillShell", SendMessageOptions.DontRequireReceiver);
 	}
 		
 }
