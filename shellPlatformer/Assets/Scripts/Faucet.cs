@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class Faucet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +14,10 @@ public class NewBehaviourScript : MonoBehaviour {
 		
 	}
 
-	void ShellCollide () {
+	private void OnTriggerEnter2D (Collider2D collision)
+	{
+		Debug.Log ("Faucet Trigger!");
+		collision.gameObject.SendMessage("FillShell", SendMessageOptions.DontRequireReceiver);
 	}
+		
 }

@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private float jumpForce;
 
+	[SerializeField] 
+	private float maxDrag;
+
 	void Start()
 	{
 		myRigidbody = GetComponent<Rigidbody2D> ();
@@ -64,6 +67,7 @@ public class PlayerController : MonoBehaviour
 		ResetValues ();
 	}
 
+	// Move procedure handles player movement, jump, and double jump
 	private void move (float horizontal)
 	{
 		myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, myRigidbody.velocity.y);
@@ -71,7 +75,7 @@ public class PlayerController : MonoBehaviour
 		if (!isGrounded && doubleJump && jump) {
 			if (jumpCount == 0) {
 				myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, 0);
-				myRigidbody.AddForce (new Vector2 (0, (2 * jumpForce)/3));
+				myRigidbody.AddForce (new Vector2 (0, 0.75f * jumpForce));
 				jumpCount += 1;
 			}
 		}
@@ -83,14 +87,22 @@ public class PlayerController : MonoBehaviour
 
 	}
 
+	// Sets the jump boolean and the drag value depending on key inputs
 	private void HandleInput(){
 
 		if (Input.GetKeyDown(KeyCode.W)) {// || Input.GetKeyDown(KeyCode.Space)){
 			jump = true;
 		}
+
+		if (Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.A)) {
+			gameObject.GetComponent<Rigidbody2D> ().drag = maxDrag;
+		} else {
+			gameObject.GetComponent<Rigidbody2D> ().drag = 0; 
+		}
 			
 	}
 
+	// Flip the snail image to reflect facing location
 	private void Flip (float horizontal)
 	{
 		if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight) {
@@ -104,11 +116,13 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	// Resets jump booleans
 	private void ResetValues (){
 		jump = false;
 		doubleJump = false;
 	}
 
+	// Determines if the snail is grounded 
 	private bool IsGrounded()
 	{
 		if (myRigidbody.velocity.y <= 0) 
@@ -126,8 +140,18 @@ public class PlayerController : MonoBehaviour
 		return false;
 	}
 		
+
 	void Kill ()
 	{
         Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
+	}
+
+	private void FillShell()
+	{
+		Shell shell = this.transform.Find ("Shell").gameObject.GetComponent<Shell>();
+
+		if (shell != null) {
+			shell.FillShell ();
+		}
 	}
 }

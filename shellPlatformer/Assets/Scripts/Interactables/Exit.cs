@@ -13,6 +13,9 @@ public class Exit : MonoBehaviour {
         {
 			//broadcast level complete message. listeners handle level completion functionality
             Messenger.Broadcast(GameEvent.LEVEL_COMPLETE); 
+
+			// record that the level has ended
+			LoggingManager.instance.RecordLevelEnd ();
         }
     }
 }
