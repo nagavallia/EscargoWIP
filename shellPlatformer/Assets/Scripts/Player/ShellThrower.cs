@@ -109,6 +109,9 @@ public class ShellThrower : MonoBehaviour {
 				Rigidbody2D playerRigidBody = player.gameObject.GetComponent<Rigidbody2D> ();
 				shellRigidBody.velocity += playerRigidBody.velocity * momentumMultiplier;
 			}
+
+			// log that a throw has taken place and the position of the player
+			LoggingManager.instance.RecordEvent(2, "" + gameObject.transform.parent.transform.position);
         }
 	}
 
