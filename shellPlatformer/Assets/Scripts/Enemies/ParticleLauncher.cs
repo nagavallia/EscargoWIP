@@ -26,7 +26,7 @@ public class ParticleLauncher : MonoBehaviour {
 
 		if (other.tag == "Player") {
 			
-			other.SendMessage("KillPlayer", SendMessageOptions.DontRequireReceiver);
+			other.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
 		}
 	}
 

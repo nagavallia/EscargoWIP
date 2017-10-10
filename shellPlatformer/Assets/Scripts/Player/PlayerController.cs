@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
 		return false;
 	}
 		
-	void KillPlayer ()
+	void Kill ()
 	{
         Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
 	}
