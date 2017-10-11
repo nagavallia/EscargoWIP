@@ -23,11 +23,7 @@ public class ParticleLauncher : MonoBehaviour {
 
 
 	void OnParticleCollision(GameObject other){
-
-		if (other.tag == "Player") {
-			
-			other.SendMessage("KillPlayer", SendMessageOptions.DontRequireReceiver);
-		}
+        other.SendMessage("KillPlayer", SendMessageOptions.DontRequireReceiver);
 	}
 
 	void emitSalt(){
