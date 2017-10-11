@@ -13,6 +13,10 @@ public class Faucet : MonoBehaviour {
         else water.SetActive(false);
 	}
 
+	private void Interact() {
+		water.SetActive (!water.activeInHierarchy);
+	}
+
     private void OnTriggerEnter2D (Collider2D collision)
 	{
         collision.gameObject.SendMessage("FillShell", SendMessageOptions.DontRequireReceiver);
