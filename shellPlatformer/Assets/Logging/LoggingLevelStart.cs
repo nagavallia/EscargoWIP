@@ -22,7 +22,12 @@ public class LoggingLevelStart : MonoBehaviour {
 			level = 3;
 		}
 
-		// Logging record the start of the level with number level
-		LoggingManager.instance.RecordLevelStart (level);
+		if (!LoggingManager.lvlStart) {
+			
+			// Logging record the start of the level with number level
+			LoggingManager.instance.RecordLevelStart (level);
+
+			LoggingManager.lvlStart = true; // set the boolean for level start to true
+		}
 	}
 }

@@ -27,6 +27,9 @@ public class ShellSpawner : MonoBehaviour
 			shell.GetComponent<Rigidbody2D> ().velocity = Vector3.zero;
 			shell.transform.localPosition = new Vector3(0,5,0);
 			shell.transform.SetParent (null);
+
+			// log that a shell spawner has been used and the position of the player
+			LoggingManager.instance.RecordEvent(4, "" + player.transform.position);
 		}
 	}
 }

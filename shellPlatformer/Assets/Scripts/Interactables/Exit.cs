@@ -16,6 +16,9 @@ public class Exit : MonoBehaviour {
 
 			// record that the level has ended
 			LoggingManager.instance.RecordLevelEnd ();
+
+			// set the boolean for level start to false
+			LoggingManager.lvlStart = false;
         }
     }
 }
