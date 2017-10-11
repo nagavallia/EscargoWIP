@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 				jumpCount += 1;
 
 				// log that a double jump has occurred and the position of the player
-				LoggingManager.instance.RecordEvent(1, "" + gameObject.transform.position);
+				//LoggingManager.instance.RecordEvent(1, "" + gameObject.transform.position);
 			}
 		}
 
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 			myRigidbody.AddForce (new Vector2 (0, jumpForce));
 
 			// log that a jump has occurred and the position of the player
-			LoggingManager.instance.RecordEvent(0, "" + gameObject.transform.position);
+			//LoggingManager.instance.RecordEvent(0, "" + gameObject.transform.position);
 		}
 
 	}

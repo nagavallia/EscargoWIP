@@ -95,7 +95,7 @@ public class LoggingManager : MonoBehaviour
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + playerActionPath + requestData);
         yield return www.Send();
 
-        if (www.isError)
+        if (www.isNetworkError)
         {
             Debug.Log(www.error);
         }
@@ -128,7 +128,7 @@ public class LoggingManager : MonoBehaviour
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + playerQuestEndPath + requestData);
         yield return www.Send();
 
-        if (www.isError)
+        if (www.isNetworkError)
         {
             Debug.Log(www.error);
         }
@@ -166,7 +166,7 @@ public class LoggingManager : MonoBehaviour
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + playerQuestPath + requestData);
         yield return www.Send();
 
-        if (www.isError)
+        if (www.isNetworkError)
         {
             Debug.Log(www.error);
         }
@@ -203,7 +203,7 @@ public class LoggingManager : MonoBehaviour
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + pageLoadPath + requestData);
         yield return www.Send();
 
-        if (www.isError)
+        if (www.isNetworkError)
         {
             Debug.Log(www.error);
         }
