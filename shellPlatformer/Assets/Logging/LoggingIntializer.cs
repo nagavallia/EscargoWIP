@@ -7,10 +7,17 @@ public class LoggingIntializer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		// Initialize the logging
-		LoggingManager.instance.Initialize (889, 0, false);
+		// only do this once in the game, so when gameStart boolean is false
+		if (!LoggingManager.gameStart) {
 
-		// Start the Game Logging
-		LoggingManager.instance.RecordPageLoad ();
+			// Initialize the logging
+			LoggingManager.instance.Initialize (889, 0, false);
+
+			// Start the Game Logging
+			LoggingManager.instance.RecordPageLoad ();
+
+			// set the boolean to true and never change it back
+			LoggingManager.gameStart = true;
+		}
 	}
 }

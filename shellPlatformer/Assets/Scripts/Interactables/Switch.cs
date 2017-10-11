@@ -25,7 +25,11 @@ public class Switch : MonoBehaviour {
 			} else {
 				gameObject.GetComponent<SpriteRenderer> ().sprite = current;
 			}
+
             timeStamp = Time.time + switchCooldown;
+
+			// log that the switch has been used and the location
+			LoggingManager.instance.RecordEvent(5, "" + gameObject.transform.position);
         }
 			
 	} 

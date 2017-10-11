@@ -6,6 +6,10 @@ public class LoggingManager : MonoBehaviour
 {
     public static LoggingManager instance;
 
+	public static bool gameStart = false;
+
+	public static bool lvlStart = false;
+
     // Initialize variables
     private bool isDebugging = true; // A convenience parameter which, when set to TRUE, disables logging. 
                                      // Make sure you set this to FALSE before you submit your game online!
