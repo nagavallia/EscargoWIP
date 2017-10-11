@@ -23,7 +23,7 @@ public class NonPlayerCharacter : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(moveVector), WALL_CHECK);
-        if (hit.collider != null) {
+        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Background")) {
             changeDirection();
         }
     }
@@ -39,6 +39,12 @@ public class NonPlayerCharacter : MonoBehaviour {
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    private void KillPlayer() {
+        GameObject shell = Resources.Load("Shell") as GameObject;
+        shell.transform.position = this.gameObject.transform.position;
+        Destroy(this.gameObject);
     }
 
 }
