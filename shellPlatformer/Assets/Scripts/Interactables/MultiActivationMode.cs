@@ -9,6 +9,9 @@ public class MultiActivationMode : MonoBehaviour {
     private bool hasBeenActivated;
 
     private void Start() {
+        activatorIds = new Dictionary<int, bool>();
+        hasBeenActivated = false;
+
         foreach (GameObject activator in activators) {
             Button buttonComp = activator.GetComponent<Button>();
             Switch switchComp = activator.GetComponent<Switch>();
@@ -17,7 +20,8 @@ public class MultiActivationMode : MonoBehaviour {
         }
     }
 
-    private void Interact(int id) {
+    private void TriggerInteraction(int id) {
+        if (id == -1) return;
         if (ENABLED) {
             if (!hasBeenActivated) {
                 activatorIds[id] = !activatorIds[id];
@@ -25,15 +29,15 @@ public class MultiActivationMode : MonoBehaviour {
                 foreach (KeyValuePair<int, bool> pair in activatorIds) {
                     activate = activate && pair.Value;
                 }
-                if (activate) gameObject.SendMessage("Interact");
+                if (activate) gameObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
                 hasBeenActivated = true;
             } else {
                 activatorIds[id] = !activatorIds[id];
-                gameObject.SendMessage("Interact");
+                gameObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
                 hasBeenActivated = false;
             }
         } else {
-            gameObject.SendMessage("Interact");
+            gameObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
         }
     }
 }

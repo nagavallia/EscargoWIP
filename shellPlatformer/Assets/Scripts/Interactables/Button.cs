@@ -5,7 +5,6 @@ using UnityEngine;
 public class Button : MonoBehaviour {
 	[SerializeField] private List<GameObject> interactables;
     public int id = 0;
-    [SerializeField] private bool multiActivationMode = false;
     private List<GameObject> touching; // List of gameObjects colliding with button
 
 	[SerializeField] private Sprite current;
@@ -20,7 +19,7 @@ public class Button : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (touching.Count == 0) {
             foreach (GameObject i in interactables) {
-                i.SendMessage("Interact", id);
+                i.SendMessage("TriggerInteraction", id);
             }
 			// Change the image to reflect the interaction
 			if (gameObject.GetComponent<SpriteRenderer> ().sprite == current) {
@@ -40,7 +39,7 @@ public class Button : MonoBehaviour {
         touching.Remove(collision.gameObject);
         if (touching.Count == 0) {
             foreach (GameObject i in interactables) {
-                i.SendMessage("Interact", id);
+                i.SendMessage("TriggerInteraction", id);
             }
 			// Change the image to reflect the interaction
 			if (gameObject.GetComponent<SpriteRenderer> ().sprite == current) {
