@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4549047974639080}
   - component: {fileID: 212069899961723118}
   - component: {fileID: 60465754853054642}
-  - component: {fileID: 114374948680511376}
+  - component: {fileID: 114250503143998262}
   m_Layer: 11
   m_Name: Spike
   m_TagString: Untagged
@@ -129,7 +129,7 @@ PolygonCollider2D:
       - {x: 2.965, y: -3.9199998}
 --- !u!114 &114250503143998262
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1145553961722088}
