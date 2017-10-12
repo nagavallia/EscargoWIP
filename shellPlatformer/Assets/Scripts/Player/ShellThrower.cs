@@ -76,8 +76,8 @@ public class ShellThrower : MonoBehaviour {
         }
 
 		//Set throw vector
-		float throwX = Mathf.Cos(fixedThrowAngle);
-		float throwY = Mathf.Sin (fixedThrowAngle);
+		float throwX = Mathf.Cos(fixedThrowAngle* Mathf.PI/180);
+		float throwY = Mathf.Sin (fixedThrowAngle* Mathf.PI/180);
 		fixedThrowVec = new Vector2 (throwX, throwY) * throwForce;
 	}
 
