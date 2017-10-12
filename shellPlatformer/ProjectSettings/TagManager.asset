@@ -8,6 +8,7 @@ TagManager:
   - Shell
   - ShellSpawner
   - Exit
+  - NPC
   layers:
   - Default
   - TransparentFX

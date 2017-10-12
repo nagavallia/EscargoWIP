@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LoggingManager : MonoBehaviour, GameManager
 {
-    public static LoggingManager instance;
-
 	public static bool gameStart = false;
 
 	public static bool lvlStart = false;
@@ -36,10 +34,10 @@ public class LoggingManager : MonoBehaviour, GameManager
         if (!gameStart) {
 
             // Initialize the logging
-            instance.Initialize(889, 0, false);
+            Initialize(889, 0, false);
 
             // Start the Game Logging
-            instance.RecordPageLoad();
+            RecordPageLoad();
 
             // set the boolean to true and never change it back
             gameStart = true;
@@ -71,7 +69,7 @@ public class LoggingManager : MonoBehaviour, GameManager
         if (!isLevelStarted && level > 0) {
 
             // Logging record the start of the level with number level
-            instance.RecordLevelStart(level);
+            RecordLevelStart(level);
 
             //lvlStart = true; // set the boolean for level start to true
         }
@@ -273,7 +271,6 @@ public class LoggingManager : MonoBehaviour, GameManager
 
     private void Awake()
     {
-        instance = this;
         if (!isDebugging)
         {
             if (Application.absoluteURL.Contains("https"))

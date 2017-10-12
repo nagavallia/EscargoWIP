@@ -15,7 +15,7 @@ public class Exit : MonoBehaviour {
             Messenger.Broadcast(GameEvent.LEVEL_COMPLETE); 
 
 			// record that the level has ended
-			LoggingManager.instance.RecordLevelEnd ();
+			Managers.logging.RecordLevelEnd ();
 
 			// set the boolean for level start to false
 			LoggingManager.lvlStart = false;

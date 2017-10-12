@@ -47,7 +47,6 @@ public class DrawBridge : MonoBehaviour {
 
         while (curTime < animationDuration) {
             curTime += Time.deltaTime;
-            Debug.Log(curTime);
             t = curTime / animationDuration;
             transform.SetPositionAndRotation(transform.position, Quaternion.Slerp(start, end, t));
             yield return null;

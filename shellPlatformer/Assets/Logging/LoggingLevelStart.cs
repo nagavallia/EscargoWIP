@@ -25,7 +25,7 @@ public class LoggingLevelStart : MonoBehaviour {
 		if (!LoggingManager.lvlStart) {
 			
 			// Logging record the start of the level with number level
-			LoggingManager.instance.RecordLevelStart (level);
+			Managers.logging.RecordLevelStart (level);
 
 			LoggingManager.lvlStart = true; // set the boolean for level start to true
 		}

@@ -30,7 +30,7 @@ public class Switch : MonoBehaviour {
             timeStamp = Time.time + switchCooldown;
 
 			// log that the switch has been used and the location
-			LoggingManager.instance.RecordEvent(5, "" + gameObject.transform.position);
+			Managers.logging.RecordEvent(5, "" + gameObject.transform.position);
         }
 			
 	} 

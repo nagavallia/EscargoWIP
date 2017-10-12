@@ -75,11 +75,11 @@ public class PlayerController : MonoBehaviour
 		if (!isGrounded && doubleJump && jump) {
 			if (jumpCount == 0) {
 				myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, 0);
-				myRigidbody.AddForce (new Vector2 (0, 0.75f * jumpForce));
+				myRigidbody.AddForce (new Vector2 (0, 0.8f * jumpForce));
 				jumpCount += 1;
 
 				// log that a double jump has occurred and the position of the player
-				//LoggingManager.instance.RecordEvent(1, "" + gameObject.transform.position);
+				Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
 			}
 		}
 
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 			myRigidbody.AddForce (new Vector2 (0, jumpForce));
 
 			// log that a jump has occurred and the position of the player
-			//LoggingManager.instance.RecordEvent(0, "" + gameObject.transform.position);
+			//Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
 		}
 
 	}
@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
         Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
 
 		// log that a death has taken place and the position of the player
-		LoggingManager.instance.RecordEvent(3, "" + gameObject.transform.position);
+		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
 	}
 
 	private void FillShell()

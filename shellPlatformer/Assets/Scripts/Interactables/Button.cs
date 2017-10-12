@@ -29,7 +29,7 @@ public class Button : MonoBehaviour {
 			}
 
 			// log that the button has been used and the position of the button
-			LoggingManager.instance.RecordEvent(6,"" + gameObject.transform.position);
+			Managers.logging.RecordEvent(6,"" + gameObject.transform.position);
 
         }
         touching.Add(collision.gameObject);

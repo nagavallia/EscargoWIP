@@ -8,16 +8,16 @@ public class LoggingIntializer : MonoBehaviour {
 	void Start () {
 
 		// only do this once in the game, so when gameStart boolean is false
-		if (!LoggingManager.gameStart) {
+		//if (!Managers.logging.gameStart) {
 
 			// Initialize the logging
-			LoggingManager.instance.Initialize (889, 0, false);
+			//Managers.logging.Initialize (889, 0, false);
 
 			// Start the Game Logging
-			LoggingManager.instance.RecordPageLoad ();
+			//Managers.logging.RecordPageLoad ();
 
 			// set the boolean to true and never change it back
-			LoggingManager.gameStart = true;
-		}
+			//Managers.logging.gameStart = true;
+		//}
 	}
 }

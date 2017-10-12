@@ -54,7 +54,7 @@ public class SceneController : MonoBehaviour, GameManager {
     public void FinishLevel() {
         Unload();
         curSceneId++;
-        if (curSceneId <= maxLevel) { SceneManager.LoadScene(curSceneId); }
+        if (curSceneId <= maxLevel) { LoadLevel(curSceneId); }
         else { complete.SetActive(true); }
     }
 

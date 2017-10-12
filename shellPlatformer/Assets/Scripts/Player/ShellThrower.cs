@@ -106,6 +106,7 @@ public class ShellThrower : MonoBehaviour {
 		if (transform.parent != null) 
 		{
 			float direction = transform.parent.localScale.x > 0 ? -1 : 1;
+			Managers.logging.RecordEvent(2, "" + gameObject.transform.parent.transform.position);
             ReleaseShell();
             throwVec.Set (fixedThrowVec.x * direction, fixedThrowVec.y);
 			shellRigidBody.AddForce (throwVec);
@@ -115,7 +116,6 @@ public class ShellThrower : MonoBehaviour {
 			}
 
 			// log that a throw has taken place and the position of the player
-			LoggingManager.instance.RecordEvent(2, "" + gameObject.transform.parent.transform.position);
         }
 	}
 

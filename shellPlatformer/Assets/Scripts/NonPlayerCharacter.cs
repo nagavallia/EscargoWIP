@@ -15,6 +15,7 @@ public class NonPlayerCharacter : MonoBehaviour {
         isMoving = startEnabled;
         WALL_CHECK = 0.25f + GetComponent<BoxCollider2D>().size.x;
         moveVector = transform.right * -Mathf.Sign(transform.localScale.x);
+		GetComponent<Rigidbody2D> ().freezeRotation = true;
     }
 
     private void Update() {
@@ -42,8 +43,9 @@ public class NonPlayerCharacter : MonoBehaviour {
         transform.localScale = scale;
     }
 
-    private void KillPlayer() {
-        GameObject shell = Resources.Load("Shell") as GameObject;
+    private void Kill() {
+		GameObject shell = Instantiate(Resources.Load("Shell")) as GameObject;
+		shell.transform.localScale = new Vector3 (.5f, .5f, 1f);
         shell.transform.position = this.gameObject.transform.position;
         Destroy(this.gameObject);
     }

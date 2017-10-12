@@ -36,7 +36,7 @@ public class ShellSpawner : MonoBehaviour
 		shell.transform.SetParent (null);
 
 		// log that a shell spawner has been used and the position of the player
-		LoggingManager.instance.RecordEvent (4, "" + player.transform.position);
+		Managers.logging.RecordEvent (4, "" + player.transform.position);
 	}
 }
 
