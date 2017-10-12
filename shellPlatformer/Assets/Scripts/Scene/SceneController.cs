@@ -22,6 +22,7 @@ public class SceneController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         curScene = SceneManager.GetActiveScene();
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemies"), LayerMask.NameToLayer("Movement Hitbox"));
 	}
 
     private void OnDestroy() {
@@ -36,10 +37,7 @@ public class SceneController : MonoBehaviour {
 	}
 
     private void ReloadScene() {
-		int oldVal = throwSelector.value;
-		Debug.Log (oldVal);
         SceneManager.LoadScene(curScene.name);
-		throwSelector.value = oldVal;
     }
 
     private void FinishLevel() {
@@ -52,9 +50,7 @@ public class SceneController : MonoBehaviour {
     }
 
     public void LoadLevel(string name) {
-		var oldVal = throwSelector.value;
         SceneManager.LoadScene(name);
         Time.timeScale = defaultTimeScale;
-		throwSelector.value = oldVal;
     }
 }
