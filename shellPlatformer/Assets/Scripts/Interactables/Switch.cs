@@ -5,6 +5,8 @@ using UnityEngine;
 public class Switch : MonoBehaviour {
 	[SerializeField] private List<GameObject> interactables;
     [SerializeField] private float switchCooldown = 2f;
+    public int id = 0;
+    [SerializeField] private bool multiActivationMode = false;
     private float timeStamp = 0f;
 
 	[SerializeField] private Sprite current;
@@ -16,7 +18,7 @@ public class Switch : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D collision) {
         if (Time.time >= timeStamp && !collision.isTrigger) {
             foreach (GameObject i in interactables) {
-                i.SendMessage("Interact");
+                i.SendMessage("Interact", id);
             }
 
 			// Change the image to reflect the interaction

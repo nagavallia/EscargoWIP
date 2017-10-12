@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NonPlayerCharacter : MonoBehaviour {
-
-	public bool isMoving { get; private set; }
-    public Vector3 moveVector { get; private set; }
     [SerializeField] private float moveSpeed;
+    [SerializeField] private bool startEnabled = true;
+
+    public bool isMoving { get; private set; }
+    public Vector3 moveVector { get; private set; }
 
     private float WALL_CHECK;
 
     private void Start() {
-        isMoving = false;
+        isMoving = startEnabled;
         WALL_CHECK = 0.25f + GetComponent<BoxCollider2D>().size.x;
+        moveVector = transform.right * -Mathf.Sign(transform.localScale.x);
     }
 
     private void Update() {
@@ -30,7 +32,6 @@ public class NonPlayerCharacter : MonoBehaviour {
 
     private void Interact() {
         isMoving = true;
-        moveVector = transform.right * -Mathf.Sign(transform.localScale.x);
     }
 
     private void changeDirection() {

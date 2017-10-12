@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4224433006270972}
   - component: {fileID: 114042277935481550}
-  m_Layer: 0
+  - component: {fileID: 114953346726344128}
+  m_Layer: 9
   m_Name: DrawBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +38,7 @@ GameObject:
   - component: {fileID: 4606328292124066}
   - component: {fileID: 212918169508554474}
   - component: {fileID: 61053028225053924}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BridgeCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +111,19 @@ MonoBehaviour:
   rotateRight: 1
   animateMovement: 1
   animationDuration: 2
+--- !u!114 &114953346726344128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005144346948076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb88df4aff5426f40a925189d33ebb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ENABLED: 0
+  activators: []
 --- !u!212 &212918169508554474
 SpriteRenderer:
   m_ObjectHideFlags: 1
