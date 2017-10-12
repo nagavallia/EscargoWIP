@@ -48,10 +48,14 @@ public class ShellThrower : MonoBehaviour {
 			}
         }
 
+        shellClickbox.enabled = false;
+
         shellRigidBody = shell.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
 
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), shellHitbox);
+        Physics2D.IgnoreCollision(shellHitbox, player.transform.Find("MovementHitbox").GetComponent<Collider2D>());
+        foreach (Collider2D collider in player.GetComponents<Collider2D>()) 
+            Physics2D.IgnoreCollision(collider, shellHitbox);
 
         trajectoryPoints = new List<GameObject>();
 
@@ -72,8 +76,8 @@ public class ShellThrower : MonoBehaviour {
         }
 
 		//Set throw vector
-		float throwX = Mathf.Cos(fixedThrowAngle);
-		float throwY = Mathf.Sin (fixedThrowAngle);
+		float throwX = Mathf.Cos(fixedThrowAngle* Mathf.PI/180);
+		float throwY = Mathf.Sin (fixedThrowAngle* Mathf.PI/180);
 		fixedThrowVec = new Vector2 (throwX, throwY) * throwForce;
 	}
 
@@ -119,7 +123,7 @@ public class ShellThrower : MonoBehaviour {
 	{
         shell.transform.parent = player;
         shellHitbox.enabled = false;
-        shellClickbox.enabled = true;
+        //shellClickbox.enabled = true;
         shellRigidBody.isKinematic = true;
         shellRigidBody.velocity = Vector3.zero;
         shell.transform.localPosition = defaultShellPos;
@@ -129,7 +133,7 @@ public class ShellThrower : MonoBehaviour {
 	{
         shell.transform.parent = null;
         shellHitbox.enabled = true;
-        shellClickbox.enabled = false;
+        //shellClickbox.enabled = false;
         shellRigidBody.isKinematic = false;
     }
 }

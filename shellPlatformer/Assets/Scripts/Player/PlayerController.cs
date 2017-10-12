@@ -146,8 +146,8 @@ public class PlayerController : MonoBehaviour
 		return false;
 	}
 		
-	// Broadcasts reload level when snail dies or collides with an enemy
-	void KillPlayer ()
+
+	void Kill ()
 	{
         Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
 

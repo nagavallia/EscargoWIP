@@ -6,7 +6,7 @@ public class Shell : MonoBehaviour {
 
 	private GameObject shellSpawner;
 	private int maxWaterLevel;
-	private int waterLevel;
+	public int waterLevel;
 
 	void Start()
 	{

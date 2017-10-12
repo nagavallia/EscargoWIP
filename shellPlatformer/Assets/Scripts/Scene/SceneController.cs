@@ -4,27 +4,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneController : MonoBehaviour {
-    Scene curScene;
-    [SerializeField] private string nextScene;
+public class SceneController : MonoBehaviour, GameManager {
+    public int curSceneId;
     [SerializeField] private GameObject complete;
-	[SerializeField] private Dropdown throwSelector;
+    [SerializeField] private int maxLevel = 6;
 
     private float defaultTimeScale;
 
-    private void Awake() {
-        Messenger.AddListener(GameEvent.LEVEL_COMPLETE, FinishLevel);
-        Messenger.AddListener(GameEvent.RELOAD_LEVEL, ReloadScene);
-        Messenger.AddListener(GameEvent.SHELL_DESTROYED, ShellDestroyed);
+    public void Startup() {
         defaultTimeScale = Time.timeScale;
+
+        curSceneId = -1;
+    }
+
+    private void OnEnable() {
+        SceneManager.sceneLoaded += Loaded;
+    }
+
+    private void OnDisable() {
+        SceneManager.sceneLoaded -= Loaded;
     }
 
     // Use this for initialization
-    void Start () {
-        curScene = SceneManager.GetActiveScene();
-	}
+    private void Loaded (Scene scene, LoadSceneMode mode) {
+        Debug.Log("scene controller loaded scene: " + scene.name);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemies"), LayerMask.NameToLayer("Movement Hitbox"));
+        Messenger.AddListener(GameEvent.LEVEL_COMPLETE, FinishLevel);
+        Messenger.AddListener(GameEvent.RELOAD_LEVEL, ReloadScene);
+        Messenger.AddListener(GameEvent.SHELL_DESTROYED, ShellDestroyed);
+    }
 
-    private void OnDestroy() {
+    private void Unload() {
+        Debug.Log("scene manager unloaded scene");
         Messenger.RemoveListener(GameEvent.LEVEL_COMPLETE, FinishLevel);
         Messenger.RemoveListener(GameEvent.RELOAD_LEVEL, ReloadScene);
         Messenger.RemoveListener(GameEvent.SHELL_DESTROYED, ShellDestroyed);
@@ -36,14 +47,14 @@ public class SceneController : MonoBehaviour {
 	}
 
     private void ReloadScene() {
-		int oldVal = throwSelector.value;
-		Debug.Log (oldVal);
-        SceneManager.LoadScene(curScene.name);
-		throwSelector.value = oldVal;
+        Unload();
+        LoadLevel(curSceneId);
     }
 
-    private void FinishLevel() {
-        if (nextScene != "") { SceneManager.LoadScene(nextScene); }
+    public void FinishLevel() {
+        Unload();
+        curSceneId++;
+        if (curSceneId <= maxLevel) { SceneManager.LoadScene(curSceneId); }
         else { complete.SetActive(true); }
     }
 
@@ -51,10 +62,11 @@ public class SceneController : MonoBehaviour {
         Debug.Log("shell was destroyed");
     }
 
-    public void LoadLevel(string name) {
-		var oldVal = throwSelector.value;
+    public void LoadLevel(int id) {
+        string name = "level_" + id;
+        if (id == 0) name = "easy_level";
+        curSceneId = id;
         SceneManager.LoadScene(name);
         Time.timeScale = defaultTimeScale;
-		throwSelector.value = oldVal;
     }
 }

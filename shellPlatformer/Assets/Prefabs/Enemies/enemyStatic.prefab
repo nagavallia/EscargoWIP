@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61155915323969466}
   - component: {fileID: 212748646959732084}
   - component: {fileID: 114608445097881930}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: enemyStatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 198101225315960876}
   - component: {fileID: 199398014345538358}
   - component: {fileID: 114648915856508806}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ParticleLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276288141524530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5501204, y: 3.0381784, z: 0}
+  m_LocalPosition: {x: 9.108446, y: 5.413257, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4078056721478940}
@@ -137,6 +137,8 @@ MonoBehaviour:
   toggle: 1
   t: 0
   duration: 5
+  killable: 0
+  destroysShell: 0
 --- !u!114 &114648915856508806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2396,7 +2398,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967240
+      m_Bits: 4294960072
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

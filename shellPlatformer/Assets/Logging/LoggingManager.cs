@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
-public class LoggingManager : MonoBehaviour
+public class LoggingManager : MonoBehaviour, GameManager
 {
     public static LoggingManager instance;
 
@@ -11,7 +12,7 @@ public class LoggingManager : MonoBehaviour
 	public static bool lvlStart = false;
 
     // Initialize variables
-    private bool isDebugging = true; // A convenience parameter which, when set to TRUE, disables logging. 
+    [SerializeField] private bool isDebugging = true; // A convenience parameter which, when set to TRUE, disables logging. 
                                      // Make sure you set this to FALSE before you submit your game online!
     private int gameId = -1; // The game's specific ID number
     private int versionId = 0; // Your game's current version number. You should change this number between releases, 
@@ -30,6 +31,52 @@ public class LoggingManager : MonoBehaviour
     private int sessionSeqId = 1;
 
     private int QuestSeqId = 1;
+
+    public void Startup() {
+        if (!gameStart) {
+
+            // Initialize the logging
+            instance.Initialize(889, 0, false);
+
+            // Start the Game Logging
+            instance.RecordPageLoad();
+
+            // set the boolean to true and never change it back
+            gameStart = true;
+        }
+    }
+
+    private void OnEnable() {
+        SceneManager.sceneLoaded += OnLoad;
+    }
+
+    private void OnDisable() {
+        SceneManager.sceneLoaded -= OnLoad;
+    }
+
+    private void OnLoad(Scene scene, LoadSceneMode mode) {
+        Debug.Log("logger loaded in scene: " + scene.name);
+        int level = 0;
+
+        if (scene.name == "easy_level") {
+            level = 1;
+
+        } else if (scene.name == "medium_level") {
+            level = 2;
+
+        } else if (scene.name == "hard_level") {
+            level = 3;
+        }
+
+        if (!isLevelStarted && level > 0) {
+
+            // Logging record the start of the level with number level
+            instance.RecordLevelStart(level);
+
+            //lvlStart = true; // set the boolean for level start to true
+        }
+    }
+
 
     /**
      * Two internal classes for JSON deserialsation
@@ -234,11 +281,6 @@ public class LoggingManager : MonoBehaviour
                 pageHost = "https";
             }
         }
-    }
-
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject); // Prevent the logging manager been destroyed accidentally.
     }
 
 }

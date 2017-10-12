@@ -20,8 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4271513356352054}
   - component: {fileID: 212311556672187086}
-  - component: {fileID: 114686299368550518}
   - component: {fileID: 61454144548578816}
+  - component: {fileID: 114686299368550518}
+  - component: {fileID: 114523051329340332}
   m_Layer: 9
   m_Name: ShellSpawner
   m_TagString: ShellSpawner
@@ -67,6 +68,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.2, y: 4.2}
   m_EdgeRadius: 0
+--- !u!114 &114523051329340332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716010777075230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb88df4aff5426f40a925189d33ebb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ENABLED: 0
+  activators: []
 --- !u!114 &114686299368550518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,7 +122,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 559873281
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 778fc2583a3a2744bbb3d67b804d6122, type: 3}
   m_Color: {r: 0.5429823, g: 0.6314565, b: 0.8897059, a: 1}
@@ -119,4 +133,3 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
