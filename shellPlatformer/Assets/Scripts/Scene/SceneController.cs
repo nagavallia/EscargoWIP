@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour, GameManager {
     [SerializeField] private int maxLevel = 11;
 
     private float defaultTimeScale;
+    private bool levelFinished;
 
     public void Startup() {
         defaultTimeScale = Time.timeScale;
@@ -37,6 +38,8 @@ public class SceneController : MonoBehaviour, GameManager {
         Camera camera = Camera.main;
         camera.orthographicSize = 4.6875f;
         Screen.SetResolution(800, 600, false);
+
+        levelFinished = false;
     }
 
     private void Unload() {
@@ -59,10 +62,14 @@ public class SceneController : MonoBehaviour, GameManager {
     }
 
     public void FinishLevel() {
-        Unload();
-        curSceneId++;
-        if (curSceneId <= maxLevel) { LoadLevel(curSceneId); }
-        else { complete.SetActive(true); }
+        if (!levelFinished) {
+            Debug.Log("finish level called in scene " + SceneManager.GetActiveScene().name);
+            levelFinished = true;
+            Managers.logging.RecordLevelEnd();
+            Unload();
+            curSceneId++;
+            if (curSceneId <= maxLevel) { LoadLevel(curSceneId); } else { complete.SetActive(true); }
+        }
     }
 
     private void ShellDestroyed() {

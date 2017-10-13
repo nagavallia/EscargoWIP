@@ -11,11 +11,11 @@ public class Exit : MonoBehaviour {
 		//if playerControl existed, ie actually collided with player
 		if (player != null) 
         {
-			//broadcast level complete message. listeners handle level completion functionality
-            Messenger.Broadcast(GameEvent.LEVEL_COMPLETE); 
+            // record that the level has ended
+            //Managers.logging.RecordLevelEnd();
 
-			// record that the level has ended
-			Managers.logging.RecordLevelEnd ();
+            //broadcast level complete message. listeners handle level completion functionality
+            Messenger.Broadcast(GameEvent.LEVEL_COMPLETE);
 
 			// set the boolean for level start to false
 			LoggingManager.lvlStart = false;
