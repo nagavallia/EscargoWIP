@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MultiActivationMode : MonoBehaviour {
     public bool ENABLED;
-    [SerializeField] private GameObject[] activators;
+    [SerializeField] private int[] activators;
     private Dictionary<int, bool> activatorIds;
     private bool hasBeenActivated;
 
@@ -12,11 +12,8 @@ public class MultiActivationMode : MonoBehaviour {
         activatorIds = new Dictionary<int, bool>();
         hasBeenActivated = false;
 
-        foreach (GameObject activator in activators) {
-            Button buttonComp = activator.GetComponent<Button>();
-            Switch switchComp = activator.GetComponent<Switch>();
-            if (buttonComp != null) activatorIds.Add(buttonComp.id, false);
-            else if (switchComp != null) activatorIds.Add(switchComp.id, false);
+        foreach (int activator in activators) {
+            activatorIds.Add(activator, false);
         }
     }
 
@@ -29,8 +26,10 @@ public class MultiActivationMode : MonoBehaviour {
                 foreach (KeyValuePair<int, bool> pair in activatorIds) {
                     activate = activate && pair.Value;
                 }
-                if (activate) gameObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
-                hasBeenActivated = true;
+                if (activate) {
+                    gameObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
+                    hasBeenActivated = true;
+                }
             } else {
                 activatorIds[id] = !activatorIds[id];
                 gameObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
