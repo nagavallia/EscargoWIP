@@ -22,6 +22,7 @@ public class SinkingPlatform : MonoBehaviour {
 		if (collision.gameObject.tag == "Shell") {
 			Shell shell = collision.gameObject.GetComponent<Shell> ();
 			if (shell.waterLevel > 0) {
+				shell.transform.SetParent (this.transform);
 				this.transform.localPosition = sunkenPosition;
 			}
 		}
