@@ -106,7 +106,7 @@ public class ShellThrower : MonoBehaviour {
 		if (transform.parent == player) 
 		{
 			float direction = transform.parent.localScale.x > 0 ? -1 : 1;
-			Managers.logging.RecordEvent(2, "" + gameObject.transform.parent.transform.position);
+//			Managers.logging.RecordEvent(2, "" + gameObject.transform.parent.transform.position);
             ReleaseShell();
             throwVec.Set (fixedThrowVec.x * direction, fixedThrowVec.y);
 			shellRigidBody.AddForce (throwVec);
