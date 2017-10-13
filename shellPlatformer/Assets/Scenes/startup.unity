@@ -152,6 +152,11 @@ Prefab:
       propertyPath: isDebugging
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114102287831946422, guid: f38ef6c5886ffdc4cb74485717442a1b,
+        type: 2}
+      propertyPath: maxLevel
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
   m_IsPrefabParent: 0

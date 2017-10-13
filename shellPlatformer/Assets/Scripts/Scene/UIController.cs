@@ -27,6 +27,6 @@ public class UIController : MonoBehaviour {
     }
 
     public void LoadLevel(int levelId) {
-        Messenger<int>.Broadcast(GameEvent.LOAD_LEVEL, levelId);
+        Messenger<int>.Broadcast(GameEvent.LOAD_LEVEL, levelId + 1);
     }
 }

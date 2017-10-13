@@ -24,32 +24,32 @@ EditorBuildSettings:
     path: Assets/Scenes/Beta/level_1.unity
     guid: d8f6068541511d94194dd4dffc14df5f
   - enabled: 1
-    path: Assets/Scenes/Beta/level_10.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Beta/level_11.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
     path: Assets/Scenes/Beta/level_2.unity
-    guid: 00000000000000000000000000000000
+    guid: b52d8b5c847a42848a5dbe41612cd40e
   - enabled: 1
     path: Assets/Scenes/Beta/level_3.unity
-    guid: 00000000000000000000000000000000
+    guid: 327c82a28e3f95c4dbd918b52a068a3e
   - enabled: 1
     path: Assets/Scenes/Beta/level_4.unity
-    guid: 00000000000000000000000000000000
+    guid: fd7830e12b26e644486463c3f3941978
   - enabled: 1
     path: Assets/Scenes/Beta/level_5.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Beta/level_6.unity
-    guid: 00000000000000000000000000000000
+    guid: 6e4b5a0e027857848aa53bf09a60077d
   - enabled: 1
     path: Assets/Scenes/Beta/level_7.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Beta/level_8.unity
-    guid: 00000000000000000000000000000000
+    guid: 34b1e1f7276eb6c42bfeeeb15ef7e656
+  - enabled: 0
+    path: Assets/Scenes/Beta/broken_8.unity
+    guid: cadb14b3d0e746e498e746011bf498f8
   - enabled: 1
     path: Assets/Scenes/Beta/level_9.unity
+    guid: 5b51a795ba6d05e45997b76ae49941e5
+  - enabled: 1
+    path: Assets/Scenes/Beta/level_10.unity
+    guid: ac5aa2763446add4ca12287e556c95fa
+  - enabled: 0
+    path: Assets/Scenes/Beta/level_11.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/Beta/level_6.unity
     guid: 00000000000000000000000000000000

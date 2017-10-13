@@ -1,0 +1,188 @@
+Initialize engine version: 5.6.2f1 (a2913c821e27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 980 Ti (ID=0x17c8)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   22.21.13.8528
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.017 seconds
+Platform assembly: D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\bin\Windows\shellPlatformer_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI.Hid> Failed to create device file:
+ 20 The process cannot access the file because it is being used by another process.
+
+ 
+(Filename:  Line: 54)
+
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 1.876017 ms
+yJpm4HSviKAX7SKIrI1YPqpgOQFJK12iKrFP9ykr
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+iVpqNa8fSadIBDZqtF9eGcxrEdgNMBf5wEvk
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+finish level called in scene startup
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.206101 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 391.
+Total: 0.242106 ms (FindLiveObjects: 0.018623 ms CreateObjectMapping: 0.015830 ms MarkObjects: 0.202997 ms  DeleteObjects: 0.004035 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UIController.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.114884 ms
+
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 380.
+Total: 0.307599 ms (FindLiveObjects: 0.022969 ms CreateObjectMapping: 0.019244 ms MarkObjects: 0.237140 ms  DeleteObjects: 0.027935 ms)
+
+{"error_code":"0","message":"success","dynamic_quest_id":"dSJffNFhDp9rqAXp7vAClaUX39fDFtWSlG7BtNS6"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+dSJffNFhDp9rqAXp7vAClaUX39fDFtWSlG7BtNS6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+finish level called in scene level_1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+BroadcastException: Broadcasting message LEVEL_COMPLETE but no listener found.
+  at MessengerInternal.OnBroadcasting (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
+  at Messenger.Broadcast (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
+  at Messenger.Broadcast (System.String eventType) [0x00000] in <filename unknown>:0 
+  at Exit.OnTriggerEnter2D (UnityEngine.Collider2D collision) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.694349 ms
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 403.
+Total: 0.556535 ms (FindLiveObjects: 0.041592 ms CreateObjectMapping: 0.041282 ms MarkObjects: 0.378679 ms  DeleteObjects: 0.094049 ms)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+{"error_code":"0","message":"success","dynamic_quest_id":"zhjHWL8AzMVdZOq1nSL2e0FbHcOMqWOZe8HaTPKt"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+zhjHWL8AzMVdZOq1nSL2e0FbHcOMqWOZe8HaTPKt
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.139453 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 403.
+Total: 0.698695 ms (FindLiveObjects: 0.062389 ms CreateObjectMapping: 0.058353 ms MarkObjects: 0.545361 ms  DeleteObjects: 0.031349 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.177632 ms
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 393.
+Total: 0.882448 ms (FindLiveObjects: 0.051214 ms CreateObjectMapping: 0.058043 ms MarkObjects: 0.667345 ms  DeleteObjects: 0.104912 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UIController.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 8 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.896415 ms
+
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 425.
+Total: 0.234346 ms (FindLiveObjects: 0.024521 ms CreateObjectMapping: 0.017382 ms MarkObjects: 0.163266 ms  DeleteObjects: 0.028866 ms)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+BroadcastException: Broadcasting message RELOAD_LEVEL but no listener found.
+  at MessengerInternal.OnBroadcasting (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
+  at Messenger.Broadcast (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
+  at Messenger.Broadcast (System.String eventType) [0x00000] in <filename unknown>:0 
+  at PlayerController.Kill () [0x00000] in <filename unknown>:0 
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+ContactKill:OnTriggerEnter2D(Collider2D)
+ 
+(Filename:  Line: -1)
+
+Unloading 8 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.024918 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 422.
+Total: 0.638479 ms (FindLiveObjects: 0.058664 ms CreateObjectMapping: 0.057112 ms MarkObjects: 0.492594 ms  DeleteObjects: 0.029176 ms)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+finish level called in scene level_10
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+BroadcastException: Broadcasting message LEVEL_COMPLETE but no listener found.
+  at MessengerInternal.OnBroadcasting (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
+  at Messenger.Broadcast (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
+  at Messenger.Broadcast (System.String eventType) [0x00000] in <filename unknown>:0 
+  at Exit.OnTriggerEnter2D (UnityEngine.Collider2D collision) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+{"error_code":"0","message":"success"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 26c0 -> priority: 1 
+  Thread -> id: 1fb4 -> priority: 1 

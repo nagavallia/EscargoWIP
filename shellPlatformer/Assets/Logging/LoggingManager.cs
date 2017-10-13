@@ -53,7 +53,6 @@ public class LoggingManager : MonoBehaviour, GameManager
     }
 
     private void OnLoad(Scene scene, LoadSceneMode mode) {
-        Debug.Log("logger loaded in scene: " + scene.name);
         int level = 0;
 
         bool isLevel = scene.name.Length >= 7 && int.TryParse(scene.name.Substring("level_".Length), out level);
@@ -132,7 +131,7 @@ public class LoggingManager : MonoBehaviour, GameManager
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + playerActionPath + requestData);
         yield return www.Send();
 
-        if (www.isNetworkError)
+        if (www.isError)
         {
             Debug.Log(www.error);
         }
@@ -165,7 +164,7 @@ public class LoggingManager : MonoBehaviour, GameManager
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + playerQuestEndPath + requestData);
         yield return www.Send();
 
-        if (www.isNetworkError)
+        if (www.isError)
         {
             Debug.Log(www.error);
         }
@@ -203,7 +202,7 @@ public class LoggingManager : MonoBehaviour, GameManager
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + playerQuestPath + requestData);
         yield return www.Send();
 
-        if (www.isNetworkError)
+        if (www.isError)
         {
             Debug.Log(www.error);
         }
@@ -240,7 +239,7 @@ public class LoggingManager : MonoBehaviour, GameManager
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + pageLoadPath + requestData);
         yield return www.Send();
 
-        if (www.isNetworkError)
+        if (www.isError)
         {
             Debug.Log(www.error);
         }

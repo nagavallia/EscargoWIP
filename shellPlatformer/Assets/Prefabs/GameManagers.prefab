@@ -85,7 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSceneId: 0
   complete: {fileID: 1057036743939654}
-  maxLevel: 11
+  maxLevel: 10
 --- !u!114 &114399134383246934
 MonoBehaviour:
   m_ObjectHideFlags: 1

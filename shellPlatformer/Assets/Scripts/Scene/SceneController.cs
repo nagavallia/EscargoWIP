@@ -12,10 +12,12 @@ public class SceneController : MonoBehaviour, GameManager {
     private float defaultTimeScale;
     private bool levelFinished;
 
+    private int MAIN_SCENE_ID = 1;
+
     public void Startup() {
         defaultTimeScale = Time.timeScale;
 
-        curSceneId = -1;
+        curSceneId = 0;
     }
 
     private void OnEnable() {
@@ -28,7 +30,6 @@ public class SceneController : MonoBehaviour, GameManager {
 
     // Use this for initialization
     private void Loaded (Scene scene, LoadSceneMode mode) {
-        Debug.Log("scene controller loaded scene: " + scene.name);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemies"), LayerMask.NameToLayer("Movement Hitbox"));
         Messenger.AddListener(GameEvent.LEVEL_COMPLETE, FinishLevel);
         Messenger.AddListener(GameEvent.RELOAD_LEVEL, ReloadScene);
@@ -43,7 +44,6 @@ public class SceneController : MonoBehaviour, GameManager {
     }
 
     private void Unload() {
-        Debug.Log("scene controller unloaded scene");
         Messenger.RemoveListener(GameEvent.LEVEL_COMPLETE, FinishLevel);
         Messenger.RemoveListener(GameEvent.RELOAD_LEVEL, ReloadScene);
         Messenger.RemoveListener(GameEvent.SHELL_DESTROYED, ShellDestroyed);
@@ -53,7 +53,7 @@ public class SceneController : MonoBehaviour, GameManager {
     // Update is called once per frame
     void Update () {
 		if (Input.GetKeyDown(KeyCode.R)) { ReloadScene(); }
-        if (Input.GetKeyDown(KeyCode.Escape)) { LoadLevel(0); }
+        if (Input.GetKeyDown(KeyCode.Escape)) { LoadLevel(MAIN_SCENE_ID); }
     }
 
     private void ReloadScene() {
@@ -67,8 +67,7 @@ public class SceneController : MonoBehaviour, GameManager {
             levelFinished = true;
             Managers.logging.RecordLevelEnd();
             Unload();
-            curSceneId++;
-            if (curSceneId <= maxLevel) { LoadLevel(curSceneId); } else { complete.SetActive(true); }
+            if (curSceneId <= maxLevel) { LoadLevel(curSceneId + 1); } else { complete.SetActive(true); }
         }
     }
 
@@ -77,10 +76,11 @@ public class SceneController : MonoBehaviour, GameManager {
     }
 
     public void LoadLevel(int id) {
-        string name = "level_" + id;
-        if (id == 0) name = "main";
+        if ((id == 1 && curSceneId != 0) || curSceneId == 1) {
+            Unload();
+        }
         curSceneId = id;
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(curSceneId);
         Time.timeScale = defaultTimeScale;
     }
 }

@@ -81,9 +81,6 @@ public class ShellThrower : MonoBehaviour {
 		fixedThrowVec = new Vector2 (throwX, throwY) * throwForce;
 	}
 
-    private void OnDestroy() {
-        foreach (GameObject point in trajectoryPoints) { Destroy(point); }
-    }
 
     private void Update() {
         if (Input.GetKeyDown(USE_BUTTON)) {
