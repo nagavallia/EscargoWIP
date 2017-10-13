@@ -7,12 +7,16 @@ public class Shell : MonoBehaviour {
 	private GameObject shellSpawner;
 	private int maxWaterLevel;
 	public int waterLevel;
+	private Sprite fullShell;
 
 	void Start()
 	{
 		shellSpawner = GameObject.FindWithTag ("ShellSpawner");
 		waterLevel = 0;
 		maxWaterLevel = 1;
+
+		// load the fullShell sprite
+		fullShell = Resources.Load<Sprite>("fullShell");
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,7 +36,7 @@ public class Shell : MonoBehaviour {
 		Debug.Log ("Filling Shell");
 		if (waterLevel < maxWaterLevel) {
 			waterLevel++;
-			this.GetComponent<SpriteRenderer> ().sprite = (Sprite)Resources.Load ("FullShell", typeof(Sprite));
+			this.GetComponent<SpriteRenderer> ().sprite = fullShell;
 		}
 	}
 
