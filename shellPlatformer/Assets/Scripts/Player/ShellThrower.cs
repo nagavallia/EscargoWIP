@@ -87,7 +87,7 @@ public class ShellThrower : MonoBehaviour {
 
     private void Update() {
         if (Input.GetKeyDown(USE_BUTTON)) {
-            if (transform.parent == null && shellRigidBody.velocity.magnitude < shellPickupSpeed  
+            if (transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed  
                 && (player.position - transform.position).magnitude < interactDist) {
                 Vector3 shellPos = transform.localScale;
                 shellPos.x = Mathf.Sign(player.localScale.x) * Mathf.Abs(shellPos.x);
@@ -103,7 +103,7 @@ public class ShellThrower : MonoBehaviour {
 		
 	private void Throw () 
 	{
-		if (transform.parent != null) 
+		if (transform.parent == player) 
 		{
 			float direction = transform.parent.localScale.x > 0 ? -1 : 1;
 			Managers.logging.RecordEvent(2, "" + gameObject.transform.parent.transform.position);

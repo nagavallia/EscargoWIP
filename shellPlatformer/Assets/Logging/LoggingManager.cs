@@ -56,17 +56,9 @@ public class LoggingManager : MonoBehaviour, GameManager
         Debug.Log("logger loaded in scene: " + scene.name);
         int level = 0;
 
-        if (scene.name == "easy_level") {
-            level = 1;
+        bool isLevel = scene.name.Length >= 7 && int.TryParse(scene.name.Substring("level_".Length), out level);
 
-        } else if (scene.name == "medium_level") {
-            level = 2;
-
-        } else if (scene.name == "hard_level") {
-            level = 3;
-        }
-
-        if (!isLevelStarted && level > 0) {
+        if (!isLevelStarted && isLevel) {
 
             // Logging record the start of the level with number level
             RecordLevelStart(level);

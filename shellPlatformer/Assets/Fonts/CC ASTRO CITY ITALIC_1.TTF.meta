@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 20b36a01bde1887498049d4556129136
+timeCreated: 1507850866
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: CC Astro City
+  fontNames:
+  - CC Astro City
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

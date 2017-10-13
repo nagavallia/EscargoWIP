@@ -23,9 +23,8 @@ public class ParticleLauncher : MonoBehaviour {
 
 
 	void OnParticleCollision(GameObject other){
-		Debug.Log ("salt collided");
 		if (other.tag == "Player") {
-			Debug.Log ("collided with player");
+			Debug.Log ("salt collided with player");
 			
 			other.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
 		}
