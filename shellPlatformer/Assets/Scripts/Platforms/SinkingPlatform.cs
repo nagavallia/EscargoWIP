@@ -7,10 +7,14 @@ public class SinkingPlatform : MonoBehaviour {
 	[SerializeField] private int sinkAmount;
 	private Vector3 startPosition;
 	private Vector3 sunkenPosition;
+
+    private float GROUND_CHECK;
 	// Use this for initialization
 	void Start () {
 		startPosition = this.transform.localPosition;
 		sunkenPosition = startPosition - (new Vector3 (0, sinkAmount, 0));
+
+        GROUND_CHECK = 0.25f + GetComponent<BoxCollider2D>().size.y;
 	}
 
 	// Update is called once per frame
@@ -19,10 +23,13 @@ public class SinkingPlatform : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D(Collision2D collision) {
-		if (collision.gameObject.tag == "Shell") {
+        RaycastHit2D hit = Physics2D.Raycast(collision.transform.position, Vector2.down, GROUND_CHECK);
+		if (hit.collider != null && collision.gameObject.tag == "Shell") {
 			Shell shell = collision.gameObject.GetComponent<Shell> ();
 			if (shell.waterLevel > 0) {
-				this.transform.localPosition = sunkenPosition;
+                collision.transform.SetParent(this.transform);
+                this.transform.localPosition = sunkenPosition;
+                collision.transform.SetParent(null);
 			}
 		}
 	}
@@ -30,6 +37,7 @@ public class SinkingPlatform : MonoBehaviour {
 	void OnCollisionExit2D(Collision2D collision) {
 		if (collision.gameObject.tag == "Shell") {
 			this.transform.localPosition = startPosition;
+            
 		}
 	}
 }

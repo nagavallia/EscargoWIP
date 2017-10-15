@@ -7,6 +7,8 @@ public class Shell : MonoBehaviour {
 	private GameObject shellSpawner;
 	private int maxWaterLevel;
 	public int waterLevel;
+
+    private Sprite normalShell;
 	private Sprite fullShell;
 
 	void Start()
@@ -15,9 +17,15 @@ public class Shell : MonoBehaviour {
 		waterLevel = 0;
 		maxWaterLevel = 1;
 
-		// load the fullShell sprite
+        // load the fullShell sprite
+        normalShell = this.GetComponent<SpriteRenderer>().sprite;
 		fullShell = Resources.Load<Sprite>("fullShell");
 	}
+
+    private void Update()
+    {
+
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -43,5 +51,6 @@ public class Shell : MonoBehaviour {
 	public void EmptyShell()
 	{
 		waterLevel = 0;
+        this.GetComponent<SpriteRenderer>().sprite = normalShell;
 	}
 }

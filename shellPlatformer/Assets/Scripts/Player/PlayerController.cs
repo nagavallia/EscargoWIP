@@ -157,10 +157,14 @@ public class PlayerController : MonoBehaviour
 
 	private void FillShell()
 	{
-		Shell shell = this.transform.Find ("Shell").gameObject.GetComponent<Shell>();
+        if (transform.Find("Shell") != null)
+        {
+            Shell shell = this.transform.Find("Shell").gameObject.GetComponent<Shell>();
 
-		if (shell != null) {
-			shell.FillShell ();
-		}
+            if (shell != null)
+            {
+                shell.FillShell();
+            }
+        }
 	}
 }
