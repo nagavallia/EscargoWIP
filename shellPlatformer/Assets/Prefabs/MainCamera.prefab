@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bbox: {fileID: 61309385372846638}
-  offsetX: 1.5
+  offsetX: 1
   offsetY: 0.5
 --- !u!124 &124617879873527394
 Behaviour:

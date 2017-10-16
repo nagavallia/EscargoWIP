@@ -28,12 +28,12 @@ Platform assembly: D:\Arnesh\Documents\CS 4154\ShellPlatformer\shellPlatformer\b
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 1.876017 ms
-yJpm4HSviKAX7SKIrI1YPqpgOQFJK12iKrFP9ykr
+UnloadTime: 4.106503 ms
+8T34dgR0cyCdxRHIbiJxZsbMnFcR8I2gB5kOmcPy
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-iVpqNa8fSadIBDZqtF9eGcxrEdgNMBf5wEvk
+KsLijs0uLK2LddyATLs1tvi5ADUXPKvAchTv
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -42,10 +42,10 @@ finish level called in scene startup
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.206101 ms
+UnloadTime: 0.199582 ms
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 391.
-Total: 0.242106 ms (FindLiveObjects: 0.018623 ms CreateObjectMapping: 0.015830 ms MarkObjects: 0.202997 ms  DeleteObjects: 0.004035 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 388.
+Total: 0.240244 ms (FindLiveObjects: 0.017382 ms CreateObjectMapping: 0.012726 ms MarkObjects: 0.205480 ms  DeleteObjects: 0.004345 ms)
 
 NullReferenceException: Object reference not set to an instance of an object
   at UIController.Start () [0x00000] in <filename unknown>:0 
@@ -57,16 +57,16 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.114884 ms
+UnloadTime: 3.787108 ms
 
-Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 380.
-Total: 0.307599 ms (FindLiveObjects: 0.022969 ms CreateObjectMapping: 0.019244 ms MarkObjects: 0.237140 ms  DeleteObjects: 0.027935 ms)
+Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 370.
+Total: 0.262592 ms (FindLiveObjects: 0.020796 ms CreateObjectMapping: 0.013967 ms MarkObjects: 0.198651 ms  DeleteObjects: 0.028866 ms)
 
-{"error_code":"0","message":"success","dynamic_quest_id":"dSJffNFhDp9rqAXp7vAClaUX39fDFtWSlG7BtNS6"}
+{"error_code":"0","message":"success","dynamic_quest_id":"l19ckJEFSFSwVB0L6hGdAue1MMdoVOohQxtah8Pa"}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-dSJffNFhDp9rqAXp7vAClaUX39fDFtWSlG7BtNS6
+l19ckJEFSFSwVB0L6hGdAue1MMdoVOohQxtah8Pa
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -83,106 +83,23 @@ BroadcastException: Broadcasting message LEVEL_COMPLETE but no listener found.
 (Filename:  Line: -1)
 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.694349 ms
+UnloadTime: 0.574538 ms
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 403.
-Total: 0.556535 ms (FindLiveObjects: 0.041592 ms CreateObjectMapping: 0.041282 ms MarkObjects: 0.378679 ms  DeleteObjects: 0.094049 ms)
-
-{"error_code":"0","message":"success"}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-{"error_code":"0","message":"success","dynamic_quest_id":"zhjHWL8AzMVdZOq1nSL2e0FbHcOMqWOZe8HaTPKt"}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-zhjHWL8AzMVdZOq1nSL2e0FbHcOMqWOZe8HaTPKt
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.139453 ms
-
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 403.
-Total: 0.698695 ms (FindLiveObjects: 0.062389 ms CreateObjectMapping: 0.058353 ms MarkObjects: 0.545361 ms  DeleteObjects: 0.031349 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.177632 ms
-
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 393.
-Total: 0.882448 ms (FindLiveObjects: 0.051214 ms CreateObjectMapping: 0.058043 ms MarkObjects: 0.667345 ms  DeleteObjects: 0.104912 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at UIController.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 8 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.896415 ms
-
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 425.
-Total: 0.234346 ms (FindLiveObjects: 0.024521 ms CreateObjectMapping: 0.017382 ms MarkObjects: 0.163266 ms  DeleteObjects: 0.028866 ms)
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 397.
+Total: 0.468693 ms (FindLiveObjects: 0.032280 ms CreateObjectMapping: 0.031349 ms MarkObjects: 0.310703 ms  DeleteObjects: 0.081943 ms)
 
 {"error_code":"0","message":"success"}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-{"error_code":"0","message":"success"}
+{"error_code":"0","message":"success","dynamic_quest_id":"mbjdLvgHJ7GEzIjw84c03BNzemVtT4Uggeu1JKIt"}
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-BroadcastException: Broadcasting message RELOAD_LEVEL but no listener found.
-  at MessengerInternal.OnBroadcasting (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
-  at Messenger.Broadcast (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
-  at Messenger.Broadcast (System.String eventType) [0x00000] in <filename unknown>:0 
-  at PlayerController.Kill () [0x00000] in <filename unknown>:0 
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-ContactKill:OnTriggerEnter2D(Collider2D)
- 
-(Filename:  Line: -1)
-
-Unloading 8 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.024918 ms
-
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 422.
-Total: 0.638479 ms (FindLiveObjects: 0.058664 ms CreateObjectMapping: 0.057112 ms MarkObjects: 0.492594 ms  DeleteObjects: 0.029176 ms)
-
-{"error_code":"0","message":"success"}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-{"error_code":"0","message":"success"}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-{"error_code":"0","message":"success"}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-{"error_code":"0","message":"success"}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-finish level called in scene level_10
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-BroadcastException: Broadcasting message LEVEL_COMPLETE but no listener found.
-  at MessengerInternal.OnBroadcasting (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
-  at Messenger.Broadcast (System.String eventType, MessengerMode mode) [0x00000] in <filename unknown>:0 
-  at Messenger.Broadcast (System.String eventType) [0x00000] in <filename unknown>:0 
-  at Exit.OnTriggerEnter2D (UnityEngine.Collider2D collision) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-{"error_code":"0","message":"success"}
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-{"error_code":"0","message":"success"}
+mbjdLvgHJ7GEzIjw84c03BNzemVtT4Uggeu1JKIt
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 26c0 -> priority: 1 
-  Thread -> id: 1fb4 -> priority: 1 
+  Thread -> id: c6c -> priority: 1 
+  Thread -> id: 2738 -> priority: 1 
