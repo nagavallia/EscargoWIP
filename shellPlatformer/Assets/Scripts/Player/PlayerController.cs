@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 	// Sets the jump boolean and the drag value depending on key inputs
 	private void HandleInput(){
 
-		if (Input.GetKeyDown(KeyCode.W)) {// || Input.GetKeyDown(KeyCode.Space)){
+		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {// || Input.GetKeyDown(KeyCode.Space)){
 			jump = true;
 		}
 
