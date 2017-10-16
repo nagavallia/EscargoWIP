@@ -26,7 +26,16 @@ public class CameraController : MonoBehaviour {
 
         min = bbox.bounds.min + new Vector3(camWidth, camHeight, 0f);
         max = bbox.bounds.max - new Vector3(camWidth, camHeight, 0f);
-	}
+
+        if (min.x > max.x) {
+            min = new Vector3(bbox.bounds.center.x, min.y, min.z);
+            max = new Vector3(bbox.bounds.center.x, max.y, max.z);
+        } 
+        if (min.y > max.y) {
+            min = new Vector3(min.x, bbox.bounds.center.y, min.z);
+            max = new Vector3(max.x, bbox.bounds.center.y, max.z);
+        }
+    }
 
 	void Update () {
         float newX, newY;
