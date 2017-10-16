@@ -3,35 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
+    private Camera cam; // this camera
+	private Transform player; // Reference to the player gameobject
+    [SerializeField] private Collider2D bbox; // bounding box game object
 
-	public GameObject player; // Reference to the player gameobjectt
+	[SerializeField] private float offsetX = 3f; // Unity unit size of deadzone
+    [SerializeField] private float offsetY = 2f; //
 
-	private Vector3 offset; // Private variable for the offset of the distance between camera and player
+    private float camHeight; // Unity unit distance from camera center to top
+    private float camWidth; // Unity unit distance from camera center to side
 
-	Vector3 velocity = Vector3.zero; // Velocity of camera
-
-	public float smoothTime = .15f; // The time to move the camera to player position
+    private Vector3 min, max; // min/max positions of the camera center
 
 	// Use this for initialization
 	void Start () {
-		// Set the offset of the camera by calculating the distance 
-		offset = transform.position - player.transform.position;
+        cam = gameObject.GetComponent<Camera>();
 
-		// Set the camera position to the player position with the calculated offset distance
-		transform.position = player.transform.position + new Vector3(0,0,offset.z);
+        player = GameObject.FindWithTag("Player").transform;
+
+        camHeight = cam.orthographicSize;
+        camWidth = cam.orthographicSize * cam.aspect;
+
+        min = bbox.bounds.min + new Vector3(camWidth, camHeight, 0f);
+        max = bbox.bounds.max - new Vector3(camWidth, camHeight, 0f);
 	}
 
-	void FixedUpdate () {
+	void Update () {
+        float newX, newY;
+        Vector3 playerPos = player.position;
+        Vector3 camPos = transform.position;
 
-		transform.position = Vector3.SmoothDamp(transform.position, player.transform.position + new Vector3 (0, 0, offset.z), ref velocity , smoothTime);
+        if (playerPos.x > camPos.x + offsetX) newX = playerPos.x - offsetX;
+        else if (playerPos.x < camPos.x - offsetX) newX = playerPos.x + offsetX;
+        else newX = camPos.x;
 
+        if (playerPos.y > camPos.y + offsetY) newY = playerPos.y - offsetY;
+        else if (playerPos.y < camPos.y - offsetY) newY = playerPos.y + offsetY;
+        else newY = camPos.y;
 
-//		if (Mathf.Abs(player.transform.position.x - transform.position.x) > 2
-//			|| Mathf.Abs(player.transform.position.y - transform.position.y) > 2) {
-//			transform.position = player.transform.position + new Vector3(0,0,offset.z);
-//			transform.position = Vector3.SmoothDamp(transform.position, player.transform.position + new Vector3 (0, 0, offset.z), ref velocity , smoothTime);
-//		}
+        newX = Mathf.Clamp(newX, min.x, max.x);
+        newY = Mathf.Clamp(newY, min.y, max.y);
 
-		
-	}
+        transform.position = new Vector3(newX, newY, transform.position.z);
+    }
 }
