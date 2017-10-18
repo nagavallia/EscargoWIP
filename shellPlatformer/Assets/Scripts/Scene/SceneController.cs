@@ -37,8 +37,8 @@ public class SceneController : MonoBehaviour, GameManager {
         Messenger<int>.AddListener(GameEvent.LOAD_LEVEL, LoadLevel);
 
         Camera camera = Camera.main;
-        camera.orthographicSize = 4.6875f;
-        Screen.SetResolution(800, 600, false);
+        camera.orthographicSize = 4.5f;
+        Screen.SetResolution(1024, 576, false);
 
         levelFinished = false;
     }
