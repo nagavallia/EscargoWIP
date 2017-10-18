@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61172020688618112}
   - component: {fileID: 50925332919892692}
   - component: {fileID: 114119128385647470}
+  - component: {fileID: 114132272416483472}
   m_Layer: 0
   m_Name: NonPlayerSnail
   m_TagString: NPC
@@ -101,6 +102,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   startEnabled: 1
+--- !u!114 &114132272416483472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450535501923416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb88df4aff5426f40a925189d33ebb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ENABLED: 0
+  activators: 
 --- !u!212 &212809129331899946
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -134,7 +148,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4702f2ed3771587498bc07480098307d, type: 3}
-  m_Color: {r: 0.9191176, g: 0.49488795, b: 0.16895545, a: 1}
+  m_Color: {r: 0.11607917, g: 0.8308824, b: 0.50552374, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

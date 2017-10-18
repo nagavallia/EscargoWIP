@@ -6,15 +6,13 @@ public class UIController : MonoBehaviour {
     [SerializeField] private GameObject uiCanvas;
     private float defaultTimeScale;
 
-    private KeyCode MENU_BUTTON = KeyCode.Escape;
-
     private void Start() {
         defaultTimeScale = Time.timeScale;
         uiCanvas.SetActive(false);
     }
 
     private void Update() {
-        if (Input.GetKeyDown(MENU_BUTTON)) {
+        if (Input.GetButtonDown("Menu")) {
             //if (uiCanvas.activeInHierarchy) {
             //    Time.timeScale = defaultTimeScale;
             //    uiCanvas.SetActive(false);

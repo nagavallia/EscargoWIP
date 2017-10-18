@@ -26,8 +26,6 @@ public class ShellThrower : MonoBehaviour {
 
     private Transform player;
     private List<GameObject> trajectoryPoints;
-	private KeyCode THROW_BUTTON = KeyCode.Space;
-	private KeyCode USE_BUTTON = KeyCode.E;
 
 	private Vector2 fixedThrowVec;
 
@@ -83,7 +81,7 @@ public class ShellThrower : MonoBehaviour {
 
 
     private void Update() {
-        if (Input.GetKeyDown(USE_BUTTON)) {
+        if (Input.GetButtonDown("Use")) {
             if (transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed  
                 && (player.position - transform.position).magnitude < interactDist) {
                 Vector3 shellPos = transform.localScale;
@@ -93,7 +91,7 @@ public class ShellThrower : MonoBehaviour {
             } else if (transform.parent != null && transform.parent.GetComponent<PlayerController>() != null) {
                 ReleaseShell();
             }
-        } else if (Input.GetKeyDown(THROW_BUTTON)) {
+        } else if (Input.GetButtonDown("Throw")) {
 			Throw();
         }
     }

@@ -157,6 +157,14 @@ Prefab:
       propertyPath: maxLevel
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1057036743939654, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864882627004730, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
   m_IsPrefabParent: 0

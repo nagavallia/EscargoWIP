@@ -52,11 +52,13 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		float horizontal = Input.GetAxis ("Horizontal");
+        float horizontal = 0;
+        bool left = Input.GetButton("Left");
+        bool right = Input.GetButton("Right");
 
-		if (horizontal < 0) {
+		if (left) {
 			horizontal = -1;
-		} else if (horizontal > 0) {
+		} else if (right) {
 			horizontal = 1;
 		} 
 
@@ -96,11 +98,11 @@ public class PlayerController : MonoBehaviour
 	// Sets the jump boolean and the drag value depending on key inputs
 	private void HandleInput(){
 
-		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {// || Input.GetKeyDown(KeyCode.Space)){
+		if (Input.GetButtonDown("Jump")) {
 			jump = true;
 		}
 
-		if (Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.A)) {
+		if (Input.GetButtonUp("Left") || Input.GetButtonUp("Right")) {
 			gameObject.GetComponent<Rigidbody2D> ().drag = maxDrag;
 		} else {
 			gameObject.GetComponent<Rigidbody2D> ().drag = 0; 

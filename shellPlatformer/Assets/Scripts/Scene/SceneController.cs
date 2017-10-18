@@ -52,8 +52,8 @@ public class SceneController : MonoBehaviour, GameManager {
 
     // Update is called once per frame
     void Update () {
-		if (Input.GetKeyDown(KeyCode.R)) { ReloadScene(); }
-        if (Input.GetKeyDown(KeyCode.Escape)) { LoadLevel(MAIN_SCENE_ID); }
+		if (Input.GetButtonDown("Restart")) { ReloadScene(); }
+        if (Input.GetButtonDown("Menu")) { LoadLevel(MAIN_SCENE_ID); }
     }
 
     private void ReloadScene() {
@@ -66,8 +66,10 @@ public class SceneController : MonoBehaviour, GameManager {
             Debug.Log("finish level called in scene " + SceneManager.GetActiveScene().name);
             levelFinished = true;
             Managers.logging.RecordLevelEnd();
-            Unload();
-            if (curSceneId <= maxLevel) { LoadLevel(curSceneId + 1); } else { complete.SetActive(true); }
+            if (curSceneId <= maxLevel) {
+                Unload();
+                LoadLevel(curSceneId + 1);
+            } else { complete.SetActive(true); }
         }
     }
 
