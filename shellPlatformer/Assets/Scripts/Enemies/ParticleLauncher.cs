@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ParticleLauncher : MonoBehaviour {
 
-	public ParticleSystem particleLauncher;
+	//public ParticleSystem particleLauncher;
 	public int intervalSecs = 2;
+
+	public Vector3 offset = new Vector3(0,0,0);
 
 	// Use this for initialization
 	void Start () {
@@ -22,16 +24,18 @@ public class ParticleLauncher : MonoBehaviour {
 	}
 
 
-	void OnParticleCollision(GameObject other){
-		if (other.tag == "Player") {
-			Debug.Log ("salt collided with player");
-			
-			other.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
-		}
-	}
+//	void OnParticleCollision(GameObject other){
+//		if (other.tag == "Player") {
+//			Debug.Log ("salt collided with player");
+//			
+//			other.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
+//		}
+//	}
 
 	void emitSalt(){
 		
-		particleLauncher.Emit (1);
+		GameObject salt = (GameObject) Instantiate(Resources.Load("saltParticle"));
+		Vector3 curPosition = transform.position;
+		salt.transform.position = curPosition + offset;
 	}
 }
