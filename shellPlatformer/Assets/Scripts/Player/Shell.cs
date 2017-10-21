@@ -9,7 +9,7 @@ public class Shell : MonoBehaviour {
 	public int waterLevel;
 
     private Sprite normalShell;
-	private Sprite fullShell;
+	[SerializeField] private Sprite fullShell;
 
 	void Start()
 	{
@@ -19,7 +19,6 @@ public class Shell : MonoBehaviour {
 
         // load the fullShell sprite
         normalShell = this.GetComponent<SpriteRenderer>().sprite;
-		fullShell = Resources.Load<Sprite>("fullShell");
 	}
 
     private void Update()
