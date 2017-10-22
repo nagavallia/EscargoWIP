@@ -16,11 +16,11 @@ public class ParticleLauncher : MonoBehaviour {
 		InvokeRepeating ("emitSalt", 0.2f, intervalSecs);
 		InvokeRepeating ("emitSalt", 0.3f, intervalSecs);
 		InvokeRepeating ("emitSalt", 0.4f, intervalSecs);
-		InvokeRepeating ("emitSalt", 0, intervalSecs);
-		InvokeRepeating ("emitSalt", 0.1f, intervalSecs);
-		InvokeRepeating ("emitSalt", 0.2f, intervalSecs);
-		InvokeRepeating ("emitSalt", 0.3f, intervalSecs);
-		InvokeRepeating ("emitSalt", 0.4f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.05f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.15f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.25f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.35f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.45f, intervalSecs);
 	}
 
 
@@ -33,9 +33,32 @@ public class ParticleLauncher : MonoBehaviour {
 //	}
 
 	void emitSalt(){
-		
-		GameObject salt = (GameObject) Instantiate(Resources.Load("saltParticle"));
-		Vector3 curPosition = transform.position;
-		salt.transform.position = curPosition + offset;
+
+		// random number between 0 and 2
+		int randomNum = Random.Range (0, 2);
+
+		// if 0, do this function, else go to emitSalt2
+		if (randomNum == 0) {
+			GameObject salt = (GameObject)Instantiate (Resources.Load ("saltParticle"));
+			Vector3 curPosition = transform.position;
+			salt.transform.position = curPosition + offset + new Vector3 (-0.1f, 0, 0);
+		} else {
+			emitSalt2 ();
+		}
+			
+	}
+	void emitSalt2(){
+
+		// random number between 0 and 2
+		int randomNum = Random.Range (0, 2);
+
+		// if 0, do this function, else go to emitSalt2
+		if (randomNum == 0) {
+			GameObject salt = (GameObject) Instantiate(Resources.Load("saltParticle"));
+			Vector3 curPosition = transform.position;
+			salt.transform.position = curPosition + offset + new Vector3 (0.1f, 0, 0);
+		} else {
+			emitSalt ();
+		}
 	}
 }
