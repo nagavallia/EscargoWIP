@@ -7,7 +7,12 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D myRigidbody;
 
 	[SerializeField]
-	private float movementSpeed;
+	private float maxSpeed;
+	private float normAcc;
+	private float backAcc;
+	private float jumpAcc;
+	private float gravity;
+	private float maxFallSpeed;
 
 	private bool facingRight;
 
@@ -28,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
 	private int jumpCount = 0;
 
+
 	[SerializeField]
 	private float jumpForce;
 
@@ -38,6 +44,14 @@ public class PlayerController : MonoBehaviour
 	{
 		myRigidbody = GetComponent<Rigidbody2D> ();
 		facingRight = false;
+
+		myRigidbody.gravityScale = 0;
+		normAcc = .021875f * maxSpeed;
+		backAcc = .053f * maxSpeed;
+		jumpAcc = 1.25f * maxSpeed;
+		gravity = -.025f * maxSpeed;
+		maxFallSpeed = -1.725f * maxSpeed;
+
 	}
 		
 	void Update(){
@@ -72,25 +86,52 @@ public class PlayerController : MonoBehaviour
 	// Move procedure handles player movement, jump, and double jump
 	private void move (float horizontal)
 	{
-		myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, myRigidbody.velocity.y);
+		//set both accelerations to 0
+		float xAcc = 0f;
+		float yAcc = 0f;
 
-		if (!isGrounded && doubleJump && jump) {
-			if (jumpCount == 0) {
-				myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, 0);
-				myRigidbody.AddForce (new Vector2 (0, 0.8f * jumpForce));
-				jumpCount += 1;
-
-				// log that a double jump has occurred and the position of the player
-				Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
-			}
+		//If the player continues to move forward in air. they will accelerate normally
+		//If the player tries to change directions, they will decelerate at a greater rate
+		if (horizontal == 1 && myRigidbody.velocity.x >= 0) {
+			xAcc = normAcc;
+		} else if (horizontal == -1 && myRigidbody.velocity.x <= 0) {
+			xAcc = -normAcc;
+		} else if (horizontal == 1 && myRigidbody.velocity.x < 0) {
+			xAcc = backAcc;
+		} else if (horizontal == -1 && myRigidbody.velocity.x > 0) {
+			xAcc = -backAcc;
 		}
 
-		if (isGrounded && jump) {
-			isGrounded = false;
-			myRigidbody.AddForce (new Vector2 (0, jumpForce));
+		if (!isGrounded) {
+			yAcc = gravity;
 
+			if (jump && doubleJump) {
+				if (jumpCount == 0) {
+					jumpCount += 1;
+					yAcc = .6f * jumpAcc;
+					// log that a double jump has occurred and the position of the player
+					//				Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
+				}
+			}
+		} else if (jump) {
+			isGrounded = false;
+			yAcc = jumpAcc;
 			// log that a jump has occurred and the position of the player
 			//Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
+		}
+
+
+		myRigidbody.velocity = myRigidbody.velocity + new Vector2 (xAcc, yAcc);
+
+		//Enforce max horizontal and vertical movement speeds. 
+		if (myRigidbody.velocity.x > maxSpeed) {
+			myRigidbody.velocity = new Vector2 (maxSpeed, myRigidbody.velocity.y);
+		} else if (myRigidbody.velocity.x < -maxSpeed) {
+			myRigidbody.velocity = new Vector2 (-maxSpeed, myRigidbody.velocity.y);
+		}
+		//(should never go to fast in the y direction
+		if (myRigidbody.velocity.y < maxFallSpeed) {
+			myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, maxFallSpeed);
 		}
 
 	}
@@ -98,16 +139,9 @@ public class PlayerController : MonoBehaviour
 	// Sets the jump boolean and the drag value depending on key inputs
 	private void HandleInput(){
 
-		if (Input.GetButtonDown("Jump")) {
+		if (Input.GetButtonDown ("Jump")) {
 			jump = true;
 		}
-
-		if (Input.GetButtonUp("Left") || Input.GetButtonUp("Right")) {
-			gameObject.GetComponent<Rigidbody2D> ().drag = maxDrag;
-		} else {
-			gameObject.GetComponent<Rigidbody2D> ().drag = 0; 
-		}
-			
 	}
 
 	// Flip the snail image to reflect facing location
@@ -122,6 +156,7 @@ public class PlayerController : MonoBehaviour
 
 			transform.localScale = theScale;
 		}
+
 	}
 
 	// Resets jump booleans
