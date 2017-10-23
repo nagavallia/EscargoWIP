@@ -8,7 +8,7 @@ public class SaltController : MonoBehaviour {
 	{
 		collision.gameObject.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
 
-		if (collision.gameObject.tag == "Ground" || collision.gameObject.layer == 9) {
+		if (collision.gameObject.tag == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Background")) {
 			Destroy (this.gameObject);
 		}
 	}
