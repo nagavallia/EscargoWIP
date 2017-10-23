@@ -11,6 +11,9 @@ public class NonPlayerCharacter : MonoBehaviour {
 
     private float WALL_CHECK_DIST;
 
+    [SerializeField] private AudioClip DeathSound;
+    private AudioSource audioSource;
+
     private void Start() {
         isMoving = startEnabled;
         WALL_CHECK_DIST = 0.2f + GetComponent<BoxCollider2D>().bounds.extents.x;
@@ -19,6 +22,8 @@ public class NonPlayerCharacter : MonoBehaviour {
         Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
         rigidbody.freezeRotation = true;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void Update() {
@@ -59,6 +64,9 @@ public class NonPlayerCharacter : MonoBehaviour {
 		GameObject shell = Instantiate(Resources.Load("Shell")) as GameObject;
 		//shell.transform.localScale = new Vector3 (.5f, .5f, 1f);
         shell.transform.position = this.gameObject.transform.position;
+
+        //audioSource.PlayOneShot(DeathSound);
+
         Destroy(this.gameObject);
     }
 

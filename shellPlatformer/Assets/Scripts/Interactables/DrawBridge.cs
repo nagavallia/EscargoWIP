@@ -7,6 +7,9 @@ public class DrawBridge : MonoBehaviour {
     [SerializeField] private bool animateMovement = true;
     [SerializeField] private float animationDuration = 3f;
 
+    [SerializeField] private AudioClip MovingSound, FinishSound;
+    private AudioSource audioSource;
+
     private bool isAnimating; // is the bridge currently in the middle of an animation?
     private bool queuedAnimation; // do we have to activate the bridge again after the current animation finishes?
 
@@ -18,6 +21,8 @@ public class DrawBridge : MonoBehaviour {
         curTime = 0f;
         isAnimating = false;
         queuedAnimation = false;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void Update() {
@@ -35,6 +40,8 @@ public class DrawBridge : MonoBehaviour {
             if (isAnimating) queuedAnimation = !queuedAnimation;
             else {
                 isAnimating = true;
+                //audioSource.clip = MovingSound;
+                //audioSource.Play();
                 StartCoroutine("LowerBridge");
             }
         }
@@ -56,6 +63,9 @@ public class DrawBridge : MonoBehaviour {
         isAnimating = false;
         angle *= -1;
         transform.SetPositionAndRotation(transform.position, Quaternion.Slerp(start, end, 1f));
+
+        //audioSource.Stop();
+        //audioSource.PlayOneShot(FinishSound);
     }
 	
 }
