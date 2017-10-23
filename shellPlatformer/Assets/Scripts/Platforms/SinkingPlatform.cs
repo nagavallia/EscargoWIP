@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SinkingPlatform : MonoBehaviour {
 
-	[SerializeField] private int sinkAmount;
+	[SerializeField] private int sinkAmount = 1;
     [SerializeField] private Transform light;
 	private Vector3 startPosition, lightStartPosition;
 	private Vector3 sunkenPosition, lightSunkenPosition;
