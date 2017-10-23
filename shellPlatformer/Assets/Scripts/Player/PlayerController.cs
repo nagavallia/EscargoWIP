@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 		myRigidbody.gravityScale = 0;
 		normAcc = .021875f * maxSpeed;
 		backAcc = .053f * maxSpeed;
-		jumpAcc = 1.25f * maxSpeed;
+		jumpAcc = maxSpeed;
 		gravity = -.025f * maxSpeed;
 		maxFallSpeed = -1.725f * maxSpeed;
 
@@ -90,7 +90,16 @@ public class PlayerController : MonoBehaviour
 		float xAcc = 0f;
 		float yAcc = 0f;
 
-		//If the player continues to move forward in air. they will accelerate normally
+		//friction
+		if (isGrounded) {
+			if (horizontal == 0 && myRigidbody.velocity.x > 0) {
+				xAcc = -normAcc;
+			} else if (horizontal == 0 && myRigidbody.velocity.x < 0) {
+				xAcc = normAcc;
+			}
+		}
+
+		//If the player continues to move forward, they will accelerate normally.
 		//If the player tries to change directions, they will decelerate at a greater rate
 		if (horizontal == 1 && myRigidbody.velocity.x >= 0) {
 			xAcc = normAcc;
@@ -110,14 +119,14 @@ public class PlayerController : MonoBehaviour
 					jumpCount += 1;
 					yAcc = .6f * jumpAcc;
 					// log that a double jump has occurred and the position of the player
-					//				Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
+					Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
 				}
 			}
 		} else if (jump) {
 			isGrounded = false;
 			yAcc = jumpAcc;
 			// log that a jump has occurred and the position of the player
-			//Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
+			Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
 		}
 
 
@@ -138,7 +147,6 @@ public class PlayerController : MonoBehaviour
 
 	// Sets the jump boolean and the drag value depending on key inputs
 	private void HandleInput(){
-
 		if (Input.GetButtonDown ("Jump")) {
 			jump = true;
 		}
