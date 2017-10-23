@@ -57,7 +57,7 @@ public class NonPlayerCharacter : MonoBehaviour {
 
     private void Kill() {
 		GameObject shell = Instantiate(Resources.Load("Shell")) as GameObject;
-		shell.transform.localScale = new Vector3 (.5f, .5f, 1f);
+		//shell.transform.localScale = new Vector3 (.5f, .5f, 1f);
         shell.transform.position = this.gameObject.transform.position;
         Destroy(this.gameObject);
     }
