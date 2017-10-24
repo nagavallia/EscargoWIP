@@ -40,9 +40,13 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] 
 	private float maxDrag;
 
+	// Initialize the animator component
+	private Animator anim;
+
 	void Start()
 	{
 		myRigidbody = GetComponent<Rigidbody2D> ();
+		anim = GetComponent<Animator> (); // get the animator component
 		facingRight = false;
 
 		myRigidbody.gravityScale = 0;
@@ -61,6 +65,11 @@ public class PlayerController : MonoBehaviour
 			doubleJump = true;
 		} else {
 			doubleJump = false;
+		}
+
+		// Idle Animation if velocities are all zero
+		if (myRigidbody.velocity.x == 0 && myRigidbody.velocity.y == 0) {
+			anim.SetInteger ("State", 0);
 		}
 	}
 
@@ -143,6 +152,10 @@ public class PlayerController : MonoBehaviour
 			myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, maxFallSpeed);
 		}
 
+
+		// Walk Animation
+		//anim.SetInteger("State", 1);
+
 	}
 
 	// Sets the jump boolean and the drag value depending on key inputs
@@ -194,10 +207,12 @@ public class PlayerController : MonoBehaviour
 
 	void Kill ()
 	{
-        Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
+//        Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
+//
+//		// log that a death has taken place and the position of the player
+//		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
 
-		// log that a death has taken place and the position of the player
-		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
+		StartCoroutine (killRoutine());
 	}
 
 	private void FillShell()
@@ -211,5 +226,21 @@ public class PlayerController : MonoBehaviour
                 shell.FillShell();
             }
         }
+	}
+
+	IEnumerator killRoutine(){
+		// Death Animation before delay to reset level
+		anim.SetInteger("State", 3);
+
+		yield return new WaitForSeconds (1);
+
+		Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
+
+		// log that a death has taken place and the position of the player
+		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
+
+		// reset anim state to 0
+		anim.SetInteger("State", 0);
+
 	}
 }
