@@ -7,6 +7,7 @@ public class ShellThrower : MonoBehaviour {
     private Vector3 curPos;
     private Vector2 throwVec;
 
+    
     [SerializeField] private float MAX_SPEED;
     [SerializeField] private float MAX_DRAG_DIST;
 	[SerializeField] private Vector3 defaultShellPos;
@@ -16,8 +17,10 @@ public class ShellThrower : MonoBehaviour {
 	[SerializeField] private int numTrajectoryPoints;
 	[SerializeField] private float fixedThrowAngle;
 	[SerializeField] private float throwForce;
-	[SerializeField] private bool addMomentum;
-	[SerializeField] private float momentumMultiplier;
+    [SerializeField] private float vertMultiplier = 1.1F;
+    [SerializeField] private float horizMultiplier = 1.1F;
+	//private bool addMomentum;
+	//private float momentumMultiplier;
 
     private GameObject shell;
     public CircleCollider2D shellHitbox { get; private set; }
@@ -101,16 +104,15 @@ public class ShellThrower : MonoBehaviour {
 		if (transform.parent == player) 
 		{
 			float direction = transform.parent.localScale.x > 0 ? -1 : 1;
-//			Managers.logging.RecordEvent(2, "" + gameObject.transform.parent.transform.position);
             ReleaseShell();
-            throwVec.Set (fixedThrowVec.x * direction, fixedThrowVec.y);
-			shellRigidBody.AddForce (throwVec);
-			if (addMomentum) {
-				Rigidbody2D playerRigidBody = player.gameObject.GetComponent<Rigidbody2D> ();
-				shellRigidBody.velocity += playerRigidBody.velocity * momentumMultiplier;
-			}
+            Vector2 vel = player.GetComponent<Rigidbody2D>().velocity;
+            float xMult = Mathf.Abs(vel.x) < 1 ? 1 : horizMultiplier;
+            float yMult = vel.y < 1 ? 1 : vertMultiplier;
 
-			// log that a throw has taken place and the position of the player
+            throwVec.Set (fixedThrowVec.x * direction * xMult, fixedThrowVec.y * yMult);
+			shellRigidBody.AddForce (throwVec);
+            // log that a throw has taken place and the position of the player\
+            Managers.logging.RecordEvent(2, "" + gameObject.transform.parent.transform.position);
         }
 	}
 
