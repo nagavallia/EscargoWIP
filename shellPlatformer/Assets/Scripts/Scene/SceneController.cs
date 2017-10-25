@@ -33,6 +33,8 @@ public class SceneController : MonoBehaviour, GameManager {
             levelLoaded = true;
         }
 
+        Debug.Log("loaded scene " + curSceneId);
+
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemies"), LayerMask.NameToLayer("Movement Hitbox"));
 
         Camera camera = Camera.main;
@@ -58,6 +60,7 @@ public class SceneController : MonoBehaviour, GameManager {
     }
 
     private void ReloadScene() {
+        Debug.Log("reloading scene " + curSceneId);
         LoadLevel(curSceneId);
     }
 
@@ -82,6 +85,7 @@ public class SceneController : MonoBehaviour, GameManager {
             Managers.UnloadAll(SceneManager.GetActiveScene());
         }
         curSceneId = id;
+        Debug.Log(curSceneId);
         SceneManager.LoadScene(curSceneId);
         Time.timeScale = defaultTimeScale;
     }
