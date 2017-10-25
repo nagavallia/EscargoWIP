@@ -11,6 +11,9 @@ public class Shell : MonoBehaviour {
     private Sprite normalShell;
 	[SerializeField] private Sprite fullShell;
 
+    [SerializeField] private AudioClip CollideSound, FillSound;
+    private AudioSource audioSource;
+
 	void Start()
 	{
 		shellSpawner = GameObject.FindWithTag ("ShellSpawner");
@@ -19,16 +22,14 @@ public class Shell : MonoBehaviour {
 
         // load the fullShell sprite
         normalShell = this.GetComponent<SpriteRenderer>().sprite;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
 	}
-
-    private void Update()
-    {
-
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        //collideSource.PlayOneShot(CollideSound);
         collision.gameObject.SendMessage("ShellCollide", this.gameObject, SendMessageOptions.DontRequireReceiver);
     }
 
@@ -44,6 +45,8 @@ public class Shell : MonoBehaviour {
 		if (waterLevel < maxWaterLevel) {
 			waterLevel++;
 			this.GetComponent<SpriteRenderer> ().color = Color.blue;
+
+            //audioSource.PlayOneShot(FillSound);
 		}
 	}
 

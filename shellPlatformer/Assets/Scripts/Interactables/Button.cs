@@ -10,8 +10,13 @@ public class Button : MonoBehaviour {
 	[SerializeField] private Sprite current;
 	[SerializeField] private Sprite change;
 
+    [SerializeField] private AudioClip ActivateSound, DeactivateSound;
+    private AudioSource audioSource;
+
     private void Start() {
         touching = new List<GameObject>();
+
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     // On every collision, add that game to touching.
@@ -27,6 +32,8 @@ public class Button : MonoBehaviour {
 			} else {
 				gameObject.GetComponent<SpriteRenderer> ().sprite = current;
 			}
+
+            //audioSource.PlayOneShot(ActivateSound); // play activate sound
 
 			// log that the button has been used and the position of the button
 			Managers.logging.RecordEvent(6,"" + gameObject.transform.position);
@@ -47,6 +54,8 @@ public class Button : MonoBehaviour {
 			} else {
 				gameObject.GetComponent<SpriteRenderer> ().sprite = current;
 			}
+
+            //audioSource.PlayOneShot(DeactivateSound); // play deactivate sound
         }
 	}  
 }

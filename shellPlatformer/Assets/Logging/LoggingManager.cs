@@ -11,7 +11,7 @@ public class LoggingManager : MonoBehaviour, GameManager
 
     // Initialize variables
     [SerializeField] private bool isDebugging = true; // A convenience parameter which, when set to TRUE, disables logging. 
-                                     // Make sure you set this to FALSE before you submit your game online!
+                                                      // Make sure you set this to FALSE before you submit your game online!
     private int gameId = -1; // The game's specific ID number
     private int versionId = 0; // Your game's current version number. You should change this number between releases, 
                                // and after very large changes to your logging methods.
@@ -44,15 +44,7 @@ public class LoggingManager : MonoBehaviour, GameManager
         }
     }
 
-    private void OnEnable() {
-        SceneManager.sceneLoaded += OnLoad;
-    }
-
-    private void OnDisable() {
-        SceneManager.sceneLoaded -= OnLoad;
-    }
-
-    private void OnLoad(Scene scene, LoadSceneMode mode) {
+    public void Load(Scene scene, LoadSceneMode mode) {
         int level = 0;
 
         bool isLevel = scene.name.Length >= 7 && int.TryParse(scene.name.Substring("level_".Length), out level);
@@ -64,6 +56,10 @@ public class LoggingManager : MonoBehaviour, GameManager
 
             //lvlStart = true; // set the boolean for level start to true
         }
+    }
+
+    public void Unload(Scene scene) {
+
     }
 
 

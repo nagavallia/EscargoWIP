@@ -155,7 +155,7 @@ Prefab:
     - target: {fileID: 114102287831946422, guid: f38ef6c5886ffdc4cb74485717442a1b,
         type: 2}
       propertyPath: maxLevel
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1057036743939654, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
       propertyPath: m_IsActive
@@ -165,6 +165,11 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114806657928089022, guid: f38ef6c5886ffdc4cb74485717442a1b,
+        type: 2}
+      propertyPath: bgm
+      value: 
+      objectReference: {fileID: 8300000, guid: ac91ab89c8c27064896493a3bcc9819e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
   m_IsPrefabParent: 0

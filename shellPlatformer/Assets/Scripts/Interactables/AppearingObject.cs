@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AppearingObject : MonoBehaviour {
     [SerializeField] private bool startEnabled = false;
+    private AudioClip activateSound, deactivateSound;
+    private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
@@ -11,12 +13,23 @@ public class AppearingObject : MonoBehaviour {
         foreach (Collider2D collider in gameObject.GetComponents<Collider2D>()) {
             collider.enabled = startEnabled; // Disable all colliders attatched to this gameObject. Note: might want to only disable triggers, we'll see.
         }
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+
+        var active = gameObject.GetComponent<Exit>() != null ? "exitActivateSound" : "regularAppearingSound"; // load in correct activate sound
+        var deactive = gameObject.GetComponent<Exit>() != null ? "exitDeactivateSound" : "regularDisappearingSound";
+
+        //activateSound = Resources.Load(active) as AudioClip;
+        //deactivateSound = Resources.Load(deactive) as AudioClip;
     }
 
 	void Interact() {
-		gameObject.GetComponent<Renderer> ().enabled = !gameObject.GetComponent<Renderer> ().enabled;
+        bool previousStatus = gameObject.GetComponent<Renderer>().enabled;
+        gameObject.GetComponent<Renderer> ().enabled = !previousStatus;
         foreach (Collider2D collider in gameObject.GetComponents<Collider2D>()) {
-            collider.enabled = !collider.enabled; // Disable all colliders attatched to this gameObject. Note: might want to only disable triggers, we'll see.
+            collider.enabled = !previousStatus; // Disable all colliders attatched to this gameObject. Note: might want to only disable triggers, we'll see.
         }
+
+       // audioSource.PlayOneShot(previousStatus ? deactivateSound : activateSound); // play activate or deactivate sound
     }
 }

@@ -11,10 +11,18 @@ public class Switch : MonoBehaviour {
 	[SerializeField] private Sprite current;
 	[SerializeField] private Sprite change;
 
+    [SerializeField] private AudioClip ActivateSound;
+    private AudioSource audioSource;
+
+    private void Start() {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = ActivateSound;
+    }
+
     // Checks if colliding objects is not a trigger and if current time
     // is larger than timeStamp. timeStamp is set to current time plus
     // "switchCooldown"
-	private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         if (Time.time >= timeStamp && !collision.isTrigger) {
             foreach (GameObject i in interactables) {
                 i.SendMessage("TriggerInteraction", id);
@@ -28,6 +36,8 @@ public class Switch : MonoBehaviour {
 			}
 
             timeStamp = Time.time + switchCooldown;
+
+            //audioSource.Play(); // play activate sound
 
 			// log that the switch has been used and the location
 			Managers.logging.RecordEvent(5, "" + gameObject.transform.position);
