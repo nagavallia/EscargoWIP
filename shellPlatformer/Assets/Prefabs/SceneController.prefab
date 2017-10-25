@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSceneId: 0
   complete: {fileID: 0}
-  pauseMenu: {fileID: 1347943202636902, guid: 02032f48b4f73f34e91023640f98972b, type: 2}
+  pauseMenu: {fileID: 1066166671572880, guid: 3f800ce240f27f14ca457e52f2cb2a58, type: 2}
   maxLevel: 11
