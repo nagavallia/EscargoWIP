@@ -37,7 +37,7 @@ public class Switch : MonoBehaviour {
 
             timeStamp = Time.time + switchCooldown;
 
-            //audioSource.Play(); // play activate sound
+            audioSource.Play(); // play activate sound
 
 			// log that the switch has been used and the location
 			Managers.logging.RecordEvent(5, "" + gameObject.transform.position);

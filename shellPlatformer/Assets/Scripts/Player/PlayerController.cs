@@ -43,6 +43,9 @@ public class PlayerController : MonoBehaviour
 	// Initialize the animator component
 	private Animator anim;
 
+    [SerializeField] private AudioClip jumpSound;
+    private AudioSource audioSource;
+
 	void Start()
 	{
 		myRigidbody = GetComponent<Rigidbody2D> ();
@@ -55,6 +58,8 @@ public class PlayerController : MonoBehaviour
 		jumpAcc = 1f * maxSpeed;
 		gravity = -.035f * maxSpeed;
 		maxFallSpeed = -1.725f * maxSpeed;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
 
 	}
 		
@@ -130,6 +135,7 @@ public class PlayerController : MonoBehaviour
 						myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, 0);
 					}
 					yAcc = .6f * jumpAcc;
+                    audioSource.PlayOneShot(jumpSound);
 					// log that a double jump has occurred and the position of the player
 //					Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
 				}
@@ -137,6 +143,7 @@ public class PlayerController : MonoBehaviour
 		} else if (jump) {
 			isGrounded = false;
 			yAcc = jumpAcc;
+            audioSource.PlayOneShot(jumpSound);
 			// log that a jump has occurred and the position of the player
 //			Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
 		}

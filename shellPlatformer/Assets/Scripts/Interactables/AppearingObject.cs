@@ -16,11 +16,11 @@ public class AppearingObject : MonoBehaviour {
 
         audioSource = gameObject.AddComponent<AudioSource>();
 
-        var active = gameObject.GetComponent<Exit>() != null ? "exitActivateSound" : "regularAppearingSound"; // load in correct activate sound
-        var deactive = gameObject.GetComponent<Exit>() != null ? "exitDeactivateSound" : "regularDisappearingSound";
+        var active = gameObject.GetComponent<Exit>() != null ? "exit_appear" : "exit_appear"; // load in correct activate sound
+        var deactive = gameObject.GetComponent<Exit>() != null ? "exit_disappear" : "exit_disappear";
 
-        //activateSound = Resources.Load(active) as AudioClip;
-        //deactivateSound = Resources.Load(deactive) as AudioClip;
+        activateSound = Resources.Load(active) as AudioClip;
+        deactivateSound = Resources.Load(deactive) as AudioClip;
     }
 
 	void Interact() {
@@ -30,6 +30,6 @@ public class AppearingObject : MonoBehaviour {
             collider.enabled = !previousStatus; // Disable all colliders attatched to this gameObject. Note: might want to only disable triggers, we'll see.
         }
 
-       // audioSource.PlayOneShot(previousStatus ? deactivateSound : activateSound); // play activate or deactivate sound
+       audioSource.PlayOneShot(previousStatus ? deactivateSound : activateSound); // play activate or deactivate sound
     }
 }

@@ -111,6 +111,8 @@ MonoBehaviour:
   rotateRight: 1
   animateMovement: 1
   animationDuration: 2
+  MovingSound: {fileID: 8300000, guid: 90a1ed9a7017b0e4b9f911b733566cc8, type: 3}
+  FinishSound: {fileID: 8300000, guid: 5779e9cbe4589ee4a877a464d087522b, type: 3}
 --- !u!114 &114953346726344128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ENABLED: 0
-  activators: []
+  activators: 
 --- !u!212 &212918169508554474
 SpriteRenderer:
   m_ObjectHideFlags: 1

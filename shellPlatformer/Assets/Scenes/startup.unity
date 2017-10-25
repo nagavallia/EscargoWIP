@@ -169,7 +169,7 @@ Prefab:
         type: 2}
       propertyPath: bgm
       value: 
-      objectReference: {fileID: 8300000, guid: ac91ab89c8c27064896493a3bcc9819e, type: 3}
+      objectReference: {fileID: 8300000, guid: dc0e06ba32c063146902af46c69b30a6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
   m_IsPrefabParent: 0

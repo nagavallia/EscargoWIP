@@ -40,8 +40,9 @@ public class DrawBridge : MonoBehaviour {
             if (isAnimating) queuedAnimation = !queuedAnimation;
             else {
                 isAnimating = true;
-                //audioSource.clip = MovingSound;
-                //audioSource.Play();
+                audioSource.clip = MovingSound;
+                audioSource.loop = true;
+                audioSource.Play();
                 StartCoroutine("LowerBridge");
             }
         }
@@ -64,8 +65,8 @@ public class DrawBridge : MonoBehaviour {
         angle *= -1;
         transform.SetPositionAndRotation(transform.position, Quaternion.Slerp(start, end, 1f));
 
-        //audioSource.Stop();
-        //audioSource.PlayOneShot(FinishSound);
+        audioSource.Stop();
+        audioSource.PlayOneShot(FinishSound);
     }
 	
 }

@@ -82,6 +82,8 @@ MonoBehaviour:
   id: 0
   current: {fileID: 21300000, guid: 1a1b2b593ad7a8c42947bb59a1b5383a, type: 3}
   change: {fileID: 21300000, guid: dfd07063f56930e4e9cd11b527cbc290, type: 3}
+  ActivateSound: {fileID: 8300000, guid: 95f94d707ca5dd149846496d1267e10e, type: 3}
+  DeactivateSound: {fileID: 8300000, guid: fd25146784cfa854eaf587ecaa1afc7b, type: 3}
 --- !u!212 &212648113194035290
 SpriteRenderer:
   m_ObjectHideFlags: 1

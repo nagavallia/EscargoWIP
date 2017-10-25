@@ -118,6 +118,7 @@ public class ShellThrower : MonoBehaviour {
 
 	public void PickUpShell() 
 	{
+        Debug.Log("picking up shell");
         shell.transform.parent = player;
         shellHitbox.enabled = false;
         //shellClickbox.enabled = true;

@@ -1,28 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
-    [SerializeField] private GameObject uiCanvas;
     private float defaultTimeScale;
+    [SerializeField] private Dropdown levelSelect;
 
     private void Start() {
         defaultTimeScale = Time.timeScale;
-        uiCanvas.SetActive(false);
+        List<string> levels = new List<string>();
+        for (int i = 1; i <= Managers.scene.GetNumLevels(); i++) {
+            levels.Add("Level " + i);
+        }
+
+        levelSelect.AddOptions(levels);
     }
 
-    private void Update() {
-        if (Input.GetButtonDown("Menu")) {
-            //if (uiCanvas.activeInHierarchy) {
-            //    Time.timeScale = defaultTimeScale;
-            //    uiCanvas.SetActive(false);
-            //} else {
-            //    Time.timeScale = 0f;
-            //    uiCanvas.SetActive(true);
-            //}
-            LoadLevel(0);
-        }
-    }
 
     public void LoadLevel(int levelId) {
         Messenger<int>.Broadcast(GameEvent.LOAD_LEVEL, levelId + 1);

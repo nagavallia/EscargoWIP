@@ -33,7 +33,7 @@ public class Button : MonoBehaviour {
 				gameObject.GetComponent<SpriteRenderer> ().sprite = current;
 			}
 
-            //audioSource.PlayOneShot(ActivateSound); // play activate sound
+            audioSource.PlayOneShot(ActivateSound); // play activate sound
 
 			// log that the button has been used and the position of the button
 			Managers.logging.RecordEvent(6,"" + gameObject.transform.position);
@@ -55,7 +55,7 @@ public class Button : MonoBehaviour {
 				gameObject.GetComponent<SpriteRenderer> ().sprite = current;
 			}
 
-            //audioSource.PlayOneShot(DeactivateSound); // play deactivate sound
+            audioSource.PlayOneShot(DeactivateSound); // play deactivate sound
         }
 	}  
 }

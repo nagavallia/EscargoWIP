@@ -85,4 +85,8 @@ public class SceneController : MonoBehaviour, GameManager {
         SceneManager.LoadScene(curSceneId);
         Time.timeScale = defaultTimeScale;
     }
+
+    public int GetNumLevels() {
+        return maxLevel;
+    }
 }

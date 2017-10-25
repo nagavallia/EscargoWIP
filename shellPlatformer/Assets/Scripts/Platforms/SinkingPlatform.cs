@@ -15,7 +15,9 @@ public class SinkingPlatform : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startPosition = this.transform.localPosition;
-        lightStartPosition = light.localPosition;
+        lightStartPosition = new Vector3(0f, -(GetComponent<SpriteRenderer>().size.y - 1)/2f, -1f);
+        light.localPosition = lightStartPosition;
+        GetComponent<BoxCollider2D>().offset = new Vector2(lightStartPosition.x, lightStartPosition.y);
         startSize = GetComponent<SpriteRenderer>().size;
 
         sunkenPosition = startPosition - (new Vector3(0, sinkAmount * 0.5f, 0)); 
@@ -26,25 +28,28 @@ public class SinkingPlatform : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D(Collision2D collision) {
+        collision.transform.SetParent(light);
         RaycastHit2D hit = Physics2D.Raycast(collision.transform.position, Vector2.down, GROUND_CHECK);
 		if (hit.collider != null && collision.gameObject.tag == "Shell") {
             Debug.Log("colliding with shell");
 			Shell shell = collision.gameObject.GetComponent<Shell> ();
 			if (shell.waterLevel > 0) {
-                collision.transform.SetParent(light);
+                //collision.transform.SetParent(light);
 
                 light.localPosition = lightSunkenPosition;
                 GetComponent<BoxCollider2D>().offset = new Vector2(lightSunkenPosition.x, lightSunkenPosition.y);
                 this.transform.localPosition = sunkenPosition;
                 GetComponent<SpriteRenderer>().size = sunkenSize;
 
-                collision.transform.SetParent(null);
+                //collision.transform.SetParent(null);
 			}
 		}
 	}
 
 	void OnCollisionExit2D(Collision2D collision) {
-		if (collision.gameObject.tag == "Shell") {
+        if (collision.transform.parent == this.transform) collision.transform.SetParent(null);
+
+        if (collision.gameObject.tag == "Shell") {
 			light.localPosition = lightStartPosition;
             GetComponent<BoxCollider2D>().offset = new Vector2(lightStartPosition.x, lightStartPosition.y);
             this.transform.localPosition = startPosition;

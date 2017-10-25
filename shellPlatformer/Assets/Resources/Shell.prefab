@@ -116,8 +116,8 @@ MonoBehaviour:
   numTrajectoryPoints: 10
   fixedThrowAngle: 55
   throwForce: 400
-  addMomentum: 0
-  momentumMultiplier: 0.25
+  vertMultiplier: 1.1
+  horizMultiplier: 1.1
 --- !u!114 &114943767043332196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterLevel: 0
   fullShell: {fileID: 0}
+  CollideSound: {fileID: 8300000, guid: f0844ccbe27ac274ab6cea15338b9775, type: 3}
+  FillSound: {fileID: 0}
 --- !u!212 &212391820533354746
 SpriteRenderer:
   m_ObjectHideFlags: 1

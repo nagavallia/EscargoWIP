@@ -29,7 +29,7 @@ public class Shell : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        //collideSource.PlayOneShot(CollideSound);
+        audioSource.PlayOneShot(CollideSound);
         collision.gameObject.SendMessage("ShellCollide", this.gameObject, SendMessageOptions.DontRequireReceiver);
     }
 
