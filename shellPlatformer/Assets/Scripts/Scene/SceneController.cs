@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class SceneController : MonoBehaviour, GameManager {
     public int curSceneId;
     [SerializeField] private GameObject complete;
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private int maxLevel = 11;
 
     private float defaultTimeScale;
     private bool levelFinished;
     private bool levelLoaded;
+    private bool isPaused = false;
 
     private int MAIN_SCENE_ID = 1;
 
@@ -55,7 +57,25 @@ public class SceneController : MonoBehaviour, GameManager {
     void Update () {
 		if (Input.GetButtonDown("Restart")) { ReloadScene(); }
         if (Input.GetButtonDown("Menu")) { LoadLevel(MAIN_SCENE_ID); }
+
+        if (Input.GetButtonDown("Pause"))
+        {
+            if (isPaused)
+            {
+                Time.timeScale = 1f;
+                isPaused = false;
+                pauseMenu.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                isPaused = true;
+                pauseMenu.SetActive(true);
+            }
+
+        }
     }
+    
 
     private void ReloadScene() {
         LoadLevel(curSceneId);
