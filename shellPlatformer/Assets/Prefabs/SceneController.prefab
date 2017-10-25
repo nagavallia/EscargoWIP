@@ -51,4 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956a407f1c7be9f4db7d51c3e1b24998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 
+  curSceneId: 0
+  complete: {fileID: 0}
+  pauseMenu: {fileID: 1347943202636902, guid: 02032f48b4f73f34e91023640f98972b, type: 2}
+  maxLevel: 11
