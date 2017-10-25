@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 		myRigidbody.gravityScale = 0;
 		normAcc = .021875f * maxSpeed;
 		backAcc = .053f * maxSpeed;
-		jumpAcc = 1.1f * maxSpeed;
+		jumpAcc = 1f * maxSpeed;
 		gravity = -.035f * maxSpeed;
 		maxFallSpeed = -1.725f * maxSpeed;
 
@@ -126,8 +126,10 @@ public class PlayerController : MonoBehaviour
 			if (jump && doubleJump) {
 				if (jumpCount == 0) {
 					jumpCount += 1;
-					myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, 0);
-					yAcc = .8f * jumpAcc;
+					if (myRigidbody.velocity.y < 0) {
+						myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, 0);
+					}
+					yAcc = .6f * jumpAcc;
 					// log that a double jump has occurred and the position of the player
 //					Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
 				}
