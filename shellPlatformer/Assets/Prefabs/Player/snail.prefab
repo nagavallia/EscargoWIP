@@ -398,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterLevel: 0
   fullShell: {fileID: 0}
-  CollideSound: {fileID: 0}
+  CollideSound: {fileID: 8300000, guid: f0844ccbe27ac274ab6cea15338b9775, type: 3}
   FillSound: {fileID: 0}
 --- !u!114 &114819792742176124
 MonoBehaviour:
