@@ -22,6 +22,7 @@ public class SceneController : MonoBehaviour, GameManager {
 
         curSceneId = 0;
         levelLoaded = false;
+        pauseMenu.SetActive(false);
     }
 
     // Use this for initialization
@@ -31,6 +32,8 @@ public class SceneController : MonoBehaviour, GameManager {
             Messenger.AddListener(GameEvent.RELOAD_LEVEL, ReloadScene);
             Messenger.AddListener(GameEvent.SHELL_DESTROYED, ShellDestroyed);
             Messenger<int>.AddListener(GameEvent.LOAD_LEVEL, LoadLevel);
+
+            pauseMenu.SetActive(false);
 
             levelLoaded = true;
         }
@@ -60,7 +63,7 @@ public class SceneController : MonoBehaviour, GameManager {
 		if (Input.GetButtonDown("Restart")) { ReloadScene(); }
         if (Input.GetButtonDown("Menu")) { LoadLevel(MAIN_SCENE_ID); }
 
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown("Pause") && curSceneId > 1)
         {
             if (isPaused)
             {
