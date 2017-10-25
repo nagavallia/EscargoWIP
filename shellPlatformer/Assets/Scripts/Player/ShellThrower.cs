@@ -54,7 +54,8 @@ public class ShellThrower : MonoBehaviour {
         shellRigidBody = shell.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
 
-        Physics2D.IgnoreCollision(shellHitbox, player.transform.Find("MovementHitbox").GetComponent<Collider2D>());
+        foreach (Collider2D collider in player.transform.Find("MovementHitbox").GetComponents<Collider2D>())
+            Physics2D.IgnoreCollision(collider, shellHitbox);
         foreach (Collider2D collider in player.GetComponents<Collider2D>()) 
             Physics2D.IgnoreCollision(collider, shellHitbox);
 
@@ -111,8 +112,9 @@ public class ShellThrower : MonoBehaviour {
 
             throwVec.Set (fixedThrowVec.x * direction * xMult, fixedThrowVec.y * yMult);
 			shellRigidBody.AddForce (throwVec);
+            Debug.Log(throwVec);
             // log that a throw has taken place and the position of the player\
-            Managers.logging.RecordEvent(2, "" + gameObject.transform.parent.transform.position);
+            Managers.logging.RecordEvent(2, "" + player.position);
         }
 	}
 
