@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 		normAcc = .021875f * maxSpeed;
 		backAcc = .053f * maxSpeed;
 		jumpAcc = maxSpeed;
-		gravity = -.025f * maxSpeed;
+		gravity = -.035f * maxSpeed;
 		maxFallSpeed = -1.725f * maxSpeed;
 
 	}
@@ -119,14 +119,14 @@ public class PlayerController : MonoBehaviour
 					jumpCount += 1;
 					yAcc = .6f * jumpAcc;
 					// log that a double jump has occurred and the position of the player
-					Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
+//					Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
 				}
 			}
 		} else if (jump) {
 			isGrounded = false;
 			yAcc = jumpAcc;
 			// log that a jump has occurred and the position of the player
-			Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
+//			Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
 		}
 
 
@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
         Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
 
 		// log that a death has taken place and the position of the player
-		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
+//		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
 	}
 
 	private void FillShell()
