@@ -32,8 +32,11 @@ public class ShellThrower : MonoBehaviour {
 
 	private Vector2 fixedThrowVec;
 
+	private Animator anim;
+
 	// Use this for initialization
 	void Start () {
+
         shell = this.gameObject;
         throwVec = new Vector2();
 
@@ -53,6 +56,8 @@ public class ShellThrower : MonoBehaviour {
 
         shellRigidBody = shell.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
+
+		anim = player.GetComponent<Animator>();
 
         foreach (Collider2D collider in player.transform.Find("MovementHitbox").GetComponents<Collider2D>())
             Physics2D.IgnoreCollision(collider, shellHitbox);
@@ -96,7 +101,12 @@ public class ShellThrower : MonoBehaviour {
                 ReleaseShell();
             }
         } else if (Input.GetButtonDown("Throw")) {
+			
+
+			StartCoroutine (throwAnimRoutine ());
 			Throw();
+
+	
         }
     }
 		
@@ -136,4 +146,18 @@ public class ShellThrower : MonoBehaviour {
         //shellClickbox.enabled = false;
         shellRigidBody.isKinematic = false;
     }
+
+	IEnumerator throwAnimRoutine(){
+
+		// play the throw animation on the player
+		anim.SetInteger("State", 2);
+
+		yield return new WaitForSeconds (0.5f);
+
+		Throw();
+
+		// set the animation back to idle
+		anim.SetInteger("State", 0);
+	}
+		
 }

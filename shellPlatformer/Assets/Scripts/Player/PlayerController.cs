@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 	private float maxFallSpeed;
 
 	private bool facingRight;
+	private bool died = false;
 
 	[SerializeField]
 	private Transform[] groundPoints;
@@ -91,8 +92,12 @@ public class PlayerController : MonoBehaviour
 		} 
 
 		isGrounded = IsGrounded ();
-		move (horizontal);
-		Flip (horizontal);
+
+		// Prevent player movement if died
+		if (!died) {
+			move (horizontal);
+			Flip (horizontal);
+		}
 
 		ResetValues ();
 	}
@@ -239,6 +244,10 @@ public class PlayerController : MonoBehaviour
 	}
 
 	IEnumerator killRoutine(){
+
+		// Turn on the died flag to prevent player movement
+		died = true; 
+
 		// Death Animation before delay to reset level
 		anim.SetInteger("State", 3);
 
