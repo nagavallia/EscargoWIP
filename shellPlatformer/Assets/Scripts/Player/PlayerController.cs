@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 		myRigidbody.gravityScale = 0;
 		normAcc = .021875f * maxSpeed;
 		backAcc = .053f * maxSpeed;
-		jumpAcc = maxSpeed;
+		jumpAcc = 1.1f * maxSpeed;
 		gravity = -.035f * maxSpeed;
 		maxFallSpeed = -1.725f * maxSpeed;
 
@@ -126,7 +126,8 @@ public class PlayerController : MonoBehaviour
 			if (jump && doubleJump) {
 				if (jumpCount == 0) {
 					jumpCount += 1;
-					yAcc = .6f * jumpAcc;
+					myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, 0);
+					yAcc = .8f * jumpAcc;
 					// log that a double jump has occurred and the position of the player
 //					Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
 				}
@@ -212,12 +213,7 @@ public class PlayerController : MonoBehaviour
 //		// log that a death has taken place and the position of the player
 //		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
 
-<<<<<<< HEAD
-		// log that a death has taken place and the position of the player
-//		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
-=======
 		StartCoroutine (killRoutine());
->>>>>>> dac646f2392c83ea6085ac2423fd81374586aac7
 	}
 
 	private void FillShell()
