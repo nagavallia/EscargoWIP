@@ -1141,11 +1141,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114400111025365718, guid: b5b9d51bef3ba4abdb16a89151877e80,
-        type: 2}
-      propertyPath: interactables.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4404251465224806, guid: b5b9d51bef3ba4abdb16a89151877e80, type: 2}
       propertyPath: m_LocalPosition.x
       value: 11.08
