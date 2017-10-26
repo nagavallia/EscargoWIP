@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
 		// Idle Animation if velocities are all zero
 		if (myRigidbody.velocity.x == 0 && myRigidbody.velocity.y == 0) {
-			//anim.SetInteger ("State", 0);
+			anim.SetInteger ("State", 0);
 		}
 	}
 
@@ -259,7 +259,7 @@ public class PlayerController : MonoBehaviour
 		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
 
 		// reset anim state to 0
-		//anim.SetInteger("State", 0);
+		anim.SetInteger("State", 0);
 
 	}
 }
