@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212397907177386624}
   - component: {fileID: 61033322504083710}
   - component: {fileID: 114057155341975270}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,3 +125,4 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
