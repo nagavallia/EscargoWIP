@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013645971985250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 11.08, y: 2.374, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,7 +54,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.25}
+  m_Offset: {x: -0.023853779, y: -0.114827156}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -65,7 +65,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 0.4434061, y: 0.22965431}
   m_EdgeRadius: 0
 --- !u!114 &114400111025365718
 MonoBehaviour:
@@ -78,7 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6b4e0c35c044e3b99b19c7c70f56ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactables: []
+  interactables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   id: 0
   current: {fileID: 21300000, guid: 1a1b2b593ad7a8c42947bb59a1b5383a, type: 3}
   change: {fileID: 21300000, guid: dfd07063f56930e4e9cd11b527cbc290, type: 3}
@@ -125,3 +128,4 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0

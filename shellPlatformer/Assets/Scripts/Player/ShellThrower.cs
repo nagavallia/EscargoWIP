@@ -132,7 +132,7 @@ public class ShellThrower : MonoBehaviour {
 	{
         Debug.Log("picking up shell");
         shell.transform.parent = player;
-        shellHitbox.enabled = false;
+        //shellHitbox.enabled = false;
         //shellClickbox.enabled = true;
         shellRigidBody.isKinematic = true;
         shellRigidBody.velocity = Vector3.zero;
