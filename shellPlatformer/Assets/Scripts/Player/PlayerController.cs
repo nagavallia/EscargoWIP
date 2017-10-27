@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		// Walk Animation
-		//anim.SetInteger("State", 1);
+		anim.SetInteger("State", 1);
 
 	}
 
