@@ -41,3 +41,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Friends Release/level_10.unity
     guid: 379740d605e554428908de8319c63944
+  - enabled: 1
+    path: Assets/Scenes/VictoryScreen.unity
+    guid: 3561d2548bf5d4741896f749bc0a6697

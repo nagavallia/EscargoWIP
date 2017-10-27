@@ -95,7 +95,7 @@ public class SceneController : MonoBehaviour, GameManager {
             if (curSceneId <= maxLevel) {
                 Managers.UnloadAll(SceneManager.GetActiveScene());
                 LoadLevel(curSceneId + 1);
-            } else { complete.SetActive(true); }
+            } else { SceneManager.LoadScene("VictoryScreen"); }
         }
     }
 
