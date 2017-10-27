@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
 			if (didDoubleJump && (!didJump || jumpTimer >= 20)) {
 				jumpCount++;
 				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, 0);
-				yAcc = .8f * jumpAcc;
+				yAcc = .85f * jumpAcc;
 				audioSource.PlayOneShot (jumpSound);
 				// log that a double jump has occurred and the position of the player
 				//					Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
@@ -278,6 +278,9 @@ public class PlayerController : MonoBehaviour
 
 		// Turn on the died flag to prevent player movement
 		died = true; 
+
+		anim.enabled = false;
+		anim.enabled = true;
 
 		// Death Animation before delay to reset level
 		anim.SetInteger("State", 3);
