@@ -32,8 +32,8 @@ public class ShellSpawner : MonoBehaviour
 	}
 
 	private void SpawnShell() {
-		shell = GameObject.Find ("Shell");
-		GameObject newShell = Instantiate (shell);
+		//shell = GameObject.Find ("Shell");
+		GameObject newShell = (GameObject) Instantiate (Resources.Load("Shell"));
 		newShell.transform.position = this.transform.position;
 		shellsSpawned++;
 

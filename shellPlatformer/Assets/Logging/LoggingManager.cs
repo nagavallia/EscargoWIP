@@ -34,7 +34,7 @@ public class LoggingManager : MonoBehaviour, GameManager
         if (!gameStart) {
 
             // Initialize the logging
-            Initialize(889, 0, false);
+			Initialize(889, versionId, false);
 
             // Start the Game Logging
             RecordPageLoad();
