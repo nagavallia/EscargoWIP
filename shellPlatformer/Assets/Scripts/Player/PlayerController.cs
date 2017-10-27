@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
 
 	private int jumpCount = 0;
 
+	private bool didJump = false;
+	private bool didDoubleJump = false;
+	private int jumpTimer = 0;
+
 
 	[SerializeField]
 	private float jumpForce;
@@ -56,7 +60,7 @@ public class PlayerController : MonoBehaviour
 		myRigidbody.gravityScale = 0;
 		normAcc = .021875f * maxSpeed;
 		backAcc = .053f * maxSpeed;
-		jumpAcc = 1f * maxSpeed;
+		jumpAcc = 1.1f * maxSpeed;
 		gravity = -.035f * maxSpeed;
 		maxFallSpeed = -1.725f * maxSpeed;
 
@@ -111,10 +115,23 @@ public class PlayerController : MonoBehaviour
 
 		//friction
 		if (isGrounded) {
+			didJump = false;
+			didDoubleJump = false;
+			jumpTimer = 0;
 			if (horizontal == 0 && myRigidbody.velocity.x > 0) {
-				xAcc = -normAcc;
+				if (myRigidbody.velocity.x > normAcc) {
+					xAcc = -normAcc;
+				} else {
+					xAcc = -myRigidbody.velocity.x; 
+				}
+
 			} else if (horizontal == 0 && myRigidbody.velocity.x < 0) {
-				xAcc = normAcc;
+				if (myRigidbody.velocity.x < normAcc) {
+					xAcc = normAcc;
+				} else {
+					xAcc = -myRigidbody.velocity.x;
+				}
+
 			}
 		}
 
@@ -136,21 +153,36 @@ public class PlayerController : MonoBehaviour
 			if (jump && doubleJump) {
 				if (jumpCount == 0) {
 					jumpCount += 1;
-					if (myRigidbody.velocity.y < 0) {
+					if (jumpTimer < 20) {
+						didDoubleJump = true;
+					} else {
 						myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, 0);
+						yAcc = .8f * jumpAcc;
+						audioSource.PlayOneShot(jumpSound);
 					}
-					yAcc = .6f * jumpAcc;
-                    audioSource.PlayOneShot(jumpSound);
+
 					// log that a double jump has occurred and the position of the player
 //					Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
 				}
 			}
 		} else if (jump) {
 			isGrounded = false;
+			didJump = true;
 			yAcc = jumpAcc;
             audioSource.PlayOneShot(jumpSound);
 			// log that a jump has occurred and the position of the player
 //			Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
+		}
+
+		if (didJump) {
+			jumpTimer++;
+			if (didDoubleJump && jumpTimer >= 20) {
+				Debug.Log ("double jump thing");
+				didDoubleJump = false;
+				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, 0);
+				yAcc = .8f * jumpAcc;
+				audioSource.PlayOneShot(jumpSound);
+			}
 		}
 
 
@@ -162,11 +194,10 @@ public class PlayerController : MonoBehaviour
 		} else if (myRigidbody.velocity.x < -maxSpeed) {
 			myRigidbody.velocity = new Vector2 (-maxSpeed, myRigidbody.velocity.y);
 		}
-		//(should never go to fast in the y direction
+		//(should never go too fast in the y direction
 		if (myRigidbody.velocity.y < maxFallSpeed) {
 			myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, maxFallSpeed);
 		}
-
 
 		// Walk Animation
 		//anim.SetInteger("State", 1);
