@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private LayerMask whatIsGround;
 
-	private bool isGrounded;
+	private bool isGrounded = false;
 
 	private int horizontal;
 	private bool jump;
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 			anim.SetInteger ("State", 0);
 		}
 
-		isGrounded = IsGrounded ();
+//		isGrounded = IsGrounded ();
 
 		// Freeze the player when dead
 		if (died) {
@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
 	// Move procedure handles player movement, jump, and double jump
 	private void move ()
 	{
+		Debug.Log (isGrounded);
 		float xAcc = 0f;
 		float yAcc = gravity;
 
@@ -215,26 +216,39 @@ public class PlayerController : MonoBehaviour
 	}
 
 	// Determines if the snail is grounded 
-	private bool IsGrounded()
-	{
-		if (myRigidbody.velocity.y <= 0) 
-		{
-			foreach (Transform point in groundPoints) {
-				Collider2D[] colliders = Physics2D.OverlapCircleAll (point.position, groundRadius, whatIsGround);
-				for (int i = 0; i < colliders.Length; i++) {
-					if (colliders [i].gameObject != gameObject) {
-						jumpCount = 0;
-						didJump = false;
-						didDoubleJump = false;
-						jumpTimer = 0;
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
+//	private bool IsGrounded()
+//	{
+//		if (myRigidbody.velocity.y <= 0) 
+//		{
+//			foreach (Transform point in groundPoints) {
+//
+//				int colliders
+//				Collider2D[] colliders = Physics2D.OverlapCircleAll (point.position, groundRadius, whatIsGround);
+//				for (int i = 0; i < colliders.Length; i++) {
+//					if (colliders [i].gameObject != gameObject) {
+//						Debug.Log ("grounded");
+//						jumpCount = 0;
+//						didJump = false;
+//						didDoubleJump = false;
+//						jumpTimer = 0;
+//						return true;
+//					}
+//				}
+//			}
+//		}
+//		Debug.Log ("not grounded");
+//		return false;
+//	}
 		
+	private void groundCheck (bool grounded) {
+		isGrounded = grounded;
+		if (grounded = true) {
+			jumpCount = 0;
+			didJump = false;
+			didDoubleJump = false;
+			jumpTimer = 0;
+		}
+	}
 
 	void Kill ()
 	{
