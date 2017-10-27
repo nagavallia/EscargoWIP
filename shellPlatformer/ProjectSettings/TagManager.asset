@@ -9,6 +9,7 @@ TagManager:
   - ShellSpawner
   - Exit
   - NPC
+  - TempShell
   layers:
   - Default
   - TransparentFX

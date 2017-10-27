@@ -139,6 +139,10 @@ public class ShellThrower : MonoBehaviour {
 			foreach (Collider2D collider in player.GetComponents<Collider2D>())
 				Physics2D.IgnoreCollision (collider, tempCollider);
 			Physics2D.IgnoreCollision (tempCollider, shellHitbox);
+			temporaryShellCollisionFix.tag = "TempShell";
+
+			//temporaryShellCollisionFix.layer = LayerMask.NameToLayer ("PickedUpShell");
+			//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("PickedUpShell"), LayerMask.NameToLayer ("Enemies"));
 		}
 	}
 

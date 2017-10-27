@@ -8,7 +8,7 @@ public class groundCheck : MonoBehaviour {
 	public GameObject player;
 
 	void OnTriggerEnter2D(Collider2D collision) {
-
+		Debug.Log (collision.name);
 		player.SendMessage ("groundCheck", true);
 	}
 
