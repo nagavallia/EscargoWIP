@@ -92,10 +92,8 @@ public class SceneController : MonoBehaviour, GameManager {
             Debug.Log("finish level called in scene " + SceneManager.GetActiveScene().name);
             levelFinished = true;
             Managers.logging.RecordLevelEnd();
-            if (curSceneId <= maxLevel) {
-                Managers.UnloadAll(SceneManager.GetActiveScene());
-                LoadLevel(curSceneId + 1);
-            } else { SceneManager.LoadScene("VictoryScreen"); }
+            Managers.UnloadAll(SceneManager.GetActiveScene());
+            LoadLevel(curSceneId + 1);
         }
     }
 

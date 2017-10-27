@@ -65,7 +65,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &114057155341975270
 MonoBehaviour:
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactables: []
-  switchCooldown: 0.5
+  switchCooldown: 1.75
   id: 0
   current: {fileID: 21300000, guid: ba8e9fa20e8ca00448161aa96899f09b, type: 3}
   change: {fileID: 21300000, guid: c42ed4ffa4318564b990e977b31491de, type: 3}
@@ -125,4 +125,3 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0

@@ -437,8 +437,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: -170}
-  m_SizeDelta: {x: 331, y: 105}
+  m_AnchoredPosition: {x: 21.8, y: -158.8}
+  m_SizeDelta: {x: 177.6, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245742960
 MonoBehaviour:
@@ -466,19 +466,15 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CONTROLS:
+  m_Text: '
 
-    WASD - Move/Jump/Double Jump (w/o Shell)
-
-    E - Pickup/Drop Shell
-
-    Space - Throw Shell
+    P - Pause Game
 
     R - Restart Level
 

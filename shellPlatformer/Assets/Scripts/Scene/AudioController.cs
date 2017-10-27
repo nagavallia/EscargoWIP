@@ -15,17 +15,18 @@ public class AudioController : MonoBehaviour, GameManager {
     }
 
     public void Load(Scene scnee, LoadSceneMode mode) {
-        if (!levelLoaded) {
+        if (Managers.scene.curSceneId == 1 && !levelLoaded) {
             bgmSource.Play();
-
             levelLoaded = true;
+        } else if (Managers.scene.curSceneId == 1) {
+            bgmSource.time = 0f;
         }
     }
 
     public void Unload(Scene scene) {
-        bgmSource.Stop();
+        //bgmSource.Stop();
 
-        levelLoaded = false;
+        //levelLoaded = false;
     }
 
     private void LoadBGM() {
