@@ -184,6 +184,9 @@ public class PlayerController : MonoBehaviour
 		if (myRigidbody.velocity.y < maxFallSpeed) {
 			myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, maxFallSpeed);
 		}
+
+		// Walk Animation
+		anim.SetInteger("State", 1);
 	}
 
 	// Sets the jump boolean and the drag value depending on key inputs
