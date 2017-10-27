@@ -30,6 +30,8 @@ public class AppearingObject : MonoBehaviour {
             collider.enabled = !previousStatus; // Disable all colliders attatched to this gameObject. Note: might want to only disable triggers, we'll see.
         }
 
-       audioSource.PlayOneShot(previousStatus ? deactivateSound : activateSound); // play activate or deactivate sound
+		if (gameObject.GetComponent<Exit>() != null) {
+       		audioSource.PlayOneShot(previousStatus ? deactivateSound : activateSound); // play activate or deactivate sound
+		}
     }
 }

@@ -1046,6 +1046,10 @@ Prefab:
       propertyPath: maxShells
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1716010777075230, guid: f2d892b73c3a10d42a33b85c7b904969, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2d892b73c3a10d42a33b85c7b904969, type: 2}
   m_IsPrefabParent: 0

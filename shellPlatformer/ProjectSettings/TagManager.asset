@@ -26,8 +26,8 @@ TagManager:
   - No Collision
   - Buttons
   - groundTrigger
-  - 
-  - 
+  - Shell
+  - PickedUpShell
   - 
   - 
   - 

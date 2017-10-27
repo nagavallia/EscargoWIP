@@ -80,11 +80,6 @@ public class PlayerController : MonoBehaviour
 			canDoubleJump = false;
 		}
 
-		// Idle Animation if velocities are all zero
-		if (myRigidbody.velocity.x == 0 && myRigidbody.velocity.y == 0) {
-			anim.SetInteger ("State", 0);
-		}
-
 //		isGrounded = IsGrounded ();
 
 		// Freeze the player when dead
@@ -99,7 +94,6 @@ public class PlayerController : MonoBehaviour
 	// Move procedure handles player movement, jump, and double jump
 	private void move ()
 	{
-		Debug.Log (isGrounded);
 		float xAcc = 0f;
 		float yAcc = gravity;
 
@@ -137,7 +131,7 @@ public class PlayerController : MonoBehaviour
 				yAcc = jumpAcc;
 				audioSource.PlayOneShot (jumpSound);
 				// log that a jump has occurred and the position of the player
-				//			Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
+				Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
 			}
 		} 
 		//Not on the ground
@@ -154,7 +148,7 @@ public class PlayerController : MonoBehaviour
 				yAcc = .85f * jumpAcc;
 				audioSource.PlayOneShot (jumpSound);
 				// log that a double jump has occurred and the position of the player
-				//					Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
+				Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
 			}
 		}
 
@@ -181,7 +175,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		// Walk Animation
-		anim.SetInteger("State", 1);
+		//anim.SetInteger("State", 1);
 	}
 
 	// Sets the jump boolean and the drag value depending on key inputs
@@ -252,10 +246,6 @@ public class PlayerController : MonoBehaviour
 
 	void Kill ()
 	{
-//        Messenger.Broadcast(GameEvent.RELOAD_LEVEL);
-//
-//		// log that a death has taken place and the position of the player
-//		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
 	
 		deathPosition = transform.position; 
 		StartCoroutine (killRoutine());
@@ -278,9 +268,6 @@ public class PlayerController : MonoBehaviour
 
 		// Turn on the died flag to prevent player movement
 		died = true; 
-
-		anim.enabled = false;
-		anim.enabled = true;
 
 		// Death Animation before delay to reset level
 		anim.SetInteger("State", 3);

@@ -44,7 +44,7 @@ public class Shell : MonoBehaviour {
 		Debug.Log ("Filling Shell");
 		if (waterLevel < maxWaterLevel) {
 			waterLevel++;
-			this.GetComponent<SpriteRenderer> ().color = Color.blue;
+			this.GetComponent<SpriteRenderer> ().sprite = fullShell;
 
             //audioSource.PlayOneShot(FillSound);
 		}
