@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 		myRigidbody.gravityScale = 0;
 		normAcc = .021875f * maxSpeed;
 		backAcc = .053f * maxSpeed;
-		jumpAcc = 1.1f * maxSpeed;
+		jumpAcc = 1.2f * maxSpeed;
 		gravity = -.035f * maxSpeed;
 		maxFallSpeed = -1.725f * maxSpeed;
 
@@ -85,18 +85,12 @@ public class PlayerController : MonoBehaviour
 			anim.SetInteger ("State", 0);
 		}
 
+		isGrounded = IsGrounded ();
+
 		// Freeze the player when dead
 		if (died) {
 			transform.position = deathPosition;
-		}
-	}
-
-	void FixedUpdate()
-	{
-		isGrounded = IsGrounded ();
-
-		// Prevent player movement if died
-		if (!died) {
+		} else {
 			move ();
 			Flip ();
 		}
