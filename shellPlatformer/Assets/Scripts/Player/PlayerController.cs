@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip jumpSound;
     private AudioSource audioSource;
 
+	private Vector3 deathPosition;
+
 	void Start()
 	{
 		myRigidbody = GetComponent<Rigidbody2D> ();
@@ -69,6 +71,7 @@ public class PlayerController : MonoBehaviour
 	}
 		
 	void Update(){
+
 		HandleInput ();
 
 		if (this.transform.Find ("Shell") == null) {
@@ -80,6 +83,11 @@ public class PlayerController : MonoBehaviour
 		// Idle Animation if velocities are all zero
 		if (myRigidbody.velocity.x == 0 && myRigidbody.velocity.y == 0) {
 			anim.SetInteger ("State", 0);
+		}
+
+		// Freeze the player when dead
+		if (died) {
+			transform.position = deathPosition;
 		}
 	}
 
@@ -257,7 +265,8 @@ public class PlayerController : MonoBehaviour
 //
 //		// log that a death has taken place and the position of the player
 //		Managers.logging.RecordEvent(3, "" + gameObject.transform.position);
-
+	
+		deathPosition = transform.position; 
 		StartCoroutine (killRoutine());
 	}
 
@@ -293,4 +302,5 @@ public class PlayerController : MonoBehaviour
 		anim.SetInteger("State", 0);
 
 	}
+		
 }
