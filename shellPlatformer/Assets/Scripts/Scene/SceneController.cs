@@ -63,21 +63,9 @@ public class SceneController : MonoBehaviour, GameManager {
 		if (Input.GetButtonDown("Restart")) { ReloadScene(); }
         if (Input.GetButtonDown("Menu")) { LoadLevel(MAIN_SCENE_ID); }
 
-        if (Input.GetButtonDown("Pause") && curSceneId > 1)
+        if (Input.GetButtonDown("Pause") && CanPause())
         {
-            if (isPaused)
-            {
-                Time.timeScale = 1f;
-                isPaused = false;
-                pauseMenu.SetActive(false);
-            }
-            else
-            {
-                Time.timeScale = 0f;
-                isPaused = true;
-                pauseMenu.SetActive(true);
-            }
-
+            Pause();
         }
     }
     
@@ -114,4 +102,21 @@ public class SceneController : MonoBehaviour, GameManager {
     public int GetNumLevels() {
         return maxLevel;
     }
+
+    public void Pause() {
+        if (isPaused) {
+            Time.timeScale = 1f;
+            isPaused = false;
+            pauseMenu.SetActive(false);
+        } else {
+            Time.timeScale = 0f;
+            isPaused = true;
+            pauseMenu.SetActive(true);
+        }
+    }
+
+    public bool CanPause() {
+        return curSceneId > 1 && curSceneId < maxLevel + 2;
+    }
+    
 }
