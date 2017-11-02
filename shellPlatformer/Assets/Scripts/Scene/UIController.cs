@@ -21,4 +21,8 @@ public class UIController : MonoBehaviour {
     public void LoadLevel(int levelId) {
         Messenger<int>.Broadcast(GameEvent.LOAD_LEVEL, levelId + 1);
     }
+
+    public void SetBGMScale(float scale) {
+        Messenger<float>.Broadcast(GameEvent.BGM_SCALE, scale);
+    }
 }

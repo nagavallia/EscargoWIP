@@ -10,8 +10,13 @@ public class AudioController : MonoBehaviour, GameManager {
 
     public void Startup() {
         levelLoaded = false;
+        Messenger<float>.AddListener(GameEvent.BGM_SCALE, SetBGMScale);
 
         LoadBGM();
+    }
+
+    private void OnDestroy() {
+        Messenger<float>.RemoveListener(GameEvent.BGM_SCALE, SetBGMScale);
     }
 
     public void Load(Scene scnee, LoadSceneMode mode) {
@@ -33,6 +38,10 @@ public class AudioController : MonoBehaviour, GameManager {
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.clip = bgm; // for final: bgmSource.clip = Resources.Load(bgm) as AudioClip;
         bgmSource.loop = true;
+    }
+
+    public void SetBGMScale(float scale) {
+        bgmSource.volume = scale;
     }
 	
 }
