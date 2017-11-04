@@ -28,7 +28,11 @@ public class Shell : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+		// Shell will keep velocity if colliding with Salt
+		if (collision.gameObject.tag != "Salt") {
+			gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+		}
+
         audioSource.PlayOneShot(CollideSound);
         collision.gameObject.SendMessage("ShellCollide", this.gameObject, SendMessageOptions.DontRequireReceiver);
     }
