@@ -1,4 +1,4 @@
-﻿
+﻿/*
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -69,7 +69,7 @@ public class LoggingManager : MonoBehaviour, GameManager {
 
     /**
      * Two internal classes for JSON deserialsation
-     */
+     */ /*
     private class PageLoadData {
         public string error_code;
         public string message;
@@ -288,4 +288,4 @@ public class LoggingManager : MonoBehaviour, GameManager {
         }
     }
 
-}
+} */
