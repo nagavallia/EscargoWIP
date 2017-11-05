@@ -9,18 +9,11 @@ public class ParticleLauncher : MonoBehaviour {
 
 	public Vector3 offset = new Vector3(0,0,0);
 
+	public int waitSecs = 0; 
+
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("emitSalt", 0, intervalSecs);
-		InvokeRepeating ("emitSalt", 0.1f, intervalSecs);
-		InvokeRepeating ("emitSalt", 0.2f, intervalSecs);
-		InvokeRepeating ("emitSalt", 0.3f, intervalSecs);
-		InvokeRepeating ("emitSalt", 0.4f, intervalSecs);
-		InvokeRepeating ("emitSalt2", 0.05f, intervalSecs);
-		InvokeRepeating ("emitSalt2", 0.15f, intervalSecs);
-		InvokeRepeating ("emitSalt2", 0.25f, intervalSecs);
-		InvokeRepeating ("emitSalt2", 0.35f, intervalSecs);
-		InvokeRepeating ("emitSalt2", 0.45f, intervalSecs);
+		StartCoroutine (emitSaltRoutine());
 	}
 
 
@@ -60,5 +53,21 @@ public class ParticleLauncher : MonoBehaviour {
 		} else {
 			emitSalt ();
 		}
+	}
+
+	IEnumerator emitSaltRoutine(){
+		yield return new WaitForSeconds (waitSecs);
+
+		InvokeRepeating ("emitSalt", 0, intervalSecs);
+		InvokeRepeating ("emitSalt", 0.1f, intervalSecs);
+		InvokeRepeating ("emitSalt", 0.2f, intervalSecs);
+		InvokeRepeating ("emitSalt", 0.3f, intervalSecs);
+		InvokeRepeating ("emitSalt", 0.4f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.05f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.15f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.25f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.35f, intervalSecs);
+		InvokeRepeating ("emitSalt2", 0.45f, intervalSecs);
+
 	}
 }
