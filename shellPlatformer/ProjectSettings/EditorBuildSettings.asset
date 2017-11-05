@@ -42,5 +42,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Newgrounds/level_10.unity
     guid: 24c313641087c4c2bbb27392cdbd9baf
   - enabled: 1
+    path: Assets/Scenes/Newgrounds/level_11.unity
+    guid: b922c25e470e94225b1ebaf85b62f7a7
+  - enabled: 1
+    path: Assets/Scenes/Newgrounds/level_12.unity
+    guid: 53f251da91555417eb86e196ce58a6b2
+  - enabled: 1
+    path: Assets/Scenes/Newgrounds/level_13.unity
+    guid: 1f5c71cc2292048168c6e61409161b8e
+  - enabled: 1
+    path: Assets/Scenes/Newgrounds/level_14.unity
+    guid: e3ae686b124b6452e9eb48646e7370cf
+  - enabled: 1
+    path: Assets/Scenes/Newgrounds/level_15.unity
+    guid: 2eb40be350a784578b7f2be5e33fe1af
+  - enabled: 1
+    path: Assets/Scenes/Newgrounds/level_16.unity
+    guid: 6246e6acaeb3c4b19b59f9e2dd9ce60e
+  - enabled: 1
     path: Assets/Scenes/VictoryScreen.unity
     guid: 03ad863d7ab4045fe83716b0bb9f33f2
