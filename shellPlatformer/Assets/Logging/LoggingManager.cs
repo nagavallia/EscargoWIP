@@ -274,7 +274,7 @@ public class LoggingManager : MonoBehaviour, GameManager {
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + playerABTestPath + requestData);
         yield return www.Send();
 
-        if (www.isError) {
+        if (www.isNetworkError) {
             Debug.Log(www.error);
         } else {
             string logReturnedString = www.downloadHandler.text;

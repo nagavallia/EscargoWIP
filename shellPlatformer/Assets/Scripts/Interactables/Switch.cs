@@ -14,16 +14,21 @@ public class Switch : MonoBehaviour {
     [SerializeField] private AudioClip ActivateSound;
     private AudioSource audioSource;
 
+	private GameObject popUp;
+
     private void Start() {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = ActivateSound;
+		popUp = (GameObject) Instantiate(Resources.Load("interactPopup"));
+		popUp.transform.position = new Vector3 (transform.position.x, transform.position.y + 1f, 0);
+		popUp.SetActive (false);
     }
 
     // Checks if colliding objects is not a trigger and if current time
     // is larger than timeStamp. timeStamp is set to current time plus
     // "switchCooldown"
     private void OnTriggerStay2D(Collider2D collision) {
-
+			
 		bool use = Input.GetButtonDown ("Use");
 
 		if (use) {
@@ -53,6 +58,11 @@ public class Switch : MonoBehaviour {
 	// same as onTriggerStay2D but with only enter for the shell and the npc snail
 	private void OnTriggerEnter2D(Collider2D collision) {
 
+		// load Interact popup if snail enters
+		if (collision.tag == "Player") {
+			popUp.SetActive (true);
+		}
+
 		if (collision.tag == "Shell" && collision.gameObject.transform.parent == null || collision.gameObject.tag == "NPC") {
 			if (Time.time >= timeStamp && !collision.isTrigger) {
 				foreach (GameObject i in interactables) {
@@ -76,4 +86,8 @@ public class Switch : MonoBehaviour {
 		}
 
 	} 
+	private void OnTriggerExit2D(Collider2D collision){
+		popUp.SetActive (false);
+	}
+		
 }
