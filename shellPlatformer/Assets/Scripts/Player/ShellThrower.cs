@@ -81,7 +81,7 @@ public class ShellThrower : MonoBehaviour {
 
 
 	private void Update() {			
-		if (Input.GetButtonDown("Use")) {
+		if (Input.GetButtonDown("Down")) {
 			if (transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed  
 				&& (player.position - transform.position).magnitude < interactDist) {
 				Vector3 shellPos = transform.localScale;

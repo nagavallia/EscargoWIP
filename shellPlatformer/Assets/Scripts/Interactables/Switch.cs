@@ -22,26 +22,58 @@ public class Switch : MonoBehaviour {
     // Checks if colliding objects is not a trigger and if current time
     // is larger than timeStamp. timeStamp is set to current time plus
     // "switchCooldown"
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (Time.time >= timeStamp && !collision.isTrigger) {
-            foreach (GameObject i in interactables) {
-                i.SendMessage("TriggerInteraction", id);
-            }
+    private void OnTriggerStay2D(Collider2D collision) {
 
-			// Change the image to reflect the interaction
-			if (gameObject.GetComponent<SpriteRenderer> ().sprite == current) {
-				gameObject.GetComponent<SpriteRenderer> ().sprite = change;
-			} else {
-				gameObject.GetComponent<SpriteRenderer> ().sprite = current;
+		bool use = Input.GetButtonDown ("Use");
+
+		if (use) {
+			if (Time.time >= timeStamp && !collision.isTrigger) {
+				foreach (GameObject i in interactables) {
+					i.SendMessage ("TriggerInteraction", id);
+				}
+
+				// Change the image to reflect the interaction
+				if (gameObject.GetComponent<SpriteRenderer> ().sprite == current) {
+					gameObject.GetComponent<SpriteRenderer> ().sprite = change;
+				} else {
+					gameObject.GetComponent<SpriteRenderer> ().sprite = current;
+				}
+
+				timeStamp = Time.time + switchCooldown;
+
+				audioSource.Play (); // play activate sound
+
+				// log that the switch has been used and the location
+				Managers.logging.RecordEvent (5, "" + gameObject.transform.position);
 			}
-
-            timeStamp = Time.time + switchCooldown;
-
-            audioSource.Play(); // play activate sound
-
-			// log that the switch has been used and the location
-			Managers.logging.RecordEvent(5, "" + gameObject.transform.position);
-        }
+		}
 			
+	} 
+
+	// same as onTriggerStay2D but with only enter for the shell and the npc snail
+	private void OnTriggerEnter2D(Collider2D collision) {
+
+		if (collision.tag == "Shell" && collision.gameObject.transform.parent == null || collision.gameObject.tag == "NPC") {
+			if (Time.time >= timeStamp && !collision.isTrigger) {
+				foreach (GameObject i in interactables) {
+					i.SendMessage ("TriggerInteraction", id);
+				}
+
+				// Change the image to reflect the interaction
+				if (gameObject.GetComponent<SpriteRenderer> ().sprite == current) {
+					gameObject.GetComponent<SpriteRenderer> ().sprite = change;
+				} else {
+					gameObject.GetComponent<SpriteRenderer> ().sprite = current;
+				}
+
+				timeStamp = Time.time + switchCooldown;
+
+				audioSource.Play (); // play activate sound
+
+				// log that the switch has been used and the location
+				Managers.logging.RecordEvent (5, "" + gameObject.transform.position);
+			}
+		}
+
 	} 
 }
