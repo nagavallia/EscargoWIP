@@ -13,7 +13,7 @@ public class LoggingManager : MonoBehaviour, GameManager
     [SerializeField] private bool isDebugging = true; // A convenience parameter which, when set to TRUE, disables logging. 
                                                       // Make sure you set this to FALSE before you submit your game online!
     private int gameId = -1; // The game's specific ID number
-    private int versionId = 1; // Your game's current version number. You should change this number between releases, 
+    private int versionId = 2; // Your game's current version number. You should change this number between releases, 
                                // and after very large changes to your logging methods.
 
     private bool isLevelStarted = false; // Semaphore for assertion
