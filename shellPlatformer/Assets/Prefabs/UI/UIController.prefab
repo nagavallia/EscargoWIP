@@ -38,7 +38,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181e13cb789ebf94785e35855184ba6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCanvas: {fileID: 0}
+  MainMenuCanvas: {fileID: 0}
+  LevelSelectCanvas: {fileID: 0}
+  horizButtonStep: 150
+  vertButtonStep: -110
+  buttonsPerRow: 6
+  buttonsPerCol: 5
 --- !u!224 &224245041434689682
 RectTransform:
   m_ObjectHideFlags: 1

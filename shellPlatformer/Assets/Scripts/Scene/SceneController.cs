@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour, GameManager {
     [SerializeField] private GameObject complete;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private int maxLevel = 11;
+	public int levelsCompleted { get; private set; }
 
     private float defaultTimeScale;
     private bool levelFinished;
@@ -23,6 +24,8 @@ public class SceneController : MonoBehaviour, GameManager {
         curSceneId = 0;
         levelLoaded = false;
         pauseMenu.SetActive(false);
+
+		levelsCompleted = maxLevel; // load this data from local, else set to 0
     }
 
     // Use this for initialization
@@ -82,6 +85,7 @@ public class SceneController : MonoBehaviour, GameManager {
             Managers.logging.RecordLevelEnd();
             Managers.UnloadAll(SceneManager.GetActiveScene());
             LoadLevel(curSceneId + 1);
+			levelsCompleted = Mathf.Max (levelsCompleted, Mathf.Min (curSceneId - 1, maxLevel));
         }
     }
 
@@ -99,9 +103,14 @@ public class SceneController : MonoBehaviour, GameManager {
         Time.timeScale = defaultTimeScale;
     }
 
+	// loads Level levelno
+	public void LoadLevelByNumber(int levelno) {
+		LoadLevel(levelno + 1);
+	}
+
     public int GetNumLevels() {
-        return maxLevel;
-    }
+		return maxLevel;
+	}
 
     public void Pause() {
         if (isPaused) {
