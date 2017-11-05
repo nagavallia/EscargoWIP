@@ -35,6 +35,8 @@ public class ParticleLauncher : MonoBehaviour {
 			GameObject salt = (GameObject)Instantiate (Resources.Load ("saltParticle"));
 			Vector3 curPosition = transform.position;
 			salt.transform.position = curPosition + offset + new Vector3 (-0.1f, 0, 0);
+			salt.transform.rotation = Random.rotation; // add a random rotation to each salt particle
+			salt.transform.rotation = new Quaternion(0, 0, salt.transform.rotation.z, salt.transform.rotation.w);
 		} else {
 			emitSalt2 ();
 		}
@@ -50,6 +52,8 @@ public class ParticleLauncher : MonoBehaviour {
 			GameObject salt = (GameObject) Instantiate(Resources.Load("saltParticle"));
 			Vector3 curPosition = transform.position;
 			salt.transform.position = curPosition + offset + new Vector3 (0.1f, 0, 0);
+			salt.transform.rotation = Random.rotation; // add a random rotation to each salt particle
+			salt.transform.rotation = new Quaternion(0, 0, salt.transform.rotation.z, salt.transform.rotation.w);
 		} else {
 			emitSalt ();
 		}
