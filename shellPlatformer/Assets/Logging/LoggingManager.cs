@@ -32,6 +32,8 @@ public class LoggingManager : MonoBehaviour, GameManager {
 
     private int abstoredValue = -1;
 
+    public int abValue { get; private set; }
+
     private bool abValueSet = false;
 
     public void Startup() {
@@ -39,6 +41,10 @@ public class LoggingManager : MonoBehaviour, GameManager {
 
             // Initialize the logging
             Initialize(889, versionId, false);
+
+            //record AB test value
+            abValue = assignABTestValue(Random.Range(0, 2));
+            RecordABTestValue();
 
             // Start the Game Logging
             RecordPageLoad();
