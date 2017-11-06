@@ -42,7 +42,7 @@ public class UIController : MonoBehaviour {
 			Vector2 localPos = button.GetComponent<RectTransform> ().anchoredPosition;
 			button.GetComponent<RectTransform> ().anchoredPosition = localPos + new Vector2 (horizButtonStep * i, vertButtonStep * j);
 
-			if (k <= Managers.scene.levelsCompleted)
+			if (k <= Managers.scene.levelsCompleted + 1 )
 				button.Unlock ();
 			else
 				button.Lock ();

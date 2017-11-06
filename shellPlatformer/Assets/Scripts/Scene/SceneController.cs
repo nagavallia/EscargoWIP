@@ -25,7 +25,10 @@ public class SceneController : MonoBehaviour, GameManager {
         levelLoaded = false;
         pauseMenu.SetActive(false);
 
-		levelsCompleted = maxLevel; // load this data from local, else set to 0
+        if (Managers.logging.isDebugging) // load levels completed from local, else set to 0
+            levelsCompleted = maxLevel;
+        else
+            levelsCompleted = PlayerPrefs.GetInt(GameEvent.LEVELS_FINISHED, 0);
     }
 
     // Use this for initialization
@@ -84,8 +87,13 @@ public class SceneController : MonoBehaviour, GameManager {
             levelFinished = true;
             Managers.logging.RecordLevelEnd();
             Managers.UnloadAll(SceneManager.GetActiveScene());
+
+            levelsCompleted = Mathf.Max(levelsCompleted, Mathf.Min(curSceneId - 1, maxLevel));
+
+            PlayerPrefs.SetInt(GameEvent.LEVELS_FINISHED, levelsCompleted);
+            PlayerPrefs.Save();
+
             LoadLevel(curSceneId + 1);
-			levelsCompleted = Mathf.Max (levelsCompleted, Mathf.Min (curSceneId - 1, maxLevel));
         }
     }
 

@@ -115,6 +115,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114012480820468278, guid: f38ef6c5886ffdc4cb74485717442a1b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4389489652289658, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -177,14 +182,44 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114399134383246934, guid: f38ef6c5886ffdc4cb74485717442a1b,
+    - target: {fileID: 1881291069095364, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
+      propertyPath: m_Name
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012480820468278, guid: f38ef6c5886ffdc4cb74485717442a1b,
         type: 2}
-      propertyPath: isDebugging
-      value: 0
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012480820468278, guid: f38ef6c5886ffdc4cb74485717442a1b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012480820468278, guid: f38ef6c5886ffdc4cb74485717442a1b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 385749018}
+    - target: {fileID: 114012480820468278, guid: f38ef6c5886ffdc4cb74485717442a1b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012480820468278, guid: f38ef6c5886ffdc4cb74485717442a1b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f38ef6c5886ffdc4cb74485717442a1b, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &385749018 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114102287831946422, guid: f38ef6c5886ffdc4cb74485717442a1b,
+    type: 2}
+  m_PrefabInternal: {fileID: 385749017}
+  m_Script: {fileID: 11500000, guid: 956a407f1c7be9f4db7d51c3e1b24998, type: 3}
 --- !u!1 &1964030984
 GameObject:
   m_ObjectHideFlags: 0
