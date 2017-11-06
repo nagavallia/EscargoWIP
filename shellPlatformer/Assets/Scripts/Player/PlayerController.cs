@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
 		myRigidbody.gravityScale = 0;
 		normAcc = .021875f * maxSpeed;
-		backAcc = .053f * maxSpeed;
+		backAcc = .075f * maxSpeed;
 		jumpAcc = 1.2f * maxSpeed;
 		gravity = -.035f * maxSpeed;
 		maxFallSpeed = -1.725f * maxSpeed;
