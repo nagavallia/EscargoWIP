@@ -67,7 +67,7 @@ public class SceneController : MonoBehaviour, GameManager {
     // Update is called once per frame
     void Update () {
 		if (Input.GetButtonDown("Restart")) { ReloadScene(); }
-        if (Input.GetButtonDown("Menu")) { LoadLevel(MAIN_SCENE_ID); }
+        if (Input.GetButtonDown("Menu") && Managers.logging.isDebugging) { LoadLevel(MAIN_SCENE_ID); }
 
         if (Input.GetButtonDown("Pause") && CanPause())
         {
