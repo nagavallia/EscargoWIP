@@ -7,16 +7,62 @@ public class Button : MonoBehaviour {
     public int id = 0;
     private List<GameObject> touching; // List of gameObjects colliding with button
 
-	[SerializeField] private Sprite current;
-	[SerializeField] private Sprite change;
+	[SerializeField] private ColorCode ButtonColor = ColorCode.GREEN;
+
+	private Sprite current;
+	private Sprite change;
 
     [SerializeField] private AudioClip ActivateSound, DeactivateSound;
     private AudioSource audioSource;
+
+	enum ColorCode
+	{
+		BLUE,
+		RED,
+		YELLOW,
+		GREEN
+	}
 
     private void Start() {
         touching = new List<GameObject>();
 
         audioSource = gameObject.AddComponent<AudioSource>();
+
+		Color objColor = Color.white;
+
+		switch (ButtonColor) { //change color of button and attached interactables based on field
+		case ColorCode.BLUE:
+			current = Resources.Load<Sprite> ("ButtonUpBlue");
+			change = Resources.Load<Sprite> ("ButtonDown");
+			objColor = Color.blue;
+			break;
+		case ColorCode.GREEN:
+			current = Resources.Load<Sprite> ("ButtonUpGreen");
+			change = Resources.Load<Sprite> ("ButtonDown");
+			objColor = Color.green;
+			break;
+		case ColorCode.RED:
+			current = Resources.Load<Sprite> ("ButtonUpRed");
+			change = Resources.Load<Sprite> ("ButtonDown");
+			objColor = Color.red;
+			break;
+		case ColorCode.YELLOW:
+			current = Resources.Load<Sprite> ("ButtonUpYellow");
+			change = Resources.Load<Sprite> ("ButtonDown");
+			objColor = Color.yellow;
+			break;
+		}
+
+		gameObject.GetComponent<SpriteRenderer> ().sprite = current;
+		foreach (GameObject go in interactables) {
+			var spriterendScript = go.GetComponent<SpriteRenderer> ();
+			var buttonScript = go.GetComponent<Button> ();
+			var switchScript = go.GetComponent<Switch> ();
+
+			if (spriterendScript != null && buttonScript == null && switchScript == null) {
+				spriterendScript.color = objColor;
+			}
+		}
     }
 
     // On every collision, add that game to touching.
@@ -36,7 +82,8 @@ public class Button : MonoBehaviour {
             audioSource.PlayOneShot(ActivateSound); // play activate sound
 
 			// log that the button has been used and the position of the button
-			Managers.logging.RecordEvent(6,"" + gameObject.transform.position);
+			if (Managers.logging != null)
+				Managers.logging.RecordEvent(6,"" + gameObject.transform.position);
 
         }
         touching.Add(collision.gameObject);

@@ -11,6 +11,8 @@ public class ExitSwitch : MonoBehaviour {
 	[SerializeField] private Sprite current;
 	[SerializeField] private Sprite change;
 
+	private GameObject popUp;
+
 	[SerializeField] private AudioClip ActivateSound;
 	private AudioSource audioSource;
 
@@ -19,6 +21,10 @@ public class ExitSwitch : MonoBehaviour {
 	private void Start() {
 		audioSource = gameObject.AddComponent<AudioSource>();
 		audioSource.clip = ActivateSound;
+
+		popUp = (GameObject) Instantiate(Resources.Load("interactPopup"));
+		popUp.transform.position = new Vector3 (transform.position.x, transform.position.y + 1f, 0);
+		popUp.SetActive (false);
 
 		triggered = false;
 	}
@@ -30,7 +36,7 @@ public class ExitSwitch : MonoBehaviour {
 
 		bool use = Input.GetButtonDown ("Use");
 
-		if (use && !triggered) {
+		if (use && !triggered && collision.attachedRigidbody.tag == "Player") {
 			if (Time.time >= timeStamp && !collision.isTrigger) {
 				foreach (GameObject i in interactables) {
 					i.SendMessage ("TriggerInteraction", id);
@@ -47,10 +53,10 @@ public class ExitSwitch : MonoBehaviour {
 
 				audioSource.Play (); // play activate sound
 
+				triggered = true;
+
 				// log that the switch has been used and the location
 				Managers.logging.RecordEvent (5, "" + gameObject.transform.position);
-
-				triggered = true;
 			}
 		}
 
@@ -58,6 +64,9 @@ public class ExitSwitch : MonoBehaviour {
 
 	// same as onTriggerStay2D but with only enter for the shell and the npc snail
 	private void OnTriggerEnter2D(Collider2D collision) {
+
+		if (collision.tag == "Player")
+			popUp.SetActive (true);
 		
 		if (!triggered && ((collision.tag == "Shell" && collision.gameObject.transform.parent == null) || collision.gameObject.tag == "NPC")) {
 			if (Time.time >= timeStamp && !collision.isTrigger) {
@@ -76,12 +85,16 @@ public class ExitSwitch : MonoBehaviour {
 
 				audioSource.Play (); // play activate sound
 
+				triggered = true;
+
 				// log that the switch has been used and the location
 				Managers.logging.RecordEvent (5, "" + gameObject.transform.position);
-
-				triggered = true;
 			}
 		}
 
-	} 
+	}
+
+	private void OnTriggerExit2D(Collider2D collision) {
+		popUp.SetActive (false);
+	}
 }
