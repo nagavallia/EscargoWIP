@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour, GameManager {
     public int curSceneId;
@@ -29,6 +28,10 @@ public class SceneController : MonoBehaviour, GameManager {
             levelsCompleted = maxLevel;
         else
             levelsCompleted = PlayerPrefs.GetInt(GameEvent.LEVELS_FINISHED, 0);
+    }
+
+    private void OnDestroy() {
+        if (Managers.logging.isDebugging) PlayerPrefs.SetInt(GameEvent.LEVELS_FINISHED, 0);
     }
 
     // Use this for initialization
