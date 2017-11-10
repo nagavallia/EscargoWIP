@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleLauncher : MonoBehaviour {
 
 	//public ParticleSystem particleLauncher;
-	public int intervalSecs = 2;
+	public float intervalSecs = 2;
 
 	public Vector3 offset = new Vector3(0,0,0);
 
@@ -76,6 +76,8 @@ public class ParticleLauncher : MonoBehaviour {
 		InvokeRepeating ("emitParticle2", 0.25f, intervalSecs);
 		InvokeRepeating ("emitParticle2", 0.35f, intervalSecs);
 		InvokeRepeating ("emitParticle2", 0.45f, intervalSecs);
+
+		Invoke
 
 	}
 }
