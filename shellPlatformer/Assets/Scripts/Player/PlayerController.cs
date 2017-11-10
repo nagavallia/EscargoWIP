@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
 	private int horizontal;
 	private bool jump;
+	private bool pouring;
 
 	private bool canDoubleJump;
 
@@ -192,6 +193,14 @@ public class PlayerController : MonoBehaviour
 		} 
 
 		jump = Input.GetButtonDown ("Jump");
+		if (pouring) {
+			pour ();
+		} else {
+			pouring = Input.GetButtonDown ("Pour");
+		}
+
+
+
 	}
 
 	// Flip the snail image to reflect facing location
@@ -208,35 +217,10 @@ public class PlayerController : MonoBehaviour
 		}
 
 	}
-
-	// Determines if the snail is grounded 
-//	private bool IsGrounded()
-//	{
-//		if (myRigidbody.velocity.y <= 0) 
-//		{
-//			foreach (Transform point in groundPoints) {
-//
-//				int colliders
-//				Collider2D[] colliders = Physics2D.OverlapCircleAll (point.position, groundRadius, whatIsGround);
-//				for (int i = 0; i < colliders.Length; i++) {
-//					if (colliders [i].gameObject != gameObject) {
-//						Debug.Log ("grounded");
-//						jumpCount = 0;
-//						didJump = false;
-//						didDoubleJump = false;
-//						jumpTimer = 0;
-//						return true;
-//					}
-//				}
-//			}
-//		}
-//		Debug.Log ("not grounded");
-//		return false;
-//	}
 		
 	private void groundCheck (bool grounded) {
 		isGrounded = grounded;
-		if (grounded = true) {
+		if (grounded) {
 			jumpCount = 0;
 			didJump = false;
 			didDoubleJump = false;
@@ -262,6 +246,25 @@ public class PlayerController : MonoBehaviour
                 shell.FillShell();
             }
         }
+	}
+
+	private void pour() {
+		if (transform.Find ("Shell") != null) {
+			Shell shell = this.transform.Find ("Shell").gameObject.GetComponent<Shell> ();
+			if (shell.waterLevel > 0) {
+				Vector3 curPosition = this.transform.position;
+				Vector3 offset = facingRight ? new Vector3 (1f, 0f, 0f) : new Vector3 (-1f, 0f, 0f);
+				GameObject water = (GameObject)Instantiate (Resources.Load ("waterParticle"), curPosition + offset, Random.rotation);
+				water.transform.rotation = new Quaternion (0, 0, water.transform.rotation.z, water.transform.rotation.w);
+				water.GetComponent<Rigidbody2D> ().AddForce (offset);
+				Instantiate (water, curPosition + offset + new Vector3 (-.1f, .1f, 0), Random.rotation);
+				Instantiate (water, curPosition + offset + new Vector3 (.1f, -.1f, 0), Random.rotation);
+				shell.waterLevel--;
+			} else {
+				pouring = false;
+				shell.SendMessage ("EmptyShell");
+			}
+		}
 	}
 
 	IEnumerator killRoutine(){

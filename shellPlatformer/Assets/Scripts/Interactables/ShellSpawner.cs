@@ -52,5 +52,16 @@ public class ShellSpawner : MonoBehaviour
         if (player.transform.Find("Shell") == null)
         shell.position = this.transform.position;
     }
+
+	public void switchTrigger(){
+		
+		if (shouldSpawnNewShell)
+			SpawnShell ();
+		else {
+			ReturnShell ();
+		}
+		
+	}
+		
 }
 

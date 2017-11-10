@@ -37,8 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4687001071592412}
   - component: {fileID: 50285967156427784}
-  - component: {fileID: 114939291310011950}
-  - component: {fileID: 114108150798227658}
   - component: {fileID: 114609237494602222}
   m_Layer: 0
   m_Name: Faucet
@@ -119,19 +117,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.94, y: 3.9}
   m_EdgeRadius: 0
---- !u!114 &114108150798227658
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717167840286996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb88df4aff5426f40a925189d33ebb11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ENABLED: 0
-  activators: 
 --- !u!114 &114609237494602222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,19 +133,6 @@ MonoBehaviour:
   waitSecs: 0
   particleName: waterParticle
   halfWidth: 0.01
---- !u!114 &114939291310011950
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717167840286996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf55868a514a30946997ff151ed088eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  water: {fileID: 0}
-  startEnabled: 0
 --- !u!212 &212865859439581694
 SpriteRenderer:
   m_ObjectHideFlags: 1

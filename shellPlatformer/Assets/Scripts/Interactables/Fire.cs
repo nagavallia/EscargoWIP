@@ -14,7 +14,7 @@ public class Fire : MonoBehaviour {
 		{
 			if (collision.gameObject.GetComponent<Shell> ().waterLevel > 0) {
 				gameObject.SetActive (false);
-				collision.gameObject.SendMessage ("ShellDestroy", SendMessageOptions.DontRequireReceiver);
+				//collision.gameObject.SendMessage ("ShellDestroy", SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}

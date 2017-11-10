@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shell : MonoBehaviour {
 
 	private GameObject shellSpawner;
-	private int maxWaterLevel;
+	public int maxWaterLevel;
 	public int waterLevel;
 
     private Sprite normalShell;
@@ -18,7 +18,7 @@ public class Shell : MonoBehaviour {
 	{
 		shellSpawner = GameObject.FindWithTag ("ShellSpawner");
 		waterLevel = 0;
-		maxWaterLevel = 1;
+		maxWaterLevel = 20;
 
         // load the fullShell sprite
         normalShell = this.GetComponent<SpriteRenderer>().sprite;
@@ -29,11 +29,16 @@ public class Shell : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
 		// Shell will keep velocity if colliding with Salt
-		if (collision.gameObject.tag != "Salt") {
+		if (collision.gameObject.tag != "Salt" && collision.gameObject.tag != "Water") {
 			gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 		}
+		if (collision.gameObject.tag != "Water") {
+			audioSource.PlayOneShot (CollideSound);
+		} else {
+			if (!audioSource.isPlaying)
+			audioSource.PlayOneShot (FillSound);
+		}
 
-        audioSource.PlayOneShot(CollideSound);
         collision.gameObject.SendMessage("ShellCollide", this.gameObject, SendMessageOptions.DontRequireReceiver);
     }
 
@@ -47,7 +52,7 @@ public class Shell : MonoBehaviour {
 	public void FillShell() {
 		Debug.Log ("Filling Shell");
 		if (waterLevel < maxWaterLevel) {
-			waterLevel++;
+			waterLevel=maxWaterLevel;
 			this.GetComponent<SpriteRenderer> ().sprite = fullShell;
 
             //audioSource.PlayOneShot(FillSound);
