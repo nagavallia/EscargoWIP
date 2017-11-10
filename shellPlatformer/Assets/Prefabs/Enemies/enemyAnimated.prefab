@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706578591949100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6639032, y: 5.413257, z: 0}
+  m_LocalPosition: {x: -7.4887753, y: 2.464885, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4281527252154054}
@@ -129,10 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79abf9ee8a602f0429ab07bf05db040e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervalSecs: 4
+  intervalSecs: 1
   offset: {x: 0, y: 0, z: 0}
-  waitSecs: 0
+  waitSecs: 1
   particleName: saltParticle
+  halfWidth: 0.1
 --- !u!114 &114703894275919366
 MonoBehaviour:
   m_ObjectHideFlags: 1
