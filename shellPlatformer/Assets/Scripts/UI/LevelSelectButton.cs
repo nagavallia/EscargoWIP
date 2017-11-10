@@ -27,6 +27,7 @@ public class LevelSelectButton : MonoBehaviour {
 		Image image = GetComponent<Image> ();
 		image.sprite = unlocked;
 		levelText.text = "" + attachedLevel;
+		levelText.color = Color.black;
 		isLocked = false;
 	}
 }
