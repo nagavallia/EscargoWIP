@@ -9,7 +9,7 @@ public class ParticleLauncher : MonoBehaviour {
 
 	public Vector3 offset = new Vector3(0,0,0);
 
-	public int waitSecs = 0; 
+	public float waitSecs = 0; 
 
 	public string particleName = "saltParticle";
 

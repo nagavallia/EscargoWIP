@@ -18,7 +18,6 @@ public class ShellSpawner : MonoBehaviour
         shell   = player.transform.Find ("Shell");
 		Messenger.AddListener(GameEvent.SHELL_DESTROYED, SpawnShell);
 
-
 	}
 
 	void Update()
