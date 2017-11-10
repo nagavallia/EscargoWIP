@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4789297663214882}
   - component: {fileID: 212626795001588976}
   - component: {fileID: 61960409562340358}
+  - component: {fileID: 114309570381665908}
   m_Layer: 14
   m_Name: shellSpawnerSwitch
   m_TagString: Untagged
@@ -66,6 +67,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114309570381665908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147157351987842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bcc6d3fe10d5143911fe07e9e68b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchCooldown: 2
+  ActivateSound: {fileID: 8300000, guid: 4f475c8e1f1485c4f94c064aee849c48, type: 3}
+  offset: {x: 0, y: 1, z: 0}
 --- !u!212 &212626795001588976
 SpriteRenderer:
   m_ObjectHideFlags: 1
