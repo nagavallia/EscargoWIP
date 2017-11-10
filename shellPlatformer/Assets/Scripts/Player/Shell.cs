@@ -18,7 +18,7 @@ public class Shell : MonoBehaviour {
 	{
 		shellSpawner = GameObject.FindWithTag ("ShellSpawner");
 		waterLevel = 0;
-		maxWaterLevel = 1;
+		maxWaterLevel = 20;
 
         // load the fullShell sprite
         normalShell = this.GetComponent<SpriteRenderer>().sprite;
@@ -52,7 +52,7 @@ public class Shell : MonoBehaviour {
 	public void FillShell() {
 		Debug.Log ("Filling Shell");
 		if (waterLevel < maxWaterLevel) {
-			waterLevel++;
+			waterLevel=maxWaterLevel;
 			this.GetComponent<SpriteRenderer> ().sprite = fullShell;
 
             //audioSource.PlayOneShot(FillSound);
