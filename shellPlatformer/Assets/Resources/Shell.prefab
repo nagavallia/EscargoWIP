@@ -130,7 +130,7 @@ MonoBehaviour:
   waterLevel: 0
   fullShell: {fileID: 21300000, guid: 12cb709f83c71a341851430839984cc2, type: 3}
   CollideSound: {fileID: 8300000, guid: f0844ccbe27ac274ab6cea15338b9775, type: 3}
-  FillSound: {fileID: 0}
+  FillSound: {fileID: 8300000, guid: effff3eebb478e041aadf1c07385482d, type: 3}
 --- !u!212 &212391820533354746
 SpriteRenderer:
   m_ObjectHideFlags: 1

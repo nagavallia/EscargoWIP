@@ -11,6 +11,7 @@ TagManager:
   - NPC
   - TempShell
   - Salt
+  - Water
   layers:
   - Default
   - TransparentFX

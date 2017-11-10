@@ -32,8 +32,13 @@ public class Shell : MonoBehaviour {
 		if (collision.gameObject.tag != "Salt") {
 			gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 		}
+		if (collision.gameObject.tag != "Water") {
+			audioSource.PlayOneShot (CollideSound);
+		} else {
+			if (!audioSource.isPlaying)
+			audioSource.PlayOneShot (FillSound);
+		}
 
-        audioSource.PlayOneShot(CollideSound);
         collision.gameObject.SendMessage("ShellCollide", this.gameObject, SendMessageOptions.DontRequireReceiver);
     }
 
