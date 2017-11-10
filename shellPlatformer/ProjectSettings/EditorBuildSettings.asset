@@ -18,34 +18,34 @@ EditorBuildSettings:
     path: Assets/Scenes/Newgrounds/level_2.unity
     guid: 7945845f9b3844f21a4851e8fed809ee
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_3.unity
+    path: Assets/Scenes/Newgrounds/level_4.unity
     guid: ddae1ced85e114129b74c8b3d7c40b7a
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_4.unity
+    path: Assets/Scenes/Newgrounds/level_5.unity
     guid: bca3c5bf061b34e29a41217c7c0fb4c1
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_5.unity
+    path: Assets/Scenes/Newgrounds/level_6.unity
     guid: 2765bdeb658414800889e48975ba224c
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_6.unity
+    path: Assets/Scenes/Newgrounds/level_7.unity
     guid: c28dc0ff683d6465eb74e0ce0fc9a1fb
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_7.unity
+    path: Assets/Scenes/Newgrounds/level_8.unity
     guid: e58a90f5e08f14d31a7126dd542ea1f8
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_8.unity
+    path: Assets/Scenes/Newgrounds/level_10.unity
     guid: 262afedae34da41e9bfc94bc02bf6129
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_9.unity
+    path: Assets/Scenes/Newgrounds/level_11.unity
     guid: 5b08379a989314dbfa0a8af03a289bcb
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_10.unity
+    path: Assets/Scenes/Newgrounds/level_12.unity
     guid: 24c313641087c4c2bbb27392cdbd9baf
-  - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_11.unity
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/b922c25e470e94225b1ebaf85b62f7a7
     guid: b922c25e470e94225b1ebaf85b62f7a7
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_12.unity
+    path: Assets/Scenes/Newgrounds/level_9.unity
     guid: 53f251da91555417eb86e196ce58a6b2
   - enabled: 1
     path: Assets/Scenes/Newgrounds/level_13.unity

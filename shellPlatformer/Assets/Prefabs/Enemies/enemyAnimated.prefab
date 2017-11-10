@@ -132,6 +132,7 @@ MonoBehaviour:
   intervalSecs: 4
   offset: {x: 0, y: 0, z: 0}
   waitSecs: 0
+  particleName: saltParticle
 --- !u!114 &114703894275919366
 MonoBehaviour:
   m_ObjectHideFlags: 1
