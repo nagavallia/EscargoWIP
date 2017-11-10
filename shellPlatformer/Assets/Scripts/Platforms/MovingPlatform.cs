@@ -17,6 +17,9 @@ public class MovingPlatform : MonoBehaviour {
     private bool isMoving;
     private bool queuedAnimation;
 
+    private BoxCollider2D selfCollider;
+    private float GROUND_CHECK;
+
     private void Start() {
         startPos = gameObject.transform.position;
         startRot = gameObject.transform.rotation;
@@ -27,6 +30,9 @@ public class MovingPlatform : MonoBehaviour {
         curTime = 0f;
         isMoving = false;
         queuedAnimation = false;
+
+        GROUND_CHECK = 0.25f + GetComponent<BoxCollider2D>().size.y;
+        selfCollider = GetComponent<BoxCollider2D>();
 
         if (startEnabled) StartCoroutine("Move");
     }
@@ -68,11 +74,20 @@ public class MovingPlatform : MonoBehaviour {
         }
     }
 
-	private void OnCollisionEnter2D(Collision2D collision) {
-		collision.transform.SetParent (this.transform);
-	}
+    private void OnCollisionEnter2D(Collision2D collision) {
+        Bounds collisionBound = collision.collider.bounds;
 
-	private void OnCollisionExit2D(Collision2D collision) {
-		collision.transform.SetParent (null);
-	}
+        Vector2 left = new Vector2(collisionBound.min.x, collisionBound.center.y);
+        Vector2 right = left + new Vector2(collisionBound.size.x, 0f);
+
+        RaycastHit2D leftHit = Physics2D.Raycast(left, Vector2.down, GROUND_CHECK);
+        RaycastHit2D rightHit = Physics2D.Raycast(right, Vector2.down, GROUND_CHECK);
+        if (leftHit.collider == selfCollider || rightHit.collider == selfCollider)
+            collision.transform.SetParent(this.transform);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (collision.transform.parent == transform)
+            collision.transform.SetParent(null);
+    }
 }
