@@ -33,22 +33,22 @@ public class Button : MonoBehaviour {
 		switch (ButtonColor) { //change color of button and attached interactables based on field
 		case ColorCode.BLUE:
 			current = Resources.Load<Sprite> ("ButtonUpBlue");
-			change = Resources.Load<Sprite> ("ButtonDown");
+			change = Resources.Load<Sprite> ("ButtonDownBlue");
 			objColor = Color.blue;
 			break;
 		case ColorCode.GREEN:
 			current = Resources.Load<Sprite> ("ButtonUpGreen");
-			change = Resources.Load<Sprite> ("ButtonDown");
+			change = Resources.Load<Sprite> ("ButtonDownGreen");
 			objColor = Color.green;
 			break;
 		case ColorCode.RED:
 			current = Resources.Load<Sprite> ("ButtonUpRed");
-			change = Resources.Load<Sprite> ("ButtonDown");
+			change = Resources.Load<Sprite> ("ButtonDownRed");
 			objColor = Color.red;
 			break;
 		case ColorCode.YELLOW:
 			current = Resources.Load<Sprite> ("ButtonUpYellow");
-			change = Resources.Load<Sprite> ("ButtonDown");
+			change = Resources.Load<Sprite> ("ButtonDownYellow");
 			objColor = Color.yellow;
 			break;
 		}

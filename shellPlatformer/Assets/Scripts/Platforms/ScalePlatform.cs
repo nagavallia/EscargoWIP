@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScalePlatform : MonoBehaviour {
 	[SerializeField] private GameObject other;
 	[SerializeField] private float moveSpeed = 2f;
+	[SerializeField] private float moveDist = 1f;
 
 	private Vector3 startPos;
 	private Vector3 otherStartPos;
@@ -38,8 +39,8 @@ public class ScalePlatform : MonoBehaviour {
 		if (weight < 0 || otherWeight < 0) Debug.Log ("Something terrible went wrong with ScalePlatform!");
 
 		if (weightChanged || otherWeightChanged) {
-			targetPos = startPos + new Vector3 (0f, otherWeight - weight, 0f);
-			otherTargetPos = otherStartPos + new Vector3 (0f, weight - otherWeight, 0f);
+			targetPos = startPos + new Vector3 (0f, (otherWeight - weight)*moveDist, 0f);
+			otherTargetPos = otherStartPos + new Vector3 (0f, (weight - otherWeight)*moveDist, 0f);
 
 			weightChanged = false;
 			otherWeightChanged = false;
