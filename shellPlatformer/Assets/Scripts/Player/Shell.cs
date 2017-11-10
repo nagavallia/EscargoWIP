@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shell : MonoBehaviour {
 
 	private GameObject shellSpawner;
-	private int maxWaterLevel;
+	public int maxWaterLevel;
 	public int waterLevel;
 
     private Sprite normalShell;
@@ -29,7 +29,7 @@ public class Shell : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
 		// Shell will keep velocity if colliding with Salt
-		if (collision.gameObject.tag != "Salt") {
+		if (collision.gameObject.tag != "Salt" && collision.gameObject.tag != "Water") {
 			gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 		}
 		if (collision.gameObject.tag != "Water") {
