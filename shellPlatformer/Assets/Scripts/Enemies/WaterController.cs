@@ -18,9 +18,10 @@ public class WaterController : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Shell") {
 			collision.gameObject.GetComponent<Shell> ().FillShell (); // Call fill shell on the shell to turn into water shell 
+			Destroy(this.gameObject); // Destroy water particle when colliding with shell"
 		}
 
-		if (collision.gameObject.tag == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Background")) {
+		if (collision.gameObject.tag == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Background") || collision.gameObject.tag == "Player") {
 			Destroy (this.gameObject);
 		}
 	}
