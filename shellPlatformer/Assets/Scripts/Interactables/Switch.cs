@@ -9,6 +9,7 @@ public class Switch : MonoBehaviour {
     private float timeStamp = 0f;
 
 	[SerializeField] private ColorCode SwitchColor = ColorCode.GREEN;
+    [SerializeField] private bool ColorAttachedInteractables = true;
 
 	private Sprite current;
 	private Sprite change;
@@ -51,6 +52,9 @@ public class Switch : MonoBehaviour {
 			objColor = Color.yellow;
 			break;
 		}
+
+        if (!ColorAttachedInteractables)
+            objColor = Color.white;
 
 		gameObject.GetComponent<SpriteRenderer> ().sprite = current;
 		foreach (GameObject go in interactables) {

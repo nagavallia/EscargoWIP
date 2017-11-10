@@ -8,6 +8,7 @@ public class Button : MonoBehaviour {
     private List<GameObject> touching; // List of gameObjects colliding with button
 
 	[SerializeField] private ColorCode ButtonColor = ColorCode.GREEN;
+    [SerializeField] private bool ColorAttachedInteractables = true;
 
 	private Sprite current;
 	private Sprite change;
@@ -52,6 +53,9 @@ public class Button : MonoBehaviour {
 			objColor = Color.yellow;
 			break;
 		}
+
+        if (!ColorAttachedInteractables)
+            objColor = Color.white;
 
 		gameObject.GetComponent<SpriteRenderer> ().sprite = current;
 		foreach (GameObject go in interactables) {

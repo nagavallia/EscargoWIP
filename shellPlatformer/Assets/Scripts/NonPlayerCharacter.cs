@@ -64,6 +64,7 @@ public class NonPlayerCharacter : MonoBehaviour {
 		GameObject shell = Instantiate(Resources.Load("Shell")) as GameObject;
 		//shell.transform.localScale = new Vector3 (.5f, .5f, 1f);
         shell.transform.position = this.gameObject.transform.position;
+        shell.name = "Shell";
 
         audioSource.PlayOneShot(DeathSound);
 

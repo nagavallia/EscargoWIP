@@ -18,7 +18,7 @@ public class ScalePlatform : MonoBehaviour {
 	private bool weightChanged;
 	private bool otherWeightChanged;
 	private BoxCollider2D selfCollider;
-	public List<GameObject> weighingDown;
+	private List<GameObject> weighingDown;
 
 	private float GROUND_CHECK;
 
@@ -71,14 +71,12 @@ public class ScalePlatform : MonoBehaviour {
 		}
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision) {
+	private void OnCollisionStay2D(Collision2D collision) {
 		collision.transform.SetParent (transform);
 		Bounds collisionBound = collision.collider.bounds;
 
-		Vector2 left = new Vector2 (collisionBound.min.x + 0.1f, collisionBound.center.y);
-		Vector2 right = left + new Vector2 (collisionBound.size.x - 0.2f, 0f);
-
-		Debug.Log (collision.transform.Find("Shell") != null);
+		Vector2 left = new Vector2 (collisionBound.min.x, collisionBound.center.y);
+		Vector2 right = left + new Vector2 (collisionBound.size.x, 0f);
 
 		RaycastHit2D leftHit = Physics2D.Raycast(left, Vector2.down, GROUND_CHECK);
 		RaycastHit2D rightHit = Physics2D.Raycast (right, Vector2.down, GROUND_CHECK);
