@@ -7,6 +7,9 @@ public class ShellSpawner : MonoBehaviour
 	private BoxCollider2D spawnerHitbox;
 	private GameObject player;
 
+	private Sprite current;
+	private Sprite green;
+
     [SerializeField] private bool shouldSpawnNewShell = false;
     [SerializeField] private int maxShells = 1;
     private int shellsSpawned = 0;
@@ -18,10 +21,21 @@ public class ShellSpawner : MonoBehaviour
         shell   = player.transform.Find ("Shell");
 		Messenger.AddListener(GameEvent.SHELL_DESTROYED, SpawnShell);
 
+		// set the sprites
+		current = this.gameObject.GetComponent<SpriteRenderer>().sprite;
+		green =  Resources.Load <Sprite> ("shellSpawnerGreen");
+
 	}
 
 	void Update()
 	{
+		if (player.transform.Find ("Shell") == null) {
+			this.gameObject.GetComponent<SpriteRenderer> ().sprite = green;
+
+		} else {
+			this.gameObject.GetComponent<SpriteRenderer> ().sprite = current;
+		}
+			
 	}
 	
 	// Update is called once per frame
@@ -39,7 +53,7 @@ public class ShellSpawner : MonoBehaviour
     private void SpawnShell()
     {
         GameObject newShell = (GameObject)Instantiate(Resources.Load("Shell"));
-        newShell.transform.position = this.transform.position;
+		newShell.transform.position = this.transform.position;
         shellsSpawned++;
 
         //log that a shell spawner has been used and the position of the player
@@ -50,7 +64,7 @@ public class ShellSpawner : MonoBehaviour
     private void ReturnShell()
     {
         if (player.transform.Find("Shell") == null)
-        shell.position = this.transform.position;
+			shell.position = this.transform.position + new Vector3(0,-0.6f,0);
     }
 
 	public void switchTrigger(){
