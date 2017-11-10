@@ -14,6 +14,9 @@ public class SinkingPlatform : MonoBehaviour {
 
 	private bool isSinking;
 
+	private BoxCollider2D selfCollider;
+	public List<GameObject> weighingDown;
+
     private float GROUND_CHECK;
 	// Use this for initialization
 	void Start () {
@@ -29,17 +32,30 @@ public class SinkingPlatform : MonoBehaviour {
 
         GROUND_CHECK = 0.25f + GetComponent<BoxCollider2D>().size.y;
 
+		selfCollider = GetComponent<BoxCollider2D> ();
+		weighingDown = new List<GameObject> ();
+
 		isSinking = false;
 		StartCoroutine ("Move");
 	}
 
 	void OnCollisionStay2D(Collision2D collision) {
         collision.transform.SetParent(light);
-        RaycastHit2D hit = Physics2D.Raycast(collision.transform.position, Vector2.down, GROUND_CHECK);
-		if (hit.collider != null && collision.gameObject.tag == "Shell") {
+		Bounds collisionBound = collision.collider.bounds;
+
+		Vector2 left = new Vector2 (collisionBound.min.x, collisionBound.center.y);
+		Vector2 right = left + new Vector2 (collisionBound.size.x, 0f);
+
+		RaycastHit2D leftHit = Physics2D.Raycast(left, Vector2.down, GROUND_CHECK);
+		RaycastHit2D rightHit = Physics2D.Raycast (right, Vector2.down, GROUND_CHECK);
+		if ((leftHit.collider == selfCollider || rightHit.collider == selfCollider) 
+			&& (collision.gameObject.tag == "Shell" || collision.transform.Find("Shell") != null)) {
             Debug.Log("colliding with shell");
-			Shell shell = collision.gameObject.GetComponent<Shell> ();
-			if (shell.waterLevel > 0) {
+			Shell shell = collision.gameObject.tag == "Shell" ? collision.gameObject.GetComponent<Shell> () : collision.transform.Find("Shell").GetComponent<Shell>();
+			if (!weighingDown.Contains(collision.gameObject)) 
+				weighingDown.Add (collision.gameObject);
+
+			if (shell.waterLevel > 0 && weighingDown.Count == 1) {
                 //collision.transform.SetParent(light);
 				isSinking = true;
 
@@ -54,10 +70,13 @@ public class SinkingPlatform : MonoBehaviour {
 	}
 
 	void OnCollisionExit2D(Collision2D collision) {
-        if (collision.transform.parent == this.transform) collision.transform.SetParent(null);
+        if (collision.transform.parent == light) collision.transform.SetParent(null);
 
-        if (collision.gameObject.tag == "Shell") {
-			isSinking = false;
+		if (collision.gameObject.tag == "Shell" || collision.transform.Find("Shell") != null) {
+			weighingDown.Remove (collision.gameObject);
+
+			if (weighingDown.Count == 0)
+				isSinking = false;
 
 			//light.localPosition = lightStartPosition;
             //GetComponent<BoxCollider2D>().offset = new Vector2(lightStartPosition.x, lightStartPosition.y);
