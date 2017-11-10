@@ -17,6 +17,10 @@ public class ScalePlatform : MonoBehaviour {
 
 	private bool weightChanged;
 	private bool otherWeightChanged;
+	private BoxCollider2D selfCollider;
+	public List<GameObject> weighingDown;
+
+	private float GROUND_CHECK;
 
 	private void Start() {
 		other.GetComponent<SpriteRenderer> ().color = Color.white;
@@ -31,6 +35,11 @@ public class ScalePlatform : MonoBehaviour {
 
 		weightChanged = false;
 		otherWeightChanged = false;
+
+		GROUND_CHECK = 0.25f + GetComponent<BoxCollider2D>().size.y;
+
+		selfCollider = GetComponent<BoxCollider2D> ();
+		weighingDown = new List<GameObject> ();
 
 		StartCoroutine ("Move");
 	}
@@ -63,19 +72,43 @@ public class ScalePlatform : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
-		weight++;
-		weightChanged = true;
 		collision.transform.SetParent (transform);
+		Bounds collisionBound = collision.collider.bounds;
+
+		Vector2 left = new Vector2 (collisionBound.min.x + 0.1f, collisionBound.center.y);
+		Vector2 right = left + new Vector2 (collisionBound.size.x - 0.2f, 0f);
+
+		Debug.Log (collision.transform.Find("Shell") != null);
+
+		RaycastHit2D leftHit = Physics2D.Raycast(left, Vector2.down, GROUND_CHECK);
+		RaycastHit2D rightHit = Physics2D.Raycast (right, Vector2.down, GROUND_CHECK);
+		if ((leftHit.collider == selfCollider || rightHit.collider == selfCollider)
+			&& (collision.gameObject.tag == "Shell" || collision.transform.Find("Shell") != null)) {
+			Shell shell = collision.gameObject.tag == "Shell" ? collision.gameObject.GetComponent<Shell> () : collision.transform.Find("Shell").GetComponent<Shell>();
+			if (!weighingDown.Contains(collision.gameObject)) 
+				weighingDown.Add (collision.gameObject);
+
+			if (shell.waterLevel > 0 && weighingDown.Count == 1) {
+				weight = 1;
+				weightChanged = true;
+			}
+		}
 	}
 
 	private void OnCollisionExit2D(Collision2D collision) {
-		weight = Mathf.Max(weight-1, 0);
-		weightChanged = true;
-		collision.transform.SetParent (null);
+		if (collision.gameObject.tag == "Shell" || collision.transform.Find("Shell") != null) {
+			//weight = Mathf.Max (weight - 1, 0);
+			weighingDown.Remove(collision.gameObject);
+			if (weighingDown.Count == 0) {
+				weight = 0;
+				weightChanged = true;
+			}
+		}
+		if (collision.transform.parent == transform) collision.transform.SetParent (null);
 	}
 
 	public void OtherWeightChange(int amount) {
-		otherWeight = Mathf.Max (otherWeight + amount, 0);
+		otherWeight = amount;
 		otherWeightChanged = true;
 	}
 }
