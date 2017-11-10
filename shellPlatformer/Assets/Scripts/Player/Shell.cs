@@ -42,6 +42,13 @@ public class Shell : MonoBehaviour {
         collision.gameObject.SendMessage("ShellCollide", this.gameObject, SendMessageOptions.DontRequireReceiver);
     }
 
+	private void OnCollisionStay2D(Collision2D collision) {
+		if (collision.gameObject.tag != "Salt") {
+			Vector3 vel = gameObject.GetComponent<Rigidbody2D> ().velocity;
+			gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector3(0f, vel.y, 0f);
+		}
+	}
+
     private void ShellDestroy() {
         // do code here for when the shell should be destroyed
         // probably broadcast a SHELL_DESTROYED message that will be intercepted by a shell spawner
