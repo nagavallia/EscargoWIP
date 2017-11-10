@@ -15,7 +15,7 @@ public class SinkingPlatform : MonoBehaviour {
 	private bool isSinking;
 
 	private BoxCollider2D selfCollider;
-	public List<GameObject> weighingDown;
+	private List<GameObject> weighingDown;
 
     private float GROUND_CHECK;
 	// Use this for initialization
@@ -23,6 +23,7 @@ public class SinkingPlatform : MonoBehaviour {
 		startPosition = this.transform.localPosition;
         lightStartPosition = new Vector3(0f, -(GetComponent<SpriteRenderer>().size.y - 1)/2f, -1f);
         light.localPosition = lightStartPosition;
+        light.transform.localScale = new Vector3(1 / transform.localScale.x, 1f, 1f);
         GetComponent<BoxCollider2D>().offset = new Vector2(lightStartPosition.x, lightStartPosition.y);
         startSize = GetComponent<SpriteRenderer>().size;
 
