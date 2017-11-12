@@ -43,7 +43,7 @@ public class Shell : MonoBehaviour {
     }
 
 	private void OnCollisionStay2D(Collision2D collision) {
-		if (collision.gameObject.tag != "Salt") {
+		if (collision.gameObject.tag != "Salt" && collision.gameObject.tag != "Water") {
 			Vector3 vel = gameObject.GetComponent<Rigidbody2D> ().velocity;
 			gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector3(0f, vel.y, 0f);
 		}
