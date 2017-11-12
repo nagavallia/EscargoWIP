@@ -63,8 +63,11 @@ public class ShellSpawner : MonoBehaviour
 
     private void ReturnShell()
     {
-        if (player.transform.Find("Shell") == null)
-			shell.position = this.transform.position + new Vector3(0,-0.6f,0);
+		if (player.transform.Find ("Shell") == null) {
+			
+			shell.gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+			shell.position = this.transform.position + new Vector3 (0, -0.6f, 0);
+		}
     }
 
 	public void switchTrigger(){
