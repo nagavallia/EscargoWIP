@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour
 	public bool shellThrowing = false;
 	public bool exitAnimation = false;
 
+	//shell pickup stuff
+	private float timestamp;
+	private GameObject lastPickedUp;
+
 	void Start()
 	{
 		myRigidbody = GetComponent<Rigidbody2D> ();
@@ -197,6 +201,17 @@ public class PlayerController : MonoBehaviour
 
 		// Walk Animation
 		//anim.SetInteger("State", 1);
+	}
+
+	public bool CanPickupShell(GameObject shell) {
+		Debug.Log ("shell has water level " + shell.GetComponent<Shell> ().waterLevel);
+		if (lastPickedUp != null) Debug.Log ("last picked up " + lastPickedUp.GetComponent<Shell> ().waterLevel);
+		return Time.time >= timestamp || shell == lastPickedUp;
+	}
+
+	public void PickupShell(GameObject shell) {
+		lastPickedUp = shell;
+		timestamp = Time.time + 1f;
 	}
 
 	// Sets the jump boolean and the drag value depending on key inputs

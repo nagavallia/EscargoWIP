@@ -128,8 +128,9 @@ public class ShellThrower : MonoBehaviour {
 		Debug.Log("picking up shell");
 		Transform childShell = player.Find ("Shell");
 		Debug.Log (shell);
-		if (childShell == null || childShell == this.transform) {
+		if ((childShell == null || childShell == this.transform) && player.GetComponent<PlayerController>().CanPickupShell(gameObject)) {
 			shell.transform.parent = player;
+			player.GetComponent<PlayerController> ().PickupShell (gameObject);
 			//shellHitbox.enabled = false;
 			//shellClickbox.enabled = true;
 			shellRigidBody.isKinematic = true;
@@ -149,7 +150,7 @@ public class ShellThrower : MonoBehaviour {
 				Physics2D.IgnoreCollision (collider, tempCollider);
 			Physics2D.IgnoreCollision (tempCollider, shellHitbox);
 			temporaryShellCollisionFix.tag = "TempShell";
-			//temporaryShellCollisionFix.layer = LayerMask.NameToLayer ("PickedUpShell");
+			//temporaryShellCollisionFix.layer = LayerMask.NameToLayer ("Shell");
 		}
 	}
 

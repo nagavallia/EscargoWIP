@@ -53,6 +53,8 @@ public class ExitSwitch : MonoBehaviour {
 
 				audioSource.Play (); // play activate sound
 
+				if (popUp.activeInHierarchy)
+					popUp.SetActive (false);
 				triggered = true;
 
 				// log that the switch has been used and the location

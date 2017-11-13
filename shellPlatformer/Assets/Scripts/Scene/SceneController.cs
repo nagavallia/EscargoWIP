@@ -72,9 +72,12 @@ public class SceneController : MonoBehaviour, GameManager {
 		if (Input.GetButtonDown("Restart")) { ReloadScene(); }
         if (Input.GetButtonDown("Menu") && Managers.logging.isDebugging) { LoadLevel(MAIN_SCENE_ID); }
 
-        if (Input.GetButtonDown("Pause") && CanPause())
+        if (Input.GetButtonDown("Pause"))
         {
-            Pause();
+			if (CanPause())
+            	Pause();
+			else if (curSceneId == maxLevel + 2)
+				LoadLevel (MAIN_SCENE_ID);
         }
     }
     
