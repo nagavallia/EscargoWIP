@@ -51,11 +51,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Newgrounds/level_13.unity
     guid: 1f5c71cc2292048168c6e61409161b8e
   - enabled: 1
-    path: Assets/Scenes/Newgrounds/level_15.unity
-    guid: 316cf7a7617834520aed327966bed8ae
-  - enabled: 1
     path: Assets/Scenes/Newgrounds/level_14.unity
     guid: e3ae686b124b6452e9eb48646e7370cf
+  - enabled: 1
+    path: Assets/Scenes/Newgrounds/level_15.unity
+    guid: 316cf7a7617834520aed327966bed8ae
   - enabled: 1
     path: Assets/Scenes/Newgrounds/level_16.unity
     guid: 2eb40be350a784578b7f2be5e33fe1af
