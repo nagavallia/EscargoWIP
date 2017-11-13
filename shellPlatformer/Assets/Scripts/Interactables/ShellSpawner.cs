@@ -29,13 +29,7 @@ public class ShellSpawner : MonoBehaviour
 
 	void Update()
 	{
-		if (player.transform.Find ("Shell") == null) {
-			this.gameObject.GetComponent<SpriteRenderer> ().sprite = green;
-
-		} else {
-			this.gameObject.GetComponent<SpriteRenderer> ().sprite = current;
-		}
-			
+		
 	}
 	
 	// Update is called once per frame
