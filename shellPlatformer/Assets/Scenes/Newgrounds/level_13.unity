@@ -662,6 +662,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.6327889
       objectReference: {fileID: 0}
+    - target: {fileID: 114066969460134622, guid: 06228725908874b61978f6a2fcfc6b83,
+        type: 2}
+      propertyPath: everlastingFlames
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
   m_IsPrefabParent: 0
@@ -933,6 +938,11 @@ Prefab:
     - target: {fileID: 4433757739040464, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.6327889
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066969460134622, guid: 06228725908874b61978f6a2fcfc6b83,
+        type: 2}
+      propertyPath: everlastingFlames
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
@@ -1676,6 +1686,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.6327889
       objectReference: {fileID: 0}
+    - target: {fileID: 114066969460134622, guid: 06228725908874b61978f6a2fcfc6b83,
+        type: 2}
+      propertyPath: everlastingFlames
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
   m_IsPrefabParent: 0
@@ -1871,6 +1886,11 @@ Prefab:
     - target: {fileID: 4433757739040464, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.6327889
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066969460134622, guid: 06228725908874b61978f6a2fcfc6b83,
+        type: 2}
+      propertyPath: everlastingFlames
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
@@ -2443,6 +2463,11 @@ Prefab:
     - target: {fileID: 4433757739040464, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.6327889
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066969460134622, guid: 06228725908874b61978f6a2fcfc6b83,
+        type: 2}
+      propertyPath: everlastingFlames
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
