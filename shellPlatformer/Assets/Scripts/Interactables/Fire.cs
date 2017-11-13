@@ -14,7 +14,7 @@ public class Fire : MonoBehaviour {
 			if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "NPC" || collision.gameObject.tag == "Water") {
 				gameObject.SetActive (false);
 			} else if (collision.gameObject.tag == "Shell") {
-				if (collision.gameObject.GetComponent<Shell> ().waterLevel > 0) {
+				if (collision.gameObject.GetComponent<Shell> ().isFull()) {
 					gameObject.SetActive (false);
 					//collision.gameObject.SendMessage ("ShellDestroy", SendMessageOptions.DontRequireReceiver);
 				}

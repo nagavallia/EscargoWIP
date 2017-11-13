@@ -69,7 +69,7 @@ public class Switch : MonoBehaviour {
 
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = ActivateSound;
-		popUp = (GameObject) Instantiate(Resources.Load("interactPopup"));
+		popUp = (GameObject) Instantiate(Resources.Load("interactPopup"), transform);
 		popUp.transform.position = new Vector3 (transform.position.x, transform.position.y + 1f, 0);
 		popUp.SetActive (false);
     }

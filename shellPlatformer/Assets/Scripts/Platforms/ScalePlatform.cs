@@ -86,7 +86,7 @@ public class ScalePlatform : MonoBehaviour {
 			if (!weighingDown.Contains(collision.gameObject)) 
 				weighingDown.Add (collision.gameObject);
 
-			if (shell.waterLevel > 0 && weighingDown.Count == 1) {
+			if (shell.isFull() && weighingDown.Count == 1) {
 				weight = 1;
 				weightChanged = true;
 			}

@@ -71,4 +71,8 @@ public class Shell : MonoBehaviour {
 		waterLevel = 0;
         this.GetComponent<SpriteRenderer>().sprite = normalShell;
 	}
+
+	public bool isFull() {
+		return waterLevel > 0;
+	}
 }

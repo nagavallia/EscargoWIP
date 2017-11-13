@@ -31,7 +31,7 @@ public class ScalePlatformOther : MonoBehaviour {
 			Shell shell = collision.gameObject.tag == "Shell" ? collision.gameObject.GetComponent<Shell> () : collision.transform.Find ("Shell").GetComponent<Shell> ();
 			weighingDown.Add (collision.gameObject);
 
-			if (shell.waterLevel > 0 && weighingDown.Count == 1) {
+			if (shell.isFull() && weighingDown.Count == 1) {
 				parent.OtherWeightChange (1);
 			}
 		}
