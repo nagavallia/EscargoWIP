@@ -42,14 +42,14 @@ public class LoggingManager : MonoBehaviour, GameManager {
             // Initialize the logging
             Initialize(889, versionId, isDebugging);
 
+			// Start the Game Logging
+			RecordPageLoad();
+
             //record AB test value
             abValue = assignABTestValue(Random.Range(0, 2));
             RecordABTestValue();
 			if (isDebugging)
 				abValue = 0;
-
-            // Start the Game Logging
-            RecordPageLoad();
 
             // set the boolean to true and never change it back
             gameStart = true;
@@ -223,8 +223,8 @@ public class LoggingManager : MonoBehaviour, GameManager {
             + "&user_info=" + userInfo;
 
         if (PlayerPrefs.HasKey("user_id")) {
-            userId = PlayerPrefs.GetString("user_id");
-            requestData += "&user_id=" + userId;
+				userId = PlayerPrefs.GetString ("user_id");
+				requestData += "&user_id=" + userId;
         }
 
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + pageLoadPath + requestData);
@@ -264,7 +264,7 @@ public class LoggingManager : MonoBehaviour, GameManager {
         if (isDebugging) {
             return;
         }
-
+			
         TestInitialization();
         Debug.Assert(abValueSet, "recordABTestValue: You must call assignABTestValue before recording the A/B test value.");
         StartCoroutine(GetABTestRecordRequest());
@@ -274,6 +274,7 @@ public class LoggingManager : MonoBehaviour, GameManager {
         string requestData = "?game_id=" + gameId + "&user_id=" + userId + "&abvalue=" + abstoredValue;
 
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + playerABTestPath + requestData);
+		//Debug.Log (requestData);
         yield return www.Send();
 
         if (www.isNetworkError) {
