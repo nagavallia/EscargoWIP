@@ -73,6 +73,14 @@ public class ShellThrower : MonoBehaviour {
 			PickUpShell();
 		}
 
+		if (Managers.logging == null || Managers.logging.abValue == 0) { //A value for A/B testing
+			horizMultiplier = 1.25f;
+			vertMultiplier = 1.25f;
+		} else { //B value for A/B testing
+			horizMultiplier = 1.0f;
+			vertMultiplier = 1.0f;
+		}
+
 		//Set throw vector
 		float throwX = Mathf.Cos(fixedThrowAngle* Mathf.PI/180);
 		float throwY = Mathf.Sin (fixedThrowAngle* Mathf.PI/180);
