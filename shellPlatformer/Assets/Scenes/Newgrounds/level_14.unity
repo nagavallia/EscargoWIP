@@ -1747,7 +1747,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4956475140599882, guid: f2d892b73c3a10d42a33b85c7b904969, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -15.5
+      value: -18.3
       objectReference: {fileID: 0}
     - target: {fileID: 4956475140599882, guid: f2d892b73c3a10d42a33b85c7b904969, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2110,6 +2110,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114799933850437076, guid: 7894fe51c34deca439587e7549c1796d,
+        type: 2}
+      propertyPath: interactables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4820499903434492, guid: 7894fe51c34deca439587e7549c1796d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 7.1099997
@@ -2151,6 +2156,11 @@ Prefab:
       propertyPath: id
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114799933850437076, guid: 7894fe51c34deca439587e7549c1796d,
+        type: 2}
+      propertyPath: interactables.Array.data[0]
+      value: 
+      objectReference: {fileID: 1926282905}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7894fe51c34deca439587e7549c1796d, type: 2}
   m_IsPrefabParent: 0
@@ -2430,6 +2440,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c28a1ef4fcae45e4dadf98806149375d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1926282905 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1920237048586430, guid: c28a1ef4fcae45e4dadf98806149375d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1926282904}
 --- !u!1001 &1947726859
 Prefab:
   m_ObjectHideFlags: 0
@@ -2437,6 +2452,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114799933850437076, guid: 7894fe51c34deca439587e7549c1796d,
+        type: 2}
+      propertyPath: interactables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4820499903434492, guid: 7894fe51c34deca439587e7549c1796d, type: 2}
       propertyPath: m_LocalPosition.x
       value: -7.85
@@ -2474,6 +2494,11 @@ Prefab:
       propertyPath: id
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114799933850437076, guid: 7894fe51c34deca439587e7549c1796d,
+        type: 2}
+      propertyPath: interactables.Array.data[0]
+      value: 
+      objectReference: {fileID: 1926282905}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7894fe51c34deca439587e7549c1796d, type: 2}
   m_IsPrefabParent: 0
