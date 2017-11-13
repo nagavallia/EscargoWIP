@@ -14,6 +14,8 @@ public class NonPlayerCharacter : MonoBehaviour {
     [SerializeField] private AudioClip DeathSound;
     private AudioSource audioSource;
 
+	private Vector3 shellOffset = new Vector3(0.3f,0.1f,0);
+
     private void Start() {
         isMoving = startEnabled;
         WALL_CHECK_DIST = 0.2f + GetComponent<BoxCollider2D>().bounds.extents.x;
@@ -24,12 +26,23 @@ public class NonPlayerCharacter : MonoBehaviour {
         rigidbody.freezeRotation = true;
 
         audioSource = gameObject.AddComponent<AudioSource>();
+
+		// set the child to be a shell
+		GameObject shell = Instantiate(Resources.Load("Shell")) as GameObject;
+		SetAllCollidersStatus (shell, false);
+		shell.GetComponent<Rigidbody2D> ().gravityScale = 0;
+		shell.transform.SetParent (this.transform);
+		shell.transform.position = transform.position + shellOffset;
     }
 
     private void Update() {
         if (isMoving) {
             transform.Translate(moveVector * Time.deltaTime * moveSpeed);
         }
+
+		//take child shell to be the same position as the parent moves
+		this.transform.GetChild(0).transform.position = transform.position + shellOffset;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -58,17 +71,34 @@ public class NonPlayerCharacter : MonoBehaviour {
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+
+		// invert the shell offset
+		shellOffset.x = - shellOffset.x;
     }
 
     private void Kill() {
-		GameObject shell = Instantiate(Resources.Load("Shell")) as GameObject;
-		//shell.transform.localScale = new Vector3 (.5f, .5f, 1f);
-        shell.transform.position = this.gameObject.transform.position;
-        shell.name = "Shell";
+		//GameObject shell = Instantiate(Resources.Load("Shell")) as GameObject;
+		////shell.transform.localScale = new Vector3 (.5f, .5f, 1f);
+        //shell.transform.position = this.gameObject.transform.position;
+        //shell.name = "Shell";
+
+		// drop child (shell)
+		GameObject childShell = this.transform.GetChild(0).gameObject;
+		childShell.transform.SetParent(this.transform.parent);
+		childShell.transform.position = transform.position;
+		SetAllCollidersStatus (childShell, true);
+		childShell.GetComponent<Rigidbody2D> ().gravityScale = 1;
+
 
         audioSource.PlayOneShot(DeathSound);
 
         Destroy(this.gameObject);
     }
+
+	public void SetAllCollidersStatus (GameObject go, bool active){
+		foreach (CircleCollider2D c in go.GetComponents<CircleCollider2D>()) {
+			c.enabled = active;
+		}
+	}
 
 }
