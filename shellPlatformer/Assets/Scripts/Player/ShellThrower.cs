@@ -159,15 +159,17 @@ public class ShellThrower : MonoBehaviour {
 
 	IEnumerator throwAnimRoutine(){
 
+		player.GetComponent<PlayerController> ().shellThrowing = true;
+
 		// play the throw animation on the player
 		anim.SetInteger("State", 2);
 
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (0.58f);
 
-		Throw();
+		player.GetComponent<PlayerController> ().shellThrowing = false;
 
-		// set the animation back to idle
-		anim.SetInteger("State", 0);
+
+
 	}
 
 }

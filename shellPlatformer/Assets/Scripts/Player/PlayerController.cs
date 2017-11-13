@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
 	private Vector3 deathPosition;
 
+	public bool shellThrowing = false;
+
 	void Start()
 	{
 		myRigidbody = GetComponent<Rigidbody2D> ();
@@ -89,6 +91,11 @@ public class PlayerController : MonoBehaviour
 		} else {
 			move ();
 			Flip ();
+		}
+
+		// change back to idle if isGrounded 
+		if (isGrounded && !shellThrowing) {
+			anim.SetInteger ("State", 0);
 		}
 	}
 
@@ -131,6 +138,10 @@ public class PlayerController : MonoBehaviour
 				didJump = true;
 				yAcc = jumpAcc;
 				audioSource.PlayOneShot (jumpSound);
+
+				// play the jump animation
+				anim.SetInteger ("State", 4);
+
 				// log that a jump has occurred and the position of the player
 				Managers.logging.RecordEvent(0, "" + gameObject.transform.position);
 			}
@@ -148,6 +159,10 @@ public class PlayerController : MonoBehaviour
 				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, 0);
 				yAcc = .85f * jumpAcc;
 				audioSource.PlayOneShot (jumpSound);
+
+				// play the jump animation
+				anim.SetInteger ("State", 4);
+
 				// log that a double jump has occurred and the position of the player
 				Managers.logging.RecordEvent(1, "" + gameObject.transform.position);
 			}
@@ -285,6 +300,15 @@ public class PlayerController : MonoBehaviour
 		// reset anim state to 0
 		anim.SetInteger("State", 0);
 
+	}
+
+	IEnumerator jumpRoutine(){
+
+		anim.SetInteger ("State", 4);
+	
+		yield return new WaitForSeconds (0.5f);
+
+		anim.SetInteger ("State", 0);
 	}
 		
 }
