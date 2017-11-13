@@ -53,8 +53,10 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
 
 	private Vector3 deathPosition;
+	private Vector3 exitPosition;
 
 	public bool shellThrowing = false;
+	public bool exitAnimation = false;
 
 	void Start()
 	{
@@ -88,7 +90,10 @@ public class PlayerController : MonoBehaviour
 		// Freeze the player when dead
 		if (died) {
 			transform.position = deathPosition;
-		} else {
+		} else if (exitAnimation) {
+			transform.position = exitPosition;
+		} 
+		else {
 			move ();
 			Flip ();
 		}
@@ -309,5 +314,10 @@ public class PlayerController : MonoBehaviour
 
 		anim.SetInteger ("State", 0);
 	}
+
+	public void hasExited(Vector3 exitPos){
+		exitPosition = exitPos;
+	}
+
 		
 }

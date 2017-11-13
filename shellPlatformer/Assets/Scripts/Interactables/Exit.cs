@@ -33,14 +33,17 @@ public class Exit : MonoBehaviour
 		PlayerController player = collision.gameObject.GetComponent<PlayerController> ();         
 		//if playerControl existed, ie actually collided with player
 		if (player != null) {
+
+			StartCoroutine(exitRoutine(collision.gameObject));
+				
 			// record that the level has ended
 			//Managers.logging.RecordLevelEnd();
 
 			//broadcast level complete message. listeners handle level completion functionality
-			Messenger.Broadcast (GameEvent.LEVEL_COMPLETE);
+			//Messenger.Broadcast (GameEvent.LEVEL_COMPLETE);
 
 			// set the boolean for level start to false
-			LoggingManager.lvlStart = false;
+			//LoggingManager.lvlStart = false;
 		}
 	}
 
@@ -55,5 +58,31 @@ public class Exit : MonoBehaviour
 			
 			audioSource.PlayOneShot (activateSound); // play activate or deactivate sound
 		}
+	}
+
+	IEnumerator exitRoutine(GameObject player){
+
+		// Destroy all the children of the snail
+		int childs = player.transform.childCount;
+
+		for (int i = childs - 1; i >= 0; i--) {
+			Destroy (player.transform.GetChild (i).gameObject);
+		}
+			
+
+		// Change the bool of player controller
+		player.GetComponent<PlayerController>().hasExited(transform.position);
+		player.GetComponent<PlayerController>().exitAnimation = true;
+
+		player.GetComponent<Animator> ().SetInteger ("State", 5);
+
+		yield return new WaitForSeconds (1);
+
+		//broadcast level complete message. listeners handle level completion functionality
+		Messenger.Broadcast (GameEvent.LEVEL_COMPLETE);
+
+		// set the boolean for level start to false
+		LoggingManager.lvlStart = false;
+
 	}
 }
