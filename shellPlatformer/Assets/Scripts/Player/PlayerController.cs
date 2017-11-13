@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		// change back to idle if isGrounded 
-		if (isGrounded && !shellThrowing && !exitAnimation) {
+		if (isGrounded && !shellThrowing && !exitAnimation && !died) {
 			anim.SetInteger ("State", 0);
 		}
 	}
