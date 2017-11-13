@@ -26,8 +26,7 @@ public class ShellSpawnerSwitch : MonoBehaviour {
 
 		audioSource = gameObject.AddComponent<AudioSource>();
 		audioSource.clip = ActivateSound;
-		popUp = (GameObject) Instantiate(Resources.Load("interactPopup"));
-		popUp.transform.SetParent (this.transform);
+		popUp = (GameObject) Instantiate(Resources.Load("interactPopup"), transform);
 		popUp.transform.position = transform.position + offset;
 		popUp.SetActive (false);
 	}

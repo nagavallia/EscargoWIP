@@ -22,7 +22,7 @@ public class ExitSwitch : MonoBehaviour {
 		audioSource = gameObject.AddComponent<AudioSource>();
 		audioSource.clip = ActivateSound;
 
-		popUp = (GameObject) Instantiate(Resources.Load("interactPopup"));
+		popUp = (GameObject) Instantiate(Resources.Load("interactPopup"), transform);
 		popUp.transform.position = new Vector3 (transform.position.x, transform.position.y + 1f, 0);
 		popUp.SetActive (false);
 
@@ -65,7 +65,7 @@ public class ExitSwitch : MonoBehaviour {
 	// same as onTriggerStay2D but with only enter for the shell and the npc snail
 	private void OnTriggerEnter2D(Collider2D collision) {
 
-		if (collision.tag == "Player")
+		if (collision.tag == "Player" && !triggered)
 			popUp.SetActive (true);
 		
 		if (!triggered && ((collision.tag == "Shell" && collision.gameObject.transform.parent == null) || collision.gameObject.tag == "NPC")) {
@@ -85,6 +85,7 @@ public class ExitSwitch : MonoBehaviour {
 
 				audioSource.Play (); // play activate sound
 
+				popUp.SetActive (false);
 				triggered = true;
 
 				// log that the switch has been used and the location
