@@ -20,7 +20,8 @@ public class Shell : MonoBehaviour {
 		waterLevel = 0;
 		maxWaterLevel = 20;
 
-		//gameObject.layer = LayerMask.NameToLayer ("Shell");
+		if (gameObject.layer != LayerMask.NameToLayer("PickedUpShell"))
+            gameObject.layer = LayerMask.NameToLayer ("Shell");
 
         // load the fullShell sprite
         normalShell = this.GetComponent<SpriteRenderer>().sprite;
@@ -30,6 +31,7 @@ public class Shell : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Shell collided with " + collision.collider.name);
 		// Shell will keep velocity if colliding with Salt
 		if (collision.gameObject.tag != "Salt" && collision.gameObject.tag != "Water") {
 			gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;

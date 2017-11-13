@@ -91,7 +91,7 @@ public class ShellThrower : MonoBehaviour {
 	private void Update() {			
 		if (Input.GetButtonDown("Down")) {
 			if (transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed  
-				&& (player.position - transform.position).magnitude < interactDist) {
+				&& ((Vector2)(player.position - transform.position)).magnitude < interactDist) {
 				Vector3 shellPos = transform.localScale;
 				shellPos.x = Mathf.Sign(player.localScale.x) * Mathf.Abs(shellPos.x);
 				transform.localScale = shellPos;
@@ -127,17 +127,16 @@ public class ShellThrower : MonoBehaviour {
 	{
 		Debug.Log("picking up shell");
 		Transform childShell = player.Find ("Shell");
-		Debug.Log (shell);
 		if ((childShell == null || childShell == this.transform) && player.GetComponent<PlayerController>().CanPickupShell(gameObject)) {
 			shell.transform.parent = player;
-			player.GetComponent<PlayerController> ().PickupShell (gameObject);
+            shell.GetComponent<SpriteRenderer>().sortingOrder = 1;
 			//shellHitbox.enabled = false;
 			//shellClickbox.enabled = true;
 			shellRigidBody.isKinematic = true;
 			//shellRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
 			shellRigidBody.velocity = Vector3.zero;
 			shell.transform.localPosition = defaultShellPos;
-			//shell.gameObject.layer = LayerMask.NameToLayer ("PickedUpShell");
+			shell.gameObject.layer = LayerMask.NameToLayer ("PickedUpShell");
 
 			temporaryShellCollisionFix = new GameObject ("tempShellCollisionFix");
 			temporaryShellCollisionFix.transform.SetParent (player);
@@ -150,18 +149,20 @@ public class ShellThrower : MonoBehaviour {
 				Physics2D.IgnoreCollision (collider, tempCollider);
 			Physics2D.IgnoreCollision (tempCollider, shellHitbox);
 			temporaryShellCollisionFix.tag = "TempShell";
-			//temporaryShellCollisionFix.layer = LayerMask.NameToLayer ("Shell");
+			temporaryShellCollisionFix.layer = LayerMask.NameToLayer ("PickedUpShell");
 		}
 	}
 
 	private void ReleaseShell() 
 	{
+        shell.GetComponent<SpriteRenderer>().sortingOrder = 2;
 		shell.transform.parent = null;
 		shellHitbox.enabled = true;
 		//shellClickbox.enabled = false;
 		shellRigidBody.isKinematic = false;
 		//shellRigidBody.constraints = RigidbodyConstraints2D.None;
-		//shell.layer = LayerMask.NameToLayer("Shell");
+		shell.layer = LayerMask.NameToLayer("Shell");
+        player.GetComponent<PlayerController>().ReleaseShell(gameObject);
 
 		Destroy (temporaryShellCollisionFix);
 	}
