@@ -20,6 +20,8 @@ public class Shell : MonoBehaviour {
 		waterLevel = 0;
 		maxWaterLevel = 20;
 
+		//gameObject.layer = LayerMask.NameToLayer ("Shell");
+
         // load the fullShell sprite
         normalShell = this.GetComponent<SpriteRenderer>().sprite;
 

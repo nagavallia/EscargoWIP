@@ -245,7 +245,6 @@ public class PlayerController : MonoBehaviour
 
 	void Kill ()
 	{
-	
 		deathPosition = transform.position; 
 		StartCoroutine (killRoutine());
 	}
@@ -266,7 +265,7 @@ public class PlayerController : MonoBehaviour
 	private void pour() {
 		if (transform.Find ("Shell") != null) {
 			Shell shell = this.transform.Find ("Shell").gameObject.GetComponent<Shell> ();
-			if (shell.waterLevel > 0) {
+			if (shell.isFull()) {
 				Vector3 curPosition = this.transform.position;
 				Vector3 offset = facingRight ? new Vector3 (1f, 0f, 0f) : new Vector3 (-1f, 0f, 0f);
 				GameObject water = (GameObject)Instantiate (Resources.Load ("waterParticle"), curPosition + offset, Random.rotation);

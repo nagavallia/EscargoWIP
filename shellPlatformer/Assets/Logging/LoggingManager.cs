@@ -45,6 +45,8 @@ public class LoggingManager : MonoBehaviour, GameManager {
             //record AB test value
             abValue = assignABTestValue(Random.Range(0, 2));
             RecordABTestValue();
+			if (isDebugging)
+				abValue = 0;
 
             // Start the Game Logging
             RecordPageLoad();

@@ -73,6 +73,14 @@ public class ShellThrower : MonoBehaviour {
 			PickUpShell();
 		}
 
+		if (Managers.logging == null || Managers.logging.abValue == 0) { //A value for A/B testing
+			horizMultiplier = 1.25f;
+			vertMultiplier = 1.25f;
+		} else { //B value for A/B testing
+			horizMultiplier = 1.0f;
+			vertMultiplier = 1.0f;
+		}
+
 		//Set throw vector
 		float throwX = Mathf.Cos(fixedThrowAngle* Mathf.PI/180);
 		float throwY = Mathf.Sin (fixedThrowAngle* Mathf.PI/180);
@@ -128,6 +136,7 @@ public class ShellThrower : MonoBehaviour {
 			//shellRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
 			shellRigidBody.velocity = Vector3.zero;
 			shell.transform.localPosition = defaultShellPos;
+			//shell.gameObject.layer = LayerMask.NameToLayer ("PickedUpShell");
 
 			temporaryShellCollisionFix = new GameObject ("tempShellCollisionFix");
 			temporaryShellCollisionFix.transform.SetParent (player);
@@ -140,9 +149,7 @@ public class ShellThrower : MonoBehaviour {
 				Physics2D.IgnoreCollision (collider, tempCollider);
 			Physics2D.IgnoreCollision (tempCollider, shellHitbox);
 			temporaryShellCollisionFix.tag = "TempShell";
-
 			//temporaryShellCollisionFix.layer = LayerMask.NameToLayer ("PickedUpShell");
-			//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("PickedUpShell"), LayerMask.NameToLayer ("Enemies"));
 		}
 	}
 
@@ -153,6 +160,7 @@ public class ShellThrower : MonoBehaviour {
 		//shellClickbox.enabled = false;
 		shellRigidBody.isKinematic = false;
 		//shellRigidBody.constraints = RigidbodyConstraints2D.None;
+		//shell.layer = LayerMask.NameToLayer("Shell");
 
 		Destroy (temporaryShellCollisionFix);
 	}

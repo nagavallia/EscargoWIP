@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScalePlatform : MonoBehaviour {
 	[SerializeField] private GameObject other;
-	[SerializeField] private float moveSpeed = 2f;
+	[SerializeField] private float moveSpeed = .75f;
 	[SerializeField] private float moveDist = 1f;
 
 	private Vector3 startPos;
