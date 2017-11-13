@@ -15,6 +15,8 @@ public class ParticleLauncher : MonoBehaviour {
 
 	public float halfWidth = 0.1f;
 
+	private bool interactCheck = true;
+
 	// Use this for initialization
 	void Start () {
 		StartCoroutine (emitParticleRoutine());
@@ -78,5 +80,27 @@ public class ParticleLauncher : MonoBehaviour {
 		InvokeRepeating ("emitParticle2", 0.45f, intervalSecs);
 
 
+	}
+
+	public void Interact(){
+
+		CancelInvoke ();
+
+		if (!interactCheck) {
+			Start ();
+		}
+
+		interactCheck = !interactCheck;
+
+//		if (interactCheck) {
+//			
+//			CancelInvoke ();
+//
+//		} else {
+//			
+//			StartCoroutine (emitParticleRoutine ());
+//		}
+//
+//		interactCheck = !interactCheck;
 	}
 }

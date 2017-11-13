@@ -14,7 +14,8 @@ public class Faucet : MonoBehaviour {
 	}
 
 	private void Interact() {
-		water.SetActive (!water.activeInHierarchy);
+//		bool previousStatus = gameObject.GetComponent<ParticleLauncher>().enabled;
+//		gameObject.GetComponent<ParticleLauncher> ().enabled = !previousStatus;
 	}
 
     private void OnTriggerEnter2D (Collider2D collision)
