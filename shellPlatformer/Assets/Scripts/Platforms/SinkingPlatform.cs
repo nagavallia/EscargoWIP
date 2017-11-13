@@ -67,7 +67,7 @@ public class SinkingPlatform : MonoBehaviour {
 
 				//collision.transform.SetParent(null);
 			}
-		} else if (weighingDown.Contains(collision.gameObject)) {
+		} else if (collision.transform.Find("Shell") == null && weighingDown.Contains(collision.gameObject)) {
 			weighingDown.Remove (collision.gameObject);
 			if (weighingDown.Count == 0)
 				isSinking = false;
