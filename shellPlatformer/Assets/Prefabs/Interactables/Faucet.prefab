@@ -147,6 +147,7 @@ MonoBehaviour:
   waitSecs: 0
   particleName: waterParticle
   halfWidth: 0.01
+  startEnabled: 1
 --- !u!212 &212865859439581694
 SpriteRenderer:
   m_ObjectHideFlags: 1
