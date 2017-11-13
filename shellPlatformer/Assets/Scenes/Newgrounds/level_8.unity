@@ -77,15 +77,17 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -107,6 +109,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    debug:
+      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1001 &135186369
 Prefab:
@@ -296,11 +300,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4534970516426256, guid: 6bdf93576f5cb054a9104b5faf99665b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.27
+      value: -9.307
       objectReference: {fileID: 0}
     - target: {fileID: 4534970516426256, guid: 6bdf93576f5cb054a9104b5faf99665b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: -0.023
       objectReference: {fileID: 0}
     - target: {fileID: 4534970516426256, guid: 6bdf93576f5cb054a9104b5faf99665b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -338,12 +342,12 @@ Prefab:
     - target: {fileID: 212218367816079354, guid: 6bdf93576f5cb054a9104b5faf99665b,
         type: 2}
       propertyPath: m_Size.y
-      value: 1.0265656
+      value: 1.0412292
       objectReference: {fileID: 0}
     - target: {fileID: 212218367816079354, guid: 6bdf93576f5cb054a9104b5faf99665b,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.58716786
+      value: 0.66048634
       objectReference: {fileID: 0}
     - target: {fileID: 1704079995285036, guid: 6bdf93576f5cb054a9104b5faf99665b, type: 2}
       propertyPath: m_Name
@@ -376,7 +380,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4867174380300644, guid: f583becbfed78554fa3f265c8d1597d7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.682
+      value: 4.924
       objectReference: {fileID: 0}
     - target: {fileID: 4867174380300644, guid: f583becbfed78554fa3f265c8d1597d7, type: 2}
       propertyPath: m_LocalPosition.y
@@ -409,7 +413,7 @@ Prefab:
     - target: {fileID: 212601519459684416, guid: f583becbfed78554fa3f265c8d1597d7,
         type: 2}
       propertyPath: m_Size.x
-      value: 2.2330763
+      value: 1.7279958
       objectReference: {fileID: 0}
     - target: {fileID: 212601519459684416, guid: f583becbfed78554fa3f265c8d1597d7,
         type: 2}
