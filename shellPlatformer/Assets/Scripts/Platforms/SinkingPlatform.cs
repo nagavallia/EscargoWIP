@@ -49,24 +49,26 @@ public class SinkingPlatform : MonoBehaviour {
 
 		RaycastHit2D leftHit = Physics2D.Raycast(left, Vector2.down, GROUND_CHECK);
 		RaycastHit2D rightHit = Physics2D.Raycast (right, Vector2.down, GROUND_CHECK);
-		if ((leftHit.collider == selfCollider || rightHit.collider == selfCollider) 
-			&& (collision.gameObject.tag == "Shell" || collision.transform.Find("Shell") != null)) {
-            Debug.Log("colliding with shell");
-			Shell shell = collision.gameObject.tag == "Shell" ? collision.gameObject.GetComponent<Shell> () : collision.transform.Find("Shell").GetComponent<Shell>();
-			if (!weighingDown.Contains(collision.gameObject)) 
+		if ((leftHit.collider == selfCollider || rightHit.collider == selfCollider)
+		    && (collision.gameObject.tag == "Shell" || collision.transform.Find ("Shell") != null)) {
+			Debug.Log ("colliding with shell");
+			Shell shell = collision.gameObject.tag == "Shell" ? collision.gameObject.GetComponent<Shell> () : collision.transform.Find ("Shell").GetComponent<Shell> ();
+			if (!weighingDown.Contains (collision.gameObject))
 				weighingDown.Add (collision.gameObject);
 
-			if (shell.isFull() && weighingDown.Count == 1) {
-                //collision.transform.SetParent(light);
+			if (shell.isFull () && weighingDown.Count == 1) {
+				//collision.transform.SetParent(light);
 				isSinking = true;
 
-                //light.localPosition = lightSunkenPosition;
-                //GetComponent<BoxCollider2D>().offset = new Vector2(lightSunkenPosition.x, lightSunkenPosition.y);
-                //this.transform.localPosition = sunkenPosition;
-                //GetComponent<SpriteRenderer>().size = sunkenSize;
+				//light.localPosition = lightSunkenPosition;
+				//GetComponent<BoxCollider2D>().offset = new Vector2(lightSunkenPosition.x, lightSunkenPosition.y);
+				//this.transform.localPosition = sunkenPosition;
+				//GetComponent<SpriteRenderer>().size = sunkenSize;
 
-                //collision.transform.SetParent(null);
+				//collision.transform.SetParent(null);
 			}
+		} else if (isSinking) {
+			isSinking = false;
 		}
 	}
 

@@ -25,6 +25,8 @@ public class ParticleLauncher : MonoBehaviour {
 		if (startEnabled) {
 			StartCoroutine (emitParticleRoutine ());
 		}
+
+		interactCheck = startEnabled;
 	}
 
 
