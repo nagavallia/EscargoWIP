@@ -77,8 +77,8 @@ public class ShellThrower : MonoBehaviour {
 			horizMultiplier = 1.25f;
 			vertMultiplier = 1.25f;
 		} else { //B value for A/B testing
-			horizMultiplier = 1.0f;
-			vertMultiplier = 1.0f;
+			horizMultiplier = 1.1f;
+			vertMultiplier = 1.1f;
 		}
 
 		//Set throw vector
