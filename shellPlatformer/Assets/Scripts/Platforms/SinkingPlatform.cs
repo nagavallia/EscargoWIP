@@ -5,7 +5,7 @@ using UnityEngine;
 public class SinkingPlatform : MonoBehaviour {
 
 	[SerializeField] private float sinkAmount = 1f;
-	[SerializeField] private float moveSpeed = 2f;
+	[SerializeField] private float moveSpeed = .75f;
     [SerializeField] private Transform light;
 	private Vector3 startPosition, lightStartPosition;
 	private Vector3 sunkenPosition, lightSunkenPosition;
