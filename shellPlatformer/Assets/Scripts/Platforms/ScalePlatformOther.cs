@@ -46,7 +46,9 @@ public class ScalePlatformOther : MonoBehaviour {
 	}
 
 	private void OnCollisionExit2D(Collision2D collision) {
-		collision.transform.SetParent (null);
+		if (collision.transform.parent == transform) 
+			collision.transform.SetParent (null);
+		
 		if (collision.gameObject.tag == "Shell" || collision.transform.Find ("Shell") != null) {
 			weighingDown.Remove (collision.gameObject);
 
