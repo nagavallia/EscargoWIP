@@ -18,7 +18,7 @@ public class ScalePlatform : MonoBehaviour {
 	private bool weightChanged;
 	private bool otherWeightChanged;
 	private BoxCollider2D selfCollider;
-	private List<GameObject> weighingDown;
+	public List<GameObject> weighingDown;
 
 	private float GROUND_CHECK;
 
@@ -88,6 +88,12 @@ public class ScalePlatform : MonoBehaviour {
 
 			if (shell.isFull() && weighingDown.Count == 1) {
 				weight = 1;
+				weightChanged = true;
+			}
+		} else if (collision.transform.Find("Shell") == null && weighingDown.Contains(collision.gameObject)) {
+			weighingDown.Remove (collision.gameObject);
+			if (weighingDown.Count == 0) {
+				weight = 0;
 				weightChanged = true;
 			}
 		}

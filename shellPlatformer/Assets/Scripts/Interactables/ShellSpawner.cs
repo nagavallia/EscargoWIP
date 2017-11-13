@@ -54,6 +54,7 @@ public class ShellSpawner : MonoBehaviour
     {
         GameObject newShell = (GameObject)Instantiate(Resources.Load("Shell"));
 		newShell.transform.position = this.transform.position;
+		newShell.name = "Shell";
         shellsSpawned++;
 
         //log that a shell spawner has been used and the position of the player
