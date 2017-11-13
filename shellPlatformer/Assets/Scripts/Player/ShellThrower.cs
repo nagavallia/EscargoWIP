@@ -128,6 +128,7 @@ public class ShellThrower : MonoBehaviour {
 			//shellRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
 			shellRigidBody.velocity = Vector3.zero;
 			shell.transform.localPosition = defaultShellPos;
+			//shell.gameObject.layer = LayerMask.NameToLayer ("PickedUpShell");
 
 			temporaryShellCollisionFix = new GameObject ("tempShellCollisionFix");
 			temporaryShellCollisionFix.transform.SetParent (player);
@@ -140,9 +141,7 @@ public class ShellThrower : MonoBehaviour {
 				Physics2D.IgnoreCollision (collider, tempCollider);
 			Physics2D.IgnoreCollision (tempCollider, shellHitbox);
 			temporaryShellCollisionFix.tag = "TempShell";
-
 			//temporaryShellCollisionFix.layer = LayerMask.NameToLayer ("PickedUpShell");
-			//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("PickedUpShell"), LayerMask.NameToLayer ("Enemies"));
 		}
 	}
 
@@ -153,6 +152,7 @@ public class ShellThrower : MonoBehaviour {
 		//shellClickbox.enabled = false;
 		shellRigidBody.isKinematic = false;
 		//shellRigidBody.constraints = RigidbodyConstraints2D.None;
+		//shell.layer = LayerMask.NameToLayer("Shell");
 
 		Destroy (temporaryShellCollisionFix);
 	}
