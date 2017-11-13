@@ -77,15 +77,17 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -107,6 +109,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    debug:
+      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1001 &94467580
 Prefab:
@@ -566,6 +570,26 @@ Prefab:
       propertyPath: m_Center.x
       value: 2.943754
       objectReference: {fileID: 0}
+    - target: {fileID: 61315649346243698, guid: c0d4d5f3b08645b4e878455bfd80489d,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.94324255
+      objectReference: {fileID: 0}
+    - target: {fileID: 61315649346243698, guid: c0d4d5f3b08645b4e878455bfd80489d,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 4.0985723
+      objectReference: {fileID: 0}
+    - target: {fileID: 61315649346243698, guid: c0d4d5f3b08645b4e878455bfd80489d,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 15.90936
+      objectReference: {fileID: 0}
+    - target: {fileID: 61315649346243698, guid: c0d4d5f3b08645b4e878455bfd80489d,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 5.5802984
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0d4d5f3b08645b4e878455bfd80489d, type: 2}
   m_IsPrefabParent: 0
@@ -893,6 +917,11 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114244298432978234, guid: dd041f9613cb312459f968750a6a4bdf,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd041f9613cb312459f968750a6a4bdf, type: 2}
   m_IsPrefabParent: 0
@@ -946,7 +975,7 @@ Prefab:
     - target: {fileID: 114244298432978234, guid: dd041f9613cb312459f968750a6a4bdf,
         type: 2}
       propertyPath: moveSpeed
-      value: 5
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd041f9613cb312459f968750a6a4bdf, type: 2}
