@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour {
 
+	private Sprite current;
+	private Sprite change;
 
 	public bool everlastingFlames = false;
+
+	public float waitSecs = 0.4f;
+
+	void Start(){
+		current = this.GetComponent<SpriteRenderer> ().sprite;
+		change = Resources.Load <Sprite> ("fire_01");
+		InvokeRepeating ("fireAnimation", 0, waitSecs);
+	}
 
 	void OnTriggerEnter2D (Collider2D collision)
 	{
@@ -19,6 +29,14 @@ public class Fire : MonoBehaviour {
 					//collision.gameObject.SendMessage ("ShellDestroy", SendMessageOptions.DontRequireReceiver);
 				}
 			}
+		}
+	}
+
+	void fireAnimation(){
+		if (this.GetComponent<SpriteRenderer> ().sprite == change) {
+			this.GetComponent<SpriteRenderer> ().sprite = current;
+		} else {
+			this.GetComponent<SpriteRenderer> ().sprite = change;
 		}
 	}
 }
