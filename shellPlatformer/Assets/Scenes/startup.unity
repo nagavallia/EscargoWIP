@@ -1483,7 +1483,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1546,7 +1545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446d3d0dd75517d4689a815b16e85b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugging: 1
+  isDebugging: 0
 --- !u!114 &2021138114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,7 +1561,7 @@ MonoBehaviour:
   curSceneId: 0
   complete: {fileID: 915683523}
   pauseMenu: {fileID: 224465127}
-  maxLevel: 16
+  maxLevel: 17
 --- !u!114 &2021138115
 MonoBehaviour:
   m_ObjectHideFlags: 0
