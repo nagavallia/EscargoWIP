@@ -17,9 +17,14 @@ public class ParticleLauncher : MonoBehaviour {
 
 	private bool interactCheck = true;
 
+	[SerializeField]
+	private bool startEnabled = true;
+
 	// Use this for initialization
 	void Start () {
-		StartCoroutine (emitParticleRoutine());
+		if (startEnabled) {
+			StartCoroutine (emitParticleRoutine ());
+		}
 	}
 
 
@@ -87,20 +92,10 @@ public class ParticleLauncher : MonoBehaviour {
 		CancelInvoke ();
 
 		if (!interactCheck) {
-			Start ();
+			StartCoroutine (emitParticleRoutine ());
 		}
 
 		interactCheck = !interactCheck;
-
-//		if (interactCheck) {
-//			
-//			CancelInvoke ();
-//
-//		} else {
-//			
-//			StartCoroutine (emitParticleRoutine ());
-//		}
-//
-//		interactCheck = !interactCheck;
+	
 	}
 }
