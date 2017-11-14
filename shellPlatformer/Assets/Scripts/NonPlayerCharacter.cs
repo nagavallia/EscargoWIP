@@ -25,10 +25,13 @@ public class NonPlayerCharacter : MonoBehaviour {
         rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
         rigidbody.freezeRotation = true;
 
+        GetComponent<SpriteRenderer>().sortingOrder = 1;
+
         audioSource = gameObject.AddComponent<AudioSource>();
 
 		// set the child to be a shell
 		GameObject shell = Instantiate(Resources.Load("Shell")) as GameObject;
+        shell.name = "Shell";
 		SetAllCollidersStatus (shell, false);
 		shell.GetComponent<Rigidbody2D> ().gravityScale = 0;
 		shell.transform.SetParent (this.transform);
