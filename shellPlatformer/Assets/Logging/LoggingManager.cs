@@ -271,6 +271,8 @@ public class LoggingManager : MonoBehaviour, GameManager {
     }
 
     private IEnumerator GetABTestRecordRequest() {
+		yield return new WaitUntil(() => (userId != null));
+
         string requestData = "?game_id=" + gameId + "&user_id=" + userId + "&abvalue=" + abstoredValue;
 
         UnityWebRequest www = UnityWebRequest.Get(pageHost + phpPath + playerABTestPath + requestData);
