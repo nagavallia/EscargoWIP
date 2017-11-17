@@ -204,7 +204,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	public bool CanPickupShell(GameObject shell) {
-		return Time.time >= timestamp || shell == lastPickedUp;
+		return (Time.time >= timestamp || shell == lastPickedUp) && shell.layer != LayerMask.NameToLayer("No Collision");
 	}
 
 	public void ReleaseShell(GameObject shell) {

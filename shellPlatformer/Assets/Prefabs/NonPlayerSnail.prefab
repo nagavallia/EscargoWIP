@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114132272416483472}
   - component: {fileID: 82873554625379074}
   - component: {fileID: 95949911276375324}
-  m_Layer: 9
+  m_Layer: 18
   m_Name: NonPlayerSnail
   m_TagString: NPC
   m_Icon: {fileID: 0}

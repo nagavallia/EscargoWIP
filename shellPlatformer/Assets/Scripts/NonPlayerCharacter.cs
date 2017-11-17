@@ -36,12 +36,17 @@ public class NonPlayerCharacter : MonoBehaviour {
 		shell.GetComponent<Rigidbody2D> ().gravityScale = 0;
 		shell.transform.SetParent (this.transform);
 		shell.transform.position = transform.position + shellOffset;
+		shell.GetComponent<SpriteRenderer> ().sortingLayerID = SortingLayer.NameToID ("Default");
     }
 
     private void Update() {
         if (isMoving) {
             transform.Translate(moveVector * Time.deltaTime * moveSpeed);
         }
+
+		Debug.Log ("shell is in layer" + LayerMask.LayerToName (transform.Find ("Shell").gameObject.layer));
+		if (LayerMask.LayerToName (transform.Find ("Shell").gameObject.layer) != "No Collision")
+			transform.Find ("Shell").gameObject.layer = LayerMask.NameToLayer ("No Collision");
 
 		//take child shell to be the same position as the parent moves
 		this.transform.GetChild(0).transform.position = transform.position + shellOffset;
@@ -60,8 +65,8 @@ public class NonPlayerCharacter : MonoBehaviour {
 
     // returns true if this NPC should turn around when colliding with other, false otherwise
     private bool ShouldTurnAround(GameObject other) {
-        return isMoving && (other.layer == LayerMask.NameToLayer("Background") || other.layer == LayerMask.NameToLayer("Player")
-            || other.tag == "Shell" || other.layer == LayerMask.NameToLayer("Movement Hitbox"));
+		return isMoving && (other.layer == LayerMask.NameToLayer ("Background") || other.layer == LayerMask.NameToLayer ("Shell")); 
+			//|| other.layer == LayerMask.NameToLayer("Player") || other.layer == LayerMask.NameToLayer("Movement Hitbox"));
     }
 
     private void Interact() {
@@ -91,7 +96,8 @@ public class NonPlayerCharacter : MonoBehaviour {
 		childShell.transform.position = transform.position;
 		SetAllCollidersStatus (childShell, true);
 		childShell.GetComponent<Rigidbody2D> ().gravityScale = 1;
-
+		childShell.layer = LayerMask.NameToLayer ("Shell");
+		childShell.GetComponent<SpriteRenderer>().sortingLayerID = SortingLayer.NameToID ("Player");
 
         audioSource.PlayOneShot(DeathSound);
 

@@ -92,10 +92,11 @@ public class ShellThrower : MonoBehaviour {
 		if (Input.GetButtonDown("Down")) {
 			if (transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed  
 				&& ((Vector2)(player.position - transform.position)).magnitude < interactDist) {
-				Vector3 shellPos = transform.localScale;
-				shellPos.x = Mathf.Sign(player.localScale.x) * Mathf.Abs(shellPos.x);
-				transform.localScale = shellPos;
-				PickUpShell();
+				if (PickUpShell ()) {
+					Vector3 shellPos = transform.localScale;
+					shellPos.x = Mathf.Abs (shellPos.x);// * Mathf.Sign(player.localScale.x);
+					transform.localScale = shellPos;
+				}
 			} else if (transform.parent != null && transform.parent.GetComponent<PlayerController>() != null) {
 				ReleaseShell();
 			}
@@ -123,7 +124,8 @@ public class ShellThrower : MonoBehaviour {
 		}
 	}
 
-	public void PickUpShell() 
+	//true if shell was successfully picked up, false otherwise
+	public bool PickUpShell() 
 	{
 		Debug.Log("picking up shell");
 		Transform childShell = player.Find ("Shell");
@@ -150,7 +152,9 @@ public class ShellThrower : MonoBehaviour {
 			Physics2D.IgnoreCollision (tempCollider, shellHitbox);
 			temporaryShellCollisionFix.tag = "TempShell";
 			temporaryShellCollisionFix.layer = LayerMask.NameToLayer ("PickedUpShell");
+			return true;
 		}
+		return false;
 	}
 
 	private void ReleaseShell() 
