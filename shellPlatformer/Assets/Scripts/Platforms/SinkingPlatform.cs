@@ -67,7 +67,7 @@ public class SinkingPlatform : MonoBehaviour {
 
 				//collision.transform.SetParent(null);
 			}
-		} else if (collision.transform.Find("Shell") == null && weighingDown.Contains(collision.gameObject)) {
+		} else if (collision.gameObject.tag != "Shell" && collision.transform.Find("Shell") == null && weighingDown.Contains(collision.gameObject)) {
 			weighingDown.Remove (collision.gameObject);
 			if (weighingDown.Count == 0)
 				isSinking = false;
@@ -77,7 +77,8 @@ public class SinkingPlatform : MonoBehaviour {
 	void OnCollisionExit2D(Collision2D collision) {
         if (collision.transform.parent == light) collision.transform.SetParent(null);
 
-		if (collision.gameObject.tag == "Shell" || collision.transform.Find("Shell") != null) {
+		if ((collision.gameObject.tag == "Shell" || collision.transform.Find("Shell") != null)
+			&& weighingDown.Contains(collision.gameObject)) {
 			weighingDown.Remove (collision.gameObject);
 
 			if (weighingDown.Count == 0)

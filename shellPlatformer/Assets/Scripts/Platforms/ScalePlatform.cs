@@ -9,8 +9,8 @@ public class ScalePlatform : MonoBehaviour {
 
 	private Vector3 startPos;
 	private Vector3 otherStartPos;
-	private Vector3 targetPos;
-	private Vector3 otherTargetPos;
+	public Vector3 targetPos;
+	public Vector3 otherTargetPos;
 
 	private int weight;
 	private int otherWeight; 
@@ -90,7 +90,7 @@ public class ScalePlatform : MonoBehaviour {
 				weight = 1;
 				weightChanged = true;
 			}
-		} else if (collision.transform.Find("Shell") == null && weighingDown.Contains(collision.gameObject)) {
+		} else if (collision.gameObject.tag != "Shell" && collision.transform.Find("Shell") == null && weighingDown.Contains(collision.gameObject)) {
 			weighingDown.Remove (collision.gameObject);
 			if (weighingDown.Count == 0) {
 				weight = 0;
@@ -100,9 +100,11 @@ public class ScalePlatform : MonoBehaviour {
 	}
 
 	private void OnCollisionExit2D(Collision2D collision) {
-		if (collision.gameObject.tag == "Shell" || collision.transform.Find("Shell") != null) {
-			//weight = Mathf.Max (weight - 1, 0);
+		if ((collision.gameObject.tag == "Shell" || collision.transform.Find("Shell") != null) 
+			&& weighingDown.Contains(collision.gameObject)) {
+
 			weighingDown.Remove(collision.gameObject);
+
 			if (weighingDown.Count == 0) {
 				weight = 0;
 				weightChanged = true;

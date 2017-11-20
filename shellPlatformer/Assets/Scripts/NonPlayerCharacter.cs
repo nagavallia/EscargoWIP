@@ -43,8 +43,7 @@ public class NonPlayerCharacter : MonoBehaviour {
         if (isMoving) {
             transform.Translate(moveVector * Time.deltaTime * moveSpeed);
         }
-
-		Debug.Log ("shell is in layer" + LayerMask.LayerToName (transform.Find ("Shell").gameObject.layer));
+			
 		if (LayerMask.LayerToName (transform.Find ("Shell").gameObject.layer) != "No Collision")
 			transform.Find ("Shell").gameObject.layer = LayerMask.NameToLayer ("No Collision");
 

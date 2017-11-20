@@ -26,8 +26,8 @@ public class ScalePlatformOther : MonoBehaviour {
 
 		RaycastHit2D leftHit = Physics2D.Raycast (left, Vector2.down, GROUND_CHECK);
 		RaycastHit2D rightHit = Physics2D.Raycast (right, Vector2.down, GROUND_CHECK);
-		Debug.Log ("first cond: " + (leftHit.collider == selfCollider || rightHit.collider == selfCollider));
-		Debug.Log ("second cond: " + (collision.gameObject.tag == "Shell" || collision.transform.Find ("Shell") != null));
+		//Debug.Log ("first cond: " + (leftHit.collider == selfCollider || rightHit.collider == selfCollider));
+		//Debug.Log ("second cond: " + (collision.gameObject.tag == "Shell" || collision.transform.Find ("Shell") != null));
 		if ((leftHit.collider == selfCollider || rightHit.collider == selfCollider)
 		    && (collision.gameObject.tag == "Shell" || collision.transform.Find ("Shell") != null)) {
 			Shell shell = collision.gameObject.tag == "Shell" ? collision.gameObject.GetComponent<Shell> () : collision.transform.Find ("Shell").GetComponent<Shell> ();
@@ -37,7 +37,7 @@ public class ScalePlatformOther : MonoBehaviour {
 			if (shell.isFull() && weighingDown.Count == 1) {
 				parent.OtherWeightChange (1);
 			}
-		} else if (collision.transform.Find("Shell") == null && weighingDown.Contains(collision.gameObject)) {
+		} else if (collision.gameObject.tag != "Shell" && collision.transform.Find("Shell") == null && weighingDown.Contains(collision.gameObject)) {
 			weighingDown.Remove (collision.gameObject);
 			if (weighingDown.Count == 0) {
 				parent.OtherWeightChange (0);
@@ -49,7 +49,8 @@ public class ScalePlatformOther : MonoBehaviour {
 		if (collision.transform.parent == transform) 
 			collision.transform.SetParent (null);
 		
-		if (collision.gameObject.tag == "Shell" || collision.transform.Find ("Shell") != null) {
+		if ((collision.gameObject.tag == "Shell" || collision.transform.Find ("Shell") != null)
+			&& weighingDown.Contains(collision.gameObject)) {
 			weighingDown.Remove (collision.gameObject);
 
 			if (weighingDown.Count == 0)
