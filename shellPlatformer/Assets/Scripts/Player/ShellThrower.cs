@@ -96,7 +96,10 @@ public class ShellThrower : MonoBehaviour {
 	}
 
 
-	private void Update() {			
+	private void Update() {		
+	
+		bool throwHappened = false;
+
 		if (Input.GetButtonDown("Down")) {
 			if (transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed  
 				&& ((Vector2)(player.position - transform.position)).magnitude < interactDist) {
@@ -112,15 +115,19 @@ public class ShellThrower : MonoBehaviour {
 		} else if (Input.GetButtonDown("Throw")) {
 			StartCoroutine (throwAnimRoutine ());
 			Throw();
+			throwHappened = true;
 		}
 
-		// popup if can pick up shell
-		Transform childShell = player.Find ("Shell");
-		if ((childShell == null || childShell == this.transform) && player.GetComponent<PlayerController>().CanPickupShell(gameObject) && transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed  
-			&& ((Vector2)(player.position - transform.position)).magnitude < interactDist) {
-			popUp.SetActive (true);
-		} else {
-			popUp.SetActive (false);
+		if (!throwHappened) {
+			// popup if can pick up shell
+			Transform childShell = player.Find ("Shell");
+			if ((childShell == null || childShell == this.transform) && player.GetComponent<PlayerController> ().CanPickupShell (gameObject) &&
+			   transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed
+			   && ((Vector2)(player.position - transform.position)).magnitude < interactDist) {
+				popUp.SetActive (true);
+			} else {
+				popUp.SetActive (false);
+			}
 		}
 	}
 
