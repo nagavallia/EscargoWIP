@@ -34,6 +34,9 @@ public class ShellThrower : MonoBehaviour {
 
 	private GameObject temporaryShellCollisionFix;
 
+	private GameObject popUp;
+	public Vector3 offset = new Vector3(0,1,0);
+
 	// Use this for initialization
 	void Start () {
 
@@ -85,6 +88,11 @@ public class ShellThrower : MonoBehaviour {
 		float throwX = Mathf.Cos(fixedThrowAngle* Mathf.PI/180);
 		float throwY = Mathf.Sin (fixedThrowAngle* Mathf.PI/180);
 		fixedThrowVec = new Vector2 (throwX, throwY) * throwForce;
+
+		// pickup popup
+		popUp = (GameObject) Instantiate(Resources.Load("pickupPopup"), transform);
+		popUp.transform.position = transform.position + offset;
+		popUp.SetActive (false);
 	}
 
 
@@ -92,6 +100,7 @@ public class ShellThrower : MonoBehaviour {
 		if (Input.GetButtonDown("Down")) {
 			if (transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed  
 				&& ((Vector2)(player.position - transform.position)).magnitude < interactDist) {
+
 				if (PickUpShell ()) {
 					Vector3 shellPos = transform.localScale;
 					shellPos.x = Mathf.Abs (shellPos.x);// * Mathf.Sign(player.localScale.x);
@@ -103,6 +112,15 @@ public class ShellThrower : MonoBehaviour {
 		} else if (Input.GetButtonDown("Throw")) {
 			StartCoroutine (throwAnimRoutine ());
 			Throw();
+		}
+
+		// popup if can pick up shell
+		Transform childShell = player.Find ("Shell");
+		if ((childShell == null || childShell == this.transform) && player.GetComponent<PlayerController>().CanPickupShell(gameObject) && transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed  
+			&& ((Vector2)(player.position - transform.position)).magnitude < interactDist) {
+			popUp.SetActive (true);
+		} else {
+			popUp.SetActive (false);
 		}
 	}
 
