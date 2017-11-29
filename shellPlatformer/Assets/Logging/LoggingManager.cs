@@ -46,10 +46,10 @@ public class LoggingManager : MonoBehaviour, GameManager {
 			RecordPageLoad();
 
             //record AB test value
-            abValue = assignABTestValue(Random.Range(0, 2));
+            abValue = 1;
             RecordABTestValue();
 			if (isDebugging)
-				abValue = 0;
+				abValue = 1;
 
             // set the boolean to true and never change it back
             gameStart = true;
