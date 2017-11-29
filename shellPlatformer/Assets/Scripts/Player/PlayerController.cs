@@ -130,13 +130,13 @@ public class PlayerController : MonoBehaviour
 			//friction
 			if (horizontal == 0) {
 				if (myRigidbody.velocity.x > 0) {
-					xAcc = -normAcc;
-					if (myRigidbody.velocity.x < normAcc) {
+					xAcc = -backAcc;
+					if (myRigidbody.velocity.x < backAcc) {
 						xAcc = -myRigidbody.velocity.x; 
 					}
 				} else {
-					xAcc = normAcc;
-					if (myRigidbody.velocity.x > -normAcc) {
+					xAcc = backAcc;
+					if (myRigidbody.velocity.x > -backAcc) {
 						xAcc = -myRigidbody.velocity.x; 
 					}
 				}
