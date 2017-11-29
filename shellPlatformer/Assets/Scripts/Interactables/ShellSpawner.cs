@@ -32,7 +32,7 @@ public class ShellSpawner : MonoBehaviour
 		current = this.gameObject.GetComponent<SpriteRenderer>().sprite;
 		green =  Resources.Load <Sprite> ("shellSpawnerGreen");
 
-		endPos = this.transform.position + new Vector3 (0, -1.9f, 0);
+		endPos = this.transform.position + new Vector3 (0, -0.5f, 0);
 		lockedOn = false;
 
 	}
