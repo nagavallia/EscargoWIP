@@ -9,10 +9,14 @@ public class LevelSelectButton : MonoBehaviour {
 	public Sprite locked;
 	public Sprite unlocked;
 	public bool isLocked;
+	public bool isChallenge;
 
 	public void LoadAttachedLevel() {
 		if (!isLocked) {
-			Managers.scene.LoadLevelByNumber (attachedLevel);
+			if (!isChallenge)
+				Managers.scene.LoadLevelByNumber (attachedLevel);
+			else
+				Managers.scene.LoadChallenge (attachedLevel);
 		}
 	}
 

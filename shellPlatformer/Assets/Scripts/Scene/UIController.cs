@@ -39,6 +39,7 @@ public class UIController : MonoBehaviour {
 			LevelSelectButton button = buttonObject.GetComponent<LevelSelectButton> ();
 
 			button.attachedLevel = k;
+			button.isChallenge = false;
 			Vector2 localPos = button.GetComponent<RectTransform> ().anchoredPosition;
 			button.GetComponent<RectTransform> ().anchoredPosition = localPos + new Vector2 (horizButtonStep * i, vertButtonStep * j);
 
@@ -52,6 +53,27 @@ public class UIController : MonoBehaviour {
 				j++;
 				i = 0;
 			}
+		}
+
+		j += 2;
+		int x = 0;
+
+		for (int z = 1; z <= Managers.scene.challengeLevels; z++) {
+			GameObject buttonObject = Instantiate (Resources.Load ("LevelButton") as GameObject, LevelSelectCanvas.transform);
+			LevelSelectButton button = buttonObject.GetComponent<LevelSelectButton> ();
+
+			button.attachedLevel = z;
+			button.isChallenge = true;
+
+			Vector2 localPos = button.GetComponent<RectTransform> ().anchoredPosition;
+			button.GetComponent<RectTransform> ().anchoredPosition = localPos + new Vector2 (horizButtonStep * x, vertButtonStep * j);
+
+			if (z <= Managers.scene.levelsCompleted + 1 - Managers.scene.GetNumLevels ())
+				button.Unlock ();
+			else
+				button.Lock ();
+
+			x++;
 		}
 	}
 		
