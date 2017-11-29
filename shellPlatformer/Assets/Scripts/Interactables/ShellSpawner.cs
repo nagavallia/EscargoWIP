@@ -19,7 +19,11 @@ public class ShellSpawner : MonoBehaviour
 	[SerializeField] private float moveDuration = 2.0f;
     [SerializeField] private bool shouldSpawnNewShell = false;
     [SerializeField] private int maxShells = 1;
+	[SerializeField] private Sprite chargedMagnet;
     private int shellsSpawned = 0;
+	private Sprite originalMagnet;
+
+
 
     // Use this for initialization
     void Start ()
@@ -34,6 +38,8 @@ public class ShellSpawner : MonoBehaviour
 
 		endPos = this.transform.position + new Vector3 (0, -0.5f, 0);
 		lockedOn = false;
+
+		originalMagnet = this.GetComponent<SpriteRenderer> ().sprite;
 
 	}
 
@@ -73,9 +79,12 @@ public class ShellSpawner : MonoBehaviour
 			Debug.Log("dropping");
 			shell.gameObject.GetComponent<Rigidbody2D> ().gravityScale = 1;
 			lockedOn = false;
+			StopAllCoroutines ();
+			this.gameObject.GetComponent<SpriteRenderer> ().sprite = originalMagnet;
 		}
 		else if (player.transform.Find ("Shell") == null && !isMoving) {
 			StartCoroutine("Move");
+			StartCoroutine ("magnetAnim");
 //			shell.gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 //			shell.position = this.transform.position + new Vector3 (0, -0.6f, 0);
 		}
@@ -109,6 +118,17 @@ public class ShellSpawner : MonoBehaviour
 			SpawnShell ();
 		else {
 			ReturnShell ();
+		}
+		
+	}
+
+	IEnumerator magnetAnim(){
+		while (true) {
+			
+			this.gameObject.GetComponent<SpriteRenderer> ().sprite = chargedMagnet;
+			yield return new WaitForSeconds (0.1f);
+			this.gameObject.GetComponent<SpriteRenderer> ().sprite = originalMagnet;
+			yield return new WaitForSeconds (0.1f);
 		}
 		
 	}
