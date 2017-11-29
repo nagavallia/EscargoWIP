@@ -124,19 +124,15 @@ public class ShellThrower : MonoBehaviour {
 			} else if (transform.parent != null && transform.parent.GetComponent<PlayerController> () != null) {
 				ReleaseShell ();
 			}
-		} else if (Input.GetButton ("Throw")) {
+		} else if (Input.GetButton ("Throw") && transform.parent == player) {
 			float direction = transform.parent.localScale.x > 0 ? -1 : 1;
-			Vector2 vel = player.GetComponent<Rigidbody2D> ().velocity;
-			float xMult = Mathf.Abs (vel.x) < 1 ? 1 : horizMultiplier;
-			float yMult = vel.y < 1 ? 1 : vertMultiplier;
-
-			throwVec.Set (fixedThrowVec.x * direction * xMult, fixedThrowVec.y * yMult);
+			throwVec.Set (fixedThrowVec.x * direction, fixedThrowVec.y);
 			DrawTrajectory (shell.transform.position, throwVec);
-		} else if (Input.GetButtonUp ("Throw")) {
+		} else if (Input.GetButtonUp ("Throw") && transform.parent == player) {
 			StartCoroutine (throwAnimRoutine ());
 			Throw ();
 			throwHappened = true;
-		}
+		} else if (trajectoryPoints[0].activeInHierarchy) { DeleteTrajectory(); }
 
 		if (!throwHappened) {
 			// popup if can pick up shell
