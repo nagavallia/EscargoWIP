@@ -688,11 +688,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4433757739040464, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 23.43
+      value: 23.68
       objectReference: {fileID: 0}
     - target: {fileID: 4433757739040464, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.71
+      value: -2.246
       objectReference: {fileID: 0}
     - target: {fileID: 4433757739040464, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
       propertyPath: m_LocalPosition.z
@@ -720,15 +720,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4433757739040464, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.74794817
+      value: 1.7620233
       objectReference: {fileID: 0}
     - target: {fileID: 4433757739040464, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.68493533
+      value: 1.6135771
       objectReference: {fileID: 0}
     - target: {fileID: 1599496669838074, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
       propertyPath: m_Name
       value: Fire (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433757739040464, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 2.3558095
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06228725908874b61978f6a2fcfc6b83, type: 2}
@@ -906,7 +910,7 @@ Prefab:
     - target: {fileID: 114597819206115844, guid: 737780b41e254684e871cc43b08f1b8c,
         type: 2}
       propertyPath: waitSecs
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114597819206115844, guid: 737780b41e254684e871cc43b08f1b8c,
         type: 2}
@@ -2861,7 +2865,7 @@ Prefab:
     - target: {fileID: 114597819206115844, guid: 737780b41e254684e871cc43b08f1b8c,
         type: 2}
       propertyPath: waitSecs
-      value: 11
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 114597819206115844, guid: 737780b41e254684e871cc43b08f1b8c,
         type: 2}
@@ -3443,7 +3447,7 @@ Prefab:
     - target: {fileID: 114597819206115844, guid: 737780b41e254684e871cc43b08f1b8c,
         type: 2}
       propertyPath: waitSecs
-      value: 11
+      value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 114597819206115844, guid: 737780b41e254684e871cc43b08f1b8c,
         type: 2}
