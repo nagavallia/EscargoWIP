@@ -8,7 +8,9 @@ public class SceneController : MonoBehaviour, GameManager {
     [SerializeField] private GameObject complete;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private int maxLevel = 11;
+	public int challengeLevels = 3;
 	public int levelsCompleted { get; private set; }
+	public int challengeCompleted { get; private set; }
 
     private float defaultTimeScale;
     private bool levelFinished;
@@ -25,7 +27,7 @@ public class SceneController : MonoBehaviour, GameManager {
         pauseMenu.SetActive(false);
 
         if (Managers.logging.isDebugging) // load levels completed from local, else set to 0
-            levelsCompleted = maxLevel;
+            levelsCompleted = maxLevel + challengeLevels;
         else
             levelsCompleted = PlayerPrefs.GetInt(GameEvent.LEVELS_FINISHED, 0);
     }
@@ -76,7 +78,7 @@ public class SceneController : MonoBehaviour, GameManager {
         {
 			if (CanPause())
             	Pause();
-			else if (curSceneId == maxLevel + 2)
+			else if (curSceneId == maxLevel + challengeLevels + 2)
 				LoadLevel (MAIN_SCENE_ID);
         }
     }
@@ -94,12 +96,15 @@ public class SceneController : MonoBehaviour, GameManager {
             Managers.logging.RecordLevelEnd();
             Managers.UnloadAll(SceneManager.GetActiveScene());
 
-            levelsCompleted = Mathf.Max(levelsCompleted, Mathf.Min(curSceneId - 1, maxLevel));
+			levelsCompleted = Mathf.Max(levelsCompleted, Mathf.Min(curSceneId - 1, maxLevel + challengeLevels));
 
             PlayerPrefs.SetInt(GameEvent.LEVELS_FINISHED, levelsCompleted);
             PlayerPrefs.Save();
 
-            LoadLevel(curSceneId + 1);
+			if (curSceneId == maxLevel + 1)
+				LoadLevel (maxLevel + challengeLevels + 2);
+			else 
+				LoadLevel(curSceneId + 1);
         }
     }
 
@@ -122,6 +127,10 @@ public class SceneController : MonoBehaviour, GameManager {
 		LoadLevel(levelno + 1);
 	}
 
+	public void LoadChallenge(int levelno) {
+		LoadLevel (levelno + 1 + maxLevel);
+	}
+
     public int GetNumLevels() {
 		return maxLevel;
 	}
@@ -139,7 +148,7 @@ public class SceneController : MonoBehaviour, GameManager {
     }
 
     public bool CanPause() {
-        return curSceneId > 1 && curSceneId < maxLevel + 2;
+		return curSceneId > 1 && curSceneId < maxLevel + challengeLevels + 2;
     }
     
 }
