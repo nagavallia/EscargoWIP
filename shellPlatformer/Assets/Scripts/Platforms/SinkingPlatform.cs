@@ -17,6 +17,9 @@ public class SinkingPlatform : MonoBehaviour {
 	private BoxCollider2D selfCollider;
 	private List<GameObject> weighingDown;
 
+    [SerializeField] private AudioClip moveSound, finishSound;
+    private AudioSource audioSource;
+
     private float GROUND_CHECK;
 	// Use this for initialization
 	void Start () {
@@ -35,6 +38,10 @@ public class SinkingPlatform : MonoBehaviour {
 
 		selfCollider = GetComponent<BoxCollider2D> ();
 		weighingDown = new List<GameObject> ();
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = moveSound;
+        audioSource.loop = true;
 
 		isSinking = false;
 		StartCoroutine ("Move");
@@ -101,6 +108,9 @@ public class SinkingPlatform : MonoBehaviour {
 				yield return null; 
 			}
 
+            if (!audioSource.isPlaying)
+                audioSource.Play();
+
 			BoxCollider2D collider = GetComponent<BoxCollider2D> ();
 			SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 
@@ -115,6 +125,13 @@ public class SinkingPlatform : MonoBehaviour {
 				this.transform.localPosition = Vector3.MoveTowards (this.transform.localPosition, startPosition, step);
 				GetComponent<SpriteRenderer> ().size = Vector2.MoveTowards (sprite.size, startSize, 2*step);
 			}
+
+            if ((isSinking && light.localPosition == lightSunkenPosition) || 
+                (!isSinking && light.localPosition == lightStartPosition)) {
+
+                audioSource.Stop();
+                audioSource.PlayOneShot(finishSound);
+            }
 
 			yield return null;
 		}

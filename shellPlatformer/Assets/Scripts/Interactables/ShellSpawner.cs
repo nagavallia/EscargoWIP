@@ -20,6 +20,8 @@ public class ShellSpawner : MonoBehaviour
     [SerializeField] private bool shouldSpawnNewShell = false;
     [SerializeField] private int maxShells = 1;
 	[SerializeField] private Sprite chargedMagnet;
+    [SerializeField] private AudioClip retrieveSound;
+    private AudioSource audioSource;
     private int shellsSpawned = 0;
 	private Sprite originalMagnet;
 
@@ -40,6 +42,8 @@ public class ShellSpawner : MonoBehaviour
 		lockedOn = false;
 
 		originalMagnet = this.GetComponent<SpriteRenderer> ().sprite;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
 
 	}
 
@@ -83,6 +87,7 @@ public class ShellSpawner : MonoBehaviour
 			this.gameObject.GetComponent<SpriteRenderer> ().sprite = originalMagnet;
 		}
 		else if (player.transform.Find ("Shell") == null && !isMoving) {
+            audioSource.PlayOneShot(retrieveSound);
 			StartCoroutine("Move");
 			StartCoroutine ("magnetAnim");
 //			shell.gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;

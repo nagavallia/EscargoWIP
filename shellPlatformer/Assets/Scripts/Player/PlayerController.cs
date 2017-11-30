@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 	// Initialize the animator component
 	private Animator anim;
 
-    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip jumpSound, deathSound;
     private AudioSource audioSource;
 
 	private Vector3 deathPosition;
@@ -263,7 +263,8 @@ public class PlayerController : MonoBehaviour
 
 	void Kill ()
 	{
-		deathPosition = transform.position; 
+		deathPosition = transform.position;
+        audioSource.PlayOneShot(deathSound);
 		StartCoroutine (killRoutine());
 	}
 

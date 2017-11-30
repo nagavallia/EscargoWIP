@@ -40,6 +40,9 @@ public class ShellThrower : MonoBehaviour {
 	private GameObject popUp;
 	public Vector3 offset = new Vector3(0,1,0);
 
+    public AudioClip throwSound;
+    private AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
 
@@ -105,6 +108,9 @@ public class ShellThrower : MonoBehaviour {
 			dot.SetActive(false);
 			trajectoryPoints.Add(dot);
 		}
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        throwSound = Resources.Load("throw") as AudioClip;
 	}
 
 
@@ -160,6 +166,9 @@ public class ShellThrower : MonoBehaviour {
 			throwVec.Set (fixedThrowVec.x * direction * xMult, fixedThrowVec.y * yMult);
 			shellRigidBody.AddForce (throwVec);
 			Debug.Log(throwVec);
+
+            audioSource.PlayOneShot(throwSound);
+
 			// log that a throw has taken place and the position of the player\
 			Managers.logging.RecordEvent(2, "" + player.position);
 		}

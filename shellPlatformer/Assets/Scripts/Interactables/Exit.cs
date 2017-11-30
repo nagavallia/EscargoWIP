@@ -7,7 +7,7 @@ public class Exit : MonoBehaviour
 	[SerializeField] private bool startEnabled = false;
 	[SerializeField] private Sprite locked, unlocked;
 	private bool wasActive;
-	private AudioClip activateSound, deactivateSound;
+	private AudioClip activateSound, deactivateSound, completeSound;
 	private AudioSource audioSource;
 
 	void Start ()
@@ -19,12 +19,14 @@ public class Exit : MonoBehaviour
 		}
 
 		audioSource = gameObject.AddComponent<AudioSource> ();
+        audioSource.volume = 0.667f;
 
 		var active = "exit_appear"; // load in correct activate sound
 		var deactive = "exit_disappear";
 
 		activateSound = Resources.Load (active) as AudioClip;
 		deactivateSound = Resources.Load (deactive) as AudioClip;
+        completeSound = Resources.Load("level_finish") as AudioClip;
 	}
 
 	private void OnTriggerEnter2D (Collider2D collision)
@@ -34,6 +36,7 @@ public class Exit : MonoBehaviour
 		//if playerControl existed, ie actually collided with player
 		if (player != null) {
 
+            audioSource.PlayOneShot(completeSound);
 			StartCoroutine(exitRoutine(collision.gameObject));
 				
 			// record that the level has ended

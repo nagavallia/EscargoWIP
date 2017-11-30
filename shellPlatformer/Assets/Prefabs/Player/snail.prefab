@@ -562,6 +562,7 @@ MonoBehaviour:
   jumpForce: 400
   maxDrag: 10
   jumpSound: {fileID: 8300000, guid: d398144b050efcd4c802eac80a7d0eb4, type: 3}
+  deathSound: {fileID: 8300000, guid: 1112faa549d20ef4381aa94b3081acff, type: 3}
   shellThrowing: 0
   exitAnimation: 0
 --- !u!114 &114947793716406780
@@ -580,11 +581,12 @@ MonoBehaviour:
   defaultShellPos: {x: 0.3, y: 0.1, z: -2}
   shellPickupSpeed: 5
   interactDist: 0.5
-  numTrajectoryPoints: 10
   fixedThrowAngle: 55
   throwForce: 400
   vertMultiplier: 1.1
   horizMultiplier: 1.1
+  numTrajectoryPoints: 10
+  offset: {x: 0, y: 1, z: 0}
 --- !u!212 &212306878194131382
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -20,6 +20,9 @@ public class ParticleLauncher : MonoBehaviour {
 	[SerializeField]
 	private bool startEnabled = true;
 
+    [SerializeField] private AudioClip faucetOn, faucetOff;
+    private AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
 		if (startEnabled) {
@@ -27,6 +30,8 @@ public class ParticleLauncher : MonoBehaviour {
 		}
 
 		interactCheck = startEnabled;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
 	}
 
 
@@ -94,8 +99,11 @@ public class ParticleLauncher : MonoBehaviour {
 		CancelInvoke ();
 
 		if (!interactCheck) {
+            audioSource.PlayOneShot(faucetOn);
 			StartCoroutine (emitParticleRoutine ());
-		}
+		} else {
+            audioSource.PlayOneShot(faucetOff);
+        }
 
 		interactCheck = !interactCheck;
 	
