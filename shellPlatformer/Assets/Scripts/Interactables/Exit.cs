@@ -5,7 +5,7 @@ using UnityEngine;
 public class Exit : MonoBehaviour
 {
 	[SerializeField] private bool startEnabled = false;
-	[SerializeField] private Sprite locked, unlocked;
+	[SerializeField] private Sprite locked, unlocked, mid;
 	private bool wasActive;
 	private AudioClip activateSound, deactivateSound, completeSound;
 	private AudioSource audioSource;
@@ -53,13 +53,14 @@ public class Exit : MonoBehaviour
 	void Interact ()
 	{
 		if (!wasActive) {
-			gameObject.GetComponent<SpriteRenderer> ().sprite = unlocked;
-			foreach (Collider2D collider in gameObject.GetComponents<Collider2D>()) {
-				collider.enabled = true; // Disable all colliders attatched to this gameObject. Note: might want to only disable triggers, we'll see.
-			}
-			wasActive = true;
-			
-			audioSource.PlayOneShot (activateSound); // play activate or deactivate sound
+//			gameObject.GetComponent<SpriteRenderer> ().sprite = unlocked;
+//			foreach (Collider2D collider in gameObject.GetComponents<Collider2D>()) {
+//				collider.enabled = true; // Disable all colliders attatched to this gameObject. Note: might want to only disable triggers, we'll see.
+//			}
+//			wasActive = true;
+//			
+//			audioSource.PlayOneShot (activateSound); // play activate or deactivate sound
+			StartCoroutine("exitAnim");
 		}
 	}
 
@@ -87,5 +88,34 @@ public class Exit : MonoBehaviour
 		// set the boolean for level start to false
 		LoggingManager.lvlStart = false;
 
+	}
+
+	IEnumerator exitAnim(){
+		this.GetComponent<SpriteRenderer> ().sprite = mid;
+		GameObject boom = (GameObject)Instantiate (Resources.Load ("boom"));
+		boom.transform.position = this.transform.position + new Vector3(0f, 0f,0);
+		yield return new WaitForSeconds (0.5f);
+
+		Destroy (boom);
+
+		GameObject boom1 = (GameObject)Instantiate (Resources.Load ("boom"));
+		boom1.transform.position = this.transform.position + new Vector3(0.5f, 0.5f,0);
+		yield return new WaitForSeconds (0.5f);
+
+		Destroy (boom1);
+
+		GameObject boom2 = (GameObject)Instantiate (Resources.Load ("bigboom"));
+		boom2.transform.position = this.transform.position + new Vector3(0f, 0f,0);
+		yield return new WaitForSeconds (0.5f);
+
+		Destroy (boom2);
+
+		gameObject.GetComponent<SpriteRenderer> ().sprite = unlocked;
+		foreach (Collider2D collider in gameObject.GetComponents<Collider2D>()) {
+			collider.enabled = true; // Disable all colliders attatched to this gameObject. Note: might want to only disable triggers, we'll see.
+		}
+		wasActive = true;
+
+		audioSource.PlayOneShot (activateSound); // play activate or deactivate sound
 	}
 }

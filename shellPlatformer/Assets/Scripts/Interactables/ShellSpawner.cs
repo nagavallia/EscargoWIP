@@ -20,6 +20,7 @@ public class ShellSpawner : MonoBehaviour
     [SerializeField] private bool shouldSpawnNewShell = false;
     [SerializeField] private int maxShells = 1;
 	[SerializeField] private Sprite chargedMagnet;
+	[SerializeField] private Sprite chargedMagnet2;
     [SerializeField] private AudioClip retrieveSound;
     private AudioSource audioSource;
     private int shellsSpawned = 0;
@@ -140,6 +141,8 @@ public class ShellSpawner : MonoBehaviour
 		while (true) {
 			
 			this.gameObject.GetComponent<SpriteRenderer> ().sprite = chargedMagnet;
+			yield return new WaitForSeconds (0.1f);
+			this.gameObject.GetComponent<SpriteRenderer> ().sprite = chargedMagnet2;
 			yield return new WaitForSeconds (0.1f);
 			this.gameObject.GetComponent<SpriteRenderer> ().sprite = originalMagnet;
 			yield return new WaitForSeconds (0.1f);
