@@ -66,11 +66,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Kongregate/xc_1.unity
     guid: e26c772910533774fb4b69646d035d94
   - enabled: 1
-    path: Assets/Scenes/Kongregate/xc_2.unity
-    guid: 7d8008588babee444be8d5f40ca14ee2
-  - enabled: 1
     path: Assets/Scenes/Kongregate/xc_3.unity
     guid: 85e8f46642adda94a979b836615a42dd
+  - enabled: 1
+    path: Assets/Scenes/Kongregate/xc_2.unity
+    guid: 7d8008588babee444be8d5f40ca14ee2
   - enabled: 1
     path: Assets/Scenes/Kongregate/xc_4.unity
     guid: 155e9d74eb69a4e5bb4ee2689eafab0a
