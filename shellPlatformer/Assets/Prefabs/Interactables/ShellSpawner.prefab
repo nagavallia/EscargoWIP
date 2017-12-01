@@ -154,6 +154,7 @@ MonoBehaviour:
   maxShells: 1
   chargedMagnet: {fileID: 0}
   retrieveSound: {fileID: 8300000, guid: fa118a0c79d6bd848873433152c75442, type: 3}
+  spawnSound: {fileID: 8300000, guid: b81d31164aeb2694291b22b9047c09a5, type: 3}
 --- !u!114 &114802189521913814
 MonoBehaviour:
   m_ObjectHideFlags: 1

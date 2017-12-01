@@ -20,7 +20,7 @@ public class ShellSpawner : MonoBehaviour
     [SerializeField] private bool shouldSpawnNewShell = false;
     [SerializeField] private int maxShells = 1;
 	[SerializeField] private Sprite chargedMagnet;
-    [SerializeField] private AudioClip retrieveSound;
+    [SerializeField] private AudioClip retrieveSound, spawnSound;
     private AudioSource audioSource;
     private int shellsSpawned = 0;
 	private Sprite originalMagnet;
@@ -71,6 +71,8 @@ public class ShellSpawner : MonoBehaviour
 		newShell.transform.position = this.transform.position;
 		newShell.name = "Shell";
         shellsSpawned++;
+
+		audioSource.PlayOneShot (spawnSound);
 
         //log that a shell spawner has been used and the position of the player
   
