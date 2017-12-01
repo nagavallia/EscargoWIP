@@ -78,7 +78,7 @@ public class SceneController : MonoBehaviour, GameManager {
         {
 			if (CanPause())
             	Pause();
-			else if (curSceneId == maxLevel + challengeLevels + 2)
+			else if (curSceneId == maxLevel + challengeLevels + 2 || curSceneId == maxLevel + challengeLevels + 3)
 				LoadLevel (MAIN_SCENE_ID);
         }
     }
@@ -106,6 +106,8 @@ public class SceneController : MonoBehaviour, GameManager {
 
 			if (curSceneId == maxLevel + 1)
 				LoadLevel (maxLevel + challengeLevels + 2);
+			else if (curSceneId == maxLevel + challengeLevels + 1)
+				LoadLevel (maxLevel + challengeLevels + 3);
 			else 
 				LoadLevel(curSceneId + 1);
         }
