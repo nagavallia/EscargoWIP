@@ -82,7 +82,8 @@ public class MovingPlatform : MonoBehaviour {
 
         RaycastHit2D leftHit = Physics2D.Raycast(left, Vector2.down, GROUND_CHECK);
         RaycastHit2D rightHit = Physics2D.Raycast(right, Vector2.down, GROUND_CHECK);
-        if (leftHit.collider == selfCollider || rightHit.collider == selfCollider)
+        if ((leftHit.collider == selfCollider || rightHit.collider == selfCollider)  
+			&& (leftHit.collider.gameObject.layer != LayerMask.NameToLayer("Background") || rightHit.collider.gameObject.layer != LayerMask.NameToLayer("Background")))
             collision.transform.SetParent(this.transform);
     }
 
