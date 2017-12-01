@@ -7,7 +7,7 @@ public class Exit : MonoBehaviour
 	[SerializeField] private bool startEnabled = false;
 	[SerializeField] private Sprite locked, unlocked, mid;
 	private bool wasActive;
-	private AudioClip activateSound, deactivateSound, completeSound;
+	private AudioClip activateSound, deactivateSound, completeSound, explodeSound;
 	private AudioSource audioSource;
 
 	void Start ()
@@ -27,6 +27,7 @@ public class Exit : MonoBehaviour
 		activateSound = Resources.Load (active) as AudioClip;
 		deactivateSound = Resources.Load (deactive) as AudioClip;
         completeSound = Resources.Load("level_finish") as AudioClip;
+		explodeSound = Resources.Load ("tnt_explosion") as AudioClip;
 	}
 
 	private void OnTriggerEnter2D (Collider2D collision)
@@ -94,6 +95,7 @@ public class Exit : MonoBehaviour
 		this.GetComponent<SpriteRenderer> ().sprite = mid;
 		GameObject boom = (GameObject)Instantiate (Resources.Load ("boom"));
 		boom.transform.position = this.transform.position + new Vector3(0f, 0f,0);
+		audioSource.PlayOneShot (explodeSound);
 		yield return new WaitForSeconds (0.5f);
 
 		Destroy (boom);
