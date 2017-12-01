@@ -33,11 +33,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Kongregate/level_7.unity
     guid: 57329120744ccdc45a45af36684348a7
   - enabled: 1
-    path: Assets/Scenes/Kongregate/level_8.unity
-    guid: 4162c3ce78743d84197fcccf9d46b06f
-  - enabled: 1
     path: Assets/Scenes/Kongregate/level_9.unity
     guid: 69163d08f49710445949eec8540862c3
+  - enabled: 1
+    path: Assets/Scenes/Kongregate/level_8.unity
+    guid: 4162c3ce78743d84197fcccf9d46b06f
   - enabled: 1
     path: Assets/Scenes/Kongregate/level_10.unity
     guid: ccd8713eddc1285438bccb4750aa451d
