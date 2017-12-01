@@ -126,10 +126,12 @@ public class ShellSpawner : MonoBehaviour
 	public void switchTrigger(){
 
 		if (shouldSpawnNewShell) {
-			SpawnShell ();
+			if (shellsSpawned < maxShells) {
+				SpawnShell ();
 
-			// log that the switch for spawn shell has been triggered
-			Managers.logging.RecordEvent (10, "" + player.transform.position);
+				// log that the switch for spawn shell has been triggered
+				Managers.logging.RecordEvent (10, "" + player.transform.position);
+			}
 		}
 
 
