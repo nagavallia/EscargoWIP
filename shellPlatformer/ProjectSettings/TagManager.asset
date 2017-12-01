@@ -46,6 +46,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Way Back
+    uniqueID: 806164725
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
