@@ -59,7 +59,7 @@ public class UIController : MonoBehaviour {
 		int x = 0;
 
 		for (int z = 1; z <= Managers.scene.challengeLevels; z++) {
-			GameObject buttonObject = Instantiate (Resources.Load ("LevelButton") as GameObject, LevelSelectCanvas.transform);
+			GameObject buttonObject = Instantiate (Resources.Load ("LevelButtonRed") as GameObject, LevelSelectCanvas.transform);
 			LevelSelectButton button = buttonObject.GetComponent<LevelSelectButton> ();
 
 			button.attachedLevel = z;
