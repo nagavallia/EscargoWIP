@@ -421,11 +421,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1103768260669486, guid: dd041f9613cb312459f968750a6a4bdf, type: 2}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1691486178815542, guid: dd041f9613cb312459f968750a6a4bdf, type: 2}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd041f9613cb312459f968750a6a4bdf, type: 2}
