@@ -46,7 +46,7 @@ public class LoggingManager : MonoBehaviour, GameManager {
 			RecordPageLoad();
 
             //record AB test value
-            abValue = 1;
+			abValue = assignABTestValue(1);
             RecordABTestValue();
 			if (isDebugging)
 				abValue = 1;
