@@ -569,7 +569,12 @@ Prefab:
     - target: {fileID: 114686299368550518, guid: 23ca4584ac31bfe449708c3a982f67bc,
         type: 2}
       propertyPath: maxShells
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114686299368550518, guid: 23ca4584ac31bfe449708c3a982f67bc,
+        type: 2}
+      propertyPath: shouldSpawnNewShell
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23ca4584ac31bfe449708c3a982f67bc, type: 2}
