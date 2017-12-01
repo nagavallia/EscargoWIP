@@ -85,7 +85,8 @@ public class ShellSpawner : MonoBehaviour
 		if (lockedOn) {
 			Debug.Log("dropping");
 			shell.gameObject.GetComponent<Rigidbody2D> ().gravityScale = 1;
-			lockedOn = false;
+            shell.gameObject.layer = LayerMask.NameToLayer("Shell");
+            lockedOn = false;
 			StopAllCoroutines ();
 			this.gameObject.GetComponent<SpriteRenderer> ().sprite = originalMagnet;
 		}
@@ -114,7 +115,6 @@ public class ShellSpawner : MonoBehaviour
 				yield return null;
 			}
 			shell.gameObject.transform.SetPositionAndRotation(endPos, Quaternion.identity);
-			shell.gameObject.layer = LayerMask.NameToLayer ("Shell");
 			shell.gameObject.GetComponent<Rigidbody2D> ().velocity = Vector3.zero;
 			shell.gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
 			curTime = 0f;
