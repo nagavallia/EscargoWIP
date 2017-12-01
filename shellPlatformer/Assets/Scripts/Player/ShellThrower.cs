@@ -21,7 +21,7 @@ public class ShellThrower : MonoBehaviour {
 	//private float momentumMultiplier;
 
 	private GameObject trajectoryPointPrefab;
-	[SerializeField] private int numTrajectoryPoints = 10;
+	[SerializeField] private int numTrajectoryPoints = 16;
 	private List<GameObject> trajectoryPoints;
 
 	private GameObject shell;
