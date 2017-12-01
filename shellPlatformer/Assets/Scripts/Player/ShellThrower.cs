@@ -146,8 +146,10 @@ public class ShellThrower : MonoBehaviour {
 			if ((childShell == null || childShell == this.transform) && player.GetComponent<PlayerController> ().CanPickupShell (gameObject) &&
 			   transform.parent != player && shellRigidBody.velocity.magnitude < shellPickupSpeed
 			   && ((Vector2)(player.position - transform.position)).magnitude < interactDist) {
-				popUp.SetActive (true);
+				StartCoroutine ("popUpRoutine");
+
 			} else {
+				StopCoroutine ("popUpRoutine");
 				popUp.SetActive (false);
 			}
 		}
@@ -202,6 +204,10 @@ public class ShellThrower : MonoBehaviour {
 			Physics2D.IgnoreCollision (tempCollider, shellHitbox);
 			temporaryShellCollisionFix.tag = "TempShell";
 			temporaryShellCollisionFix.layer = LayerMask.NameToLayer ("PickedUpShell");
+
+			// log that the shell has been picked up
+			Managers.logging.RecordEvent (9, "" + player.transform.position);
+
 			return true;
 		}
 		return false;
@@ -220,6 +226,9 @@ public class ShellThrower : MonoBehaviour {
 		if (trajectoryPoints[0].activeInHierarchy) { DeleteTrajectory(); }
 
 		Destroy (temporaryShellCollisionFix);
+
+		// log that the shell has been dropped
+		Managers.logging.RecordEvent (8, "" + player.transform.position);
 	}
 
 	IEnumerator throwAnimRoutine(){
@@ -258,6 +267,13 @@ public class ShellThrower : MonoBehaviour {
 		for (int i = 0; i < numTrajectoryPoints; i++) {
 			trajectoryPoints[i].SetActive(false);
 		}
+	}
+
+	IEnumerator popUpRoutine(){
+
+		yield return new WaitForSeconds (1);
+
+		popUp.SetActive (true);
 	}
 
 }

@@ -85,6 +85,9 @@ public class SceneController : MonoBehaviour, GameManager {
     
 
     private void ReloadScene() {
+		// log that reset has been triggered and record the location of the snail 
+		Managers.logging.RecordEvent (7, "" + GameObject.FindGameObjectWithTag ("Player").transform.position);
+
         Debug.Log("reloading scene " + curSceneId);
         LoadLevel(curSceneId);
     }

@@ -119,10 +119,19 @@ public class ShellSpawner : MonoBehaviour
 
 	public void switchTrigger(){
 
-		if (shouldSpawnNewShell)
+		if (shouldSpawnNewShell) {
 			SpawnShell ();
+
+			// log that the switch for spawn shell has been triggered
+			Managers.logging.RecordEvent (10, "" + player.transform.position);
+		}
+
+
 		else {
 			ReturnShell ();
+
+			// log that the switch for retireve shell has been triggered
+			Managers.logging.RecordEvent (11, "" + player.transform.position);
 		}
 		
 	}
