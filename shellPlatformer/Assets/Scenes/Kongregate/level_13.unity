@@ -1033,6 +1033,16 @@ Prefab:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 212001995074957996, guid: 3ce6b79135db8684a98edcad00f43b9d,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 806164725
+      objectReference: {fileID: 0}
+    - target: {fileID: 212001995074957996, guid: 3ce6b79135db8684a98edcad00f43b9d,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ce6b79135db8684a98edcad00f43b9d, type: 2}
   m_IsPrefabParent: 0
