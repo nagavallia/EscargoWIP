@@ -99,7 +99,10 @@ public class ShellSpawner : MonoBehaviour
 		isMoving = true;
 		startPos = shell.gameObject.GetComponent<Rigidbody2D> ().position;
 		shell.gameObject.layer = LayerMask.NameToLayer ("No Collison");
+		float dist = Vector2.Distance ((Vector2)startPos, (Vector2)endPos);
 		while (isMoving) {
+			if (dist < 7.5f)
+				moveDuration = 1;
 			while (curTime < moveDuration) {
 				var t = curTime / moveDuration;
 				shell.gameObject.transform.SetPositionAndRotation(Vector3.Lerp(startPos, endPos, t),
