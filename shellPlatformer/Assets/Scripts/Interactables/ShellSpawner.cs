@@ -101,7 +101,7 @@ public class ShellSpawner : MonoBehaviour
 	private IEnumerator Move() {
 		isMoving = true;
 		startPos = shell.gameObject.GetComponent<Rigidbody2D> ().position;
-		shell.gameObject.layer = LayerMask.NameToLayer ("No Collison");
+		shell.gameObject.layer = LayerMask.NameToLayer ("No Collision");
 		float dist = Vector2.Distance ((Vector2)startPos, (Vector2)endPos);
 		while (isMoving) {
 			if (dist < 7.5f)
