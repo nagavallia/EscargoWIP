@@ -417,11 +417,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4350920386995144, guid: 737780b41e254684e871cc43b08f1b8c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.350335
+      value: 6.32
       objectReference: {fileID: 0}
     - target: {fileID: 4350920386995144, guid: 737780b41e254684e871cc43b08f1b8c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.7041988
+      value: -0.65
       objectReference: {fileID: 0}
     - target: {fileID: 4350920386995144, guid: 737780b41e254684e871cc43b08f1b8c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -446,6 +446,11 @@ Prefab:
     - target: {fileID: 4350920386995144, guid: 737780b41e254684e871cc43b08f1b8c, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114597819206115844, guid: 737780b41e254684e871cc43b08f1b8c,
+        type: 2}
+      propertyPath: intervalSecs
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 737780b41e254684e871cc43b08f1b8c, type: 2}
@@ -1529,6 +1534,11 @@ Prefab:
     - target: {fileID: 1659934766325516, guid: 737780b41e254684e871cc43b08f1b8c, type: 2}
       propertyPath: m_Name
       value: enemyMove (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114597819206115844, guid: 737780b41e254684e871cc43b08f1b8c,
+        type: 2}
+      propertyPath: intervalSecs
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 737780b41e254684e871cc43b08f1b8c, type: 2}
