@@ -1296,7 +1296,7 @@ Prefab:
     - target: {fileID: 114057155341975270, guid: 325e92488ca7b47719d02821c94dbcef,
         type: 2}
       propertyPath: interactables.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4798964643908964, guid: 325e92488ca7b47719d02821c94dbcef, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1344,7 +1344,7 @@ Prefab:
         type: 2}
       propertyPath: interactables.Array.data[2]
       value: 
-      objectReference: {fileID: 225865396}
+      objectReference: {fileID: 2052176876}
     - target: {fileID: 4798964643908964, guid: 325e92488ca7b47719d02821c94dbcef, type: 2}
       propertyPath: m_LocalScale.x
       value: 0.7099162
@@ -4029,6 +4029,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45db4e8c6583e5b40b0296251ed275df, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2052176876 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1610680431557286, guid: 45db4e8c6583e5b40b0296251ed275df,
+    type: 2}
+  m_PrefabInternal: {fileID: 2052176875}
 --- !u!1001 &2079169087
 Prefab:
   m_ObjectHideFlags: 0
