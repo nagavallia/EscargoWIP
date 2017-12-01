@@ -342,6 +342,11 @@ Prefab:
       propertyPath: interactables.Array.data[3]
       value: 
       objectReference: {fileID: 762371319}
+    - target: {fileID: 114400111025365718, guid: b5b9d51bef3ba4abdb16a89151877e80,
+        type: 2}
+      propertyPath: ColorAttachedInteractables
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5b9d51bef3ba4abdb16a89151877e80, type: 2}
   m_IsPrefabParent: 0
