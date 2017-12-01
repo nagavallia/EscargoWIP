@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212623707958179514}
   - component: {fileID: 61812288904546774}
   - component: {fileID: 114271672583783666}
+  - component: {fileID: 114365847339862164}
   m_Layer: 9
   m_Name: red
   m_TagString: Ground
@@ -79,6 +80,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startEnabled: 0
+--- !u!114 &114365847339862164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1190227925130008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb88df4aff5426f40a925189d33ebb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ENABLED: 0
+  activators: 
 --- !u!212 &212623707958179514
 SpriteRenderer:
   m_ObjectHideFlags: 1
