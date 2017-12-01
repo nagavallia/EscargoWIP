@@ -121,7 +121,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4195992334507248, guid: 45db4e8c6583e5b40b0296251ed275df, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.728
+      value: -3.15
       objectReference: {fileID: 0}
     - target: {fileID: 4195992334507248, guid: 45db4e8c6583e5b40b0296251ed275df, type: 2}
       propertyPath: m_LocalPosition.y
@@ -276,7 +276,7 @@ Prefab:
     - target: {fileID: 114119128385647470, guid: 2925068ecc9dba34db328b9b28c8d662,
         type: 2}
       propertyPath: moveSpeed
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2925068ecc9dba34db328b9b28c8d662, type: 2}
@@ -515,7 +515,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4867174380300644, guid: f583becbfed78554fa3f265c8d1597d7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.066
+      value: -7.114
       objectReference: {fileID: 0}
     - target: {fileID: 4867174380300644, guid: f583becbfed78554fa3f265c8d1597d7, type: 2}
       propertyPath: m_LocalPosition.y
@@ -548,7 +548,7 @@ Prefab:
     - target: {fileID: 212601519459684416, guid: f583becbfed78554fa3f265c8d1597d7,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.95148283
+      value: 0.92746747
       objectReference: {fileID: 0}
     - target: {fileID: 212601519459684416, guid: f583becbfed78554fa3f265c8d1597d7,
         type: 2}
@@ -801,6 +801,16 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 4.0899496
       objectReference: {fileID: 0}
+    - target: {fileID: 212031664603820884, guid: 9ae5b1fc0352f6c468f2d0bf2f9103dd,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 806164725
+      objectReference: {fileID: 0}
+    - target: {fileID: 212031664603820884, guid: 9ae5b1fc0352f6c468f2d0bf2f9103dd,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ae5b1fc0352f6c468f2d0bf2f9103dd, type: 2}
   m_IsPrefabParent: 0
@@ -850,6 +860,16 @@ Prefab:
     - target: {fileID: 4061261127548714, guid: 529bd96bf3c2624478fe52a143b16391, type: 2}
       propertyPath: m_LocalScale.y
       value: 5.4781337
+      objectReference: {fileID: 0}
+    - target: {fileID: 212750480052827756, guid: 529bd96bf3c2624478fe52a143b16391,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 806164725
+      objectReference: {fileID: 0}
+    - target: {fileID: 212750480052827756, guid: 529bd96bf3c2624478fe52a143b16391,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 529bd96bf3c2624478fe52a143b16391, type: 2}
@@ -1212,11 +1232,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4196643538614756, guid: d4e2566409f0cd144b768ec4fe641466, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.93
+      value: -8.17
       objectReference: {fileID: 0}
     - target: {fileID: 4196643538614756, guid: d4e2566409f0cd144b768ec4fe641466, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.32
+      value: -2.27
       objectReference: {fileID: 0}
     - target: {fileID: 4196643538614756, guid: d4e2566409f0cd144b768ec4fe641466, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1379,7 +1399,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1350220031066458, guid: d4d6be5b396a8c04589497edb0540478, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4d6be5b396a8c04589497edb0540478, type: 2}
@@ -1393,7 +1413,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4195992334507248, guid: 45db4e8c6583e5b40b0296251ed275df, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.81
+      value: -1.47
       objectReference: {fileID: 0}
     - target: {fileID: 4195992334507248, guid: 45db4e8c6583e5b40b0296251ed275df, type: 2}
       propertyPath: m_LocalPosition.y
