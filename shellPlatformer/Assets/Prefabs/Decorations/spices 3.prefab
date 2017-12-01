@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4045415723015618}
   - component: {fileID: 212738106553841914}
   - component: {fileID: 61994243296025764}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spices 3
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
