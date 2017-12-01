@@ -21,7 +21,7 @@ public class ShellSpawner : MonoBehaviour
     [SerializeField] private int maxShells = 1;
 	[SerializeField] private Sprite chargedMagnet;
 	[SerializeField] private Sprite chargedMagnet2;
-    [SerializeField] private AudioClip retrieveSound;
+    [SerializeField] private AudioClip retrieveSound, spawnSound;
     private AudioSource audioSource;
     private int shellsSpawned = 0;
 	private Sprite originalMagnet;
@@ -73,6 +73,8 @@ public class ShellSpawner : MonoBehaviour
 		newShell.name = "Shell";
         shellsSpawned++;
 
+		audioSource.PlayOneShot (spawnSound);
+
         //log that a shell spawner has been used and the position of the player
   
         Managers.logging.RecordEvent(4, "" + player.transform.position);
@@ -100,7 +102,10 @@ public class ShellSpawner : MonoBehaviour
 		isMoving = true;
 		startPos = shell.gameObject.GetComponent<Rigidbody2D> ().position;
 		shell.gameObject.layer = LayerMask.NameToLayer ("No Collison");
+		float dist = Vector2.Distance ((Vector2)startPos, (Vector2)endPos);
 		while (isMoving) {
+			if (dist < 7.5f)
+				moveDuration = 1;
 			while (curTime < moveDuration) {
 				var t = curTime / moveDuration;
 				shell.gameObject.transform.SetPositionAndRotation(Vector3.Lerp(startPos, endPos, t),
