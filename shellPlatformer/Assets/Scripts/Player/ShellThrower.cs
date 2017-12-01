@@ -45,6 +45,7 @@ public class ShellThrower : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log ("new shell, calling start");
 
 		shell = this.gameObject;
 		throwVec = new Vector2();
@@ -73,15 +74,6 @@ public class ShellThrower : MonoBehaviour {
 		foreach (Collider2D collider in player.GetComponents<Collider2D>()) 
 			Physics2D.IgnoreCollision(collider, shellHitbox);
 
-		if (transform.parent == null) 
-		{
-			ReleaseShell();
-		} 
-		else 
-		{
-			PickUpShell();
-		}
-
 		if (Managers.logging == null || Managers.logging.abValue == 0) { //A value for A/B testing
 			horizMultiplier = 1.1f;
 			vertMultiplier = 1.1f;
@@ -102,11 +94,21 @@ public class ShellThrower : MonoBehaviour {
 
 		trajectoryPointPrefab = Resources.Load ("dot") as GameObject;
 		GameObject trajPoints = new GameObject ("Trajectory Points");
+		trajPoints.transform.parent = transform;
 		trajectoryPoints = new List<GameObject>();
 		for (int i = 0; i < numTrajectoryPoints; i++) {
 			GameObject dot = Instantiate(trajectoryPointPrefab, trajPoints.transform) as GameObject;
 			dot.SetActive(false);
 			trajectoryPoints.Add(dot);
+		}
+
+		if (transform.parent == null) 
+		{
+			ReleaseShell();
+		} 
+		else 
+		{
+			PickUpShell();
 		}
 
         audioSource = gameObject.AddComponent<AudioSource>();
