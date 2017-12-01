@@ -284,7 +284,7 @@ Prefab:
     - target: {fileID: 114400111025365718, guid: b5b9d51bef3ba4abdb16a89151877e80,
         type: 2}
       propertyPath: interactables.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4404251465224806, guid: b5b9d51bef3ba4abdb16a89151877e80, type: 2}
       propertyPath: m_LocalPosition.x
@@ -326,17 +326,17 @@ Prefab:
         type: 2}
       propertyPath: interactables.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 17084737}
     - target: {fileID: 114400111025365718, guid: b5b9d51bef3ba4abdb16a89151877e80,
         type: 2}
       propertyPath: interactables.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 762371319}
     - target: {fileID: 114400111025365718, guid: b5b9d51bef3ba4abdb16a89151877e80,
         type: 2}
       propertyPath: interactables.Array.data[2]
       value: 
-      objectReference: {fileID: 17084737}
+      objectReference: {fileID: 762371319}
     - target: {fileID: 114400111025365718, guid: b5b9d51bef3ba4abdb16a89151877e80,
         type: 2}
       propertyPath: interactables.Array.data[3]
@@ -1088,6 +1088,11 @@ Prefab:
     - target: {fileID: 1610680431557286, guid: 45db4e8c6583e5b40b0296251ed275df, type: 2}
       propertyPath: m_Name
       value: FloatingPlatform (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114651845904262492, guid: 45db4e8c6583e5b40b0296251ed275df,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45db4e8c6583e5b40b0296251ed275df, type: 2}
