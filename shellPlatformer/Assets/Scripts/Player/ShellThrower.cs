@@ -116,7 +116,7 @@ public class ShellThrower : MonoBehaviour {
 	}
 
 
-	private void FixedUpdate() {		
+	private void Update() {		
 	
 		bool throwHappened = false;
 
