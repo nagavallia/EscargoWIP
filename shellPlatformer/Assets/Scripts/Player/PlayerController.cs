@@ -68,18 +68,18 @@ public class PlayerController : MonoBehaviour
 		anim = GetComponent<Animator> (); // get the animator component
 		facingRight = false;
 
-		myRigidbody.gravityScale = 0;
-		normAcc = .021875f * maxSpeed;
-		backAcc = .075f * maxSpeed;
+		myRigidbody.gravityScale = 0; // on my computer, 0.0165 is the average seconds/frame
+		normAcc = .021875f * maxSpeed / 0.0165f; // we need to divide by that number to convert accelerations from units/seconds*frame to units/seconds^2
+		backAcc = .075f * maxSpeed / 0.0165f; // later, we multiply by Time.fixedDeltaTime to convert back to units/seconds*frame
 		jumpAcc = 1.2f * maxSpeed;
-		gravity = -.035f * maxSpeed;
+		gravity = -.035f * maxSpeed / 0.0165f;
 		maxFallSpeed = -1.725f * maxSpeed;
 
         audioSource = gameObject.AddComponent<AudioSource>();
 
 	}
 		
-	void Update(){
+	void FixedUpdate(){
 
 		HandleInput ();
 
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
 	private void move ()
 	{
 		float xAcc = 0f;
-		float yAcc = gravity;
+		float yAcc = gravity * Time.fixedDeltaTime;
 
 		//If the player continues to move forward, they will accelerate normally.
 		//If the player tries to change directions, they will decelerate at a greater rate
@@ -125,17 +125,18 @@ public class PlayerController : MonoBehaviour
 		} else if (horizontal == -1 && myRigidbody.velocity.x > 0) {
 			xAcc = -backAcc;
 		}
+        xAcc *= Time.fixedDeltaTime; // convert to units/seconds*frame
 
 		if (isGrounded) {
 			//friction
 			if (horizontal == 0) {
 				if (myRigidbody.velocity.x > 0) {
-					xAcc = -backAcc;
+					xAcc = -backAcc * Time.fixedDeltaTime;
 					if (myRigidbody.velocity.x < backAcc) {
 						xAcc = -myRigidbody.velocity.x; 
 					}
 				} else {
-					xAcc = backAcc;
+					xAcc = backAcc * Time.fixedDeltaTime;
 					if (myRigidbody.velocity.x > -backAcc) {
 						xAcc = -myRigidbody.velocity.x; 
 					}
@@ -184,7 +185,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void accelerate (float xAcc, float yAcc) {
-		//apply accelerations
+        //apply accelerations
 		myRigidbody.velocity = myRigidbody.velocity + new Vector2 (xAcc, yAcc);
 
 		//Enforce max horizontal velocity. 
