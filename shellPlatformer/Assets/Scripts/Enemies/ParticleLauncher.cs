@@ -15,7 +15,7 @@ public class ParticleLauncher : MonoBehaviour {
 
 	public float halfWidth = 0.1f;
 
-	private bool interactCheck = true;
+	private bool isEnabled = true;
 
 	[SerializeField]
 	private bool startEnabled = true;
@@ -29,7 +29,7 @@ public class ParticleLauncher : MonoBehaviour {
 			StartCoroutine (emitParticleRoutine ());
 		}
 
-		interactCheck = startEnabled;
+		isEnabled = startEnabled;
 
         audioSource = gameObject.AddComponent<AudioSource>();
 	}
@@ -98,14 +98,14 @@ public class ParticleLauncher : MonoBehaviour {
 
 		CancelInvoke ();
 
-		if (!interactCheck) {
+		if (!isEnabled) {
             audioSource.PlayOneShot(faucetOn);
 			StartCoroutine (emitParticleRoutine ());
 		} else {
             audioSource.PlayOneShot(faucetOff);
         }
 
-		interactCheck = !interactCheck;
+		isEnabled = !isEnabled;
 	
 	}
 }
