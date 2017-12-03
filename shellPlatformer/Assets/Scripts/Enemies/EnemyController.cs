@@ -29,9 +29,9 @@ public class EnemyController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () 
+	void Update () 
 	{
-        float movement = direction * speed * Time.fixedDeltaTime;
+        float movement = direction * speed * Time.deltaTime;
         this.gameObject.transform.Translate(0f, movement, 0f);
         curMove += movement;
         if (curMove < -1f*moveDist) 
@@ -55,7 +55,7 @@ public class EnemyController : MonoBehaviour {
 				toggle = false;
 				t = 0f;
 			} 
-			t += Time.fixedDeltaTime;
+			t += Time.deltaTime;
 
 			if (toggle) {
 				transform.rotation = Quaternion.Lerp (fromRotation, toRotation, t/duration);
