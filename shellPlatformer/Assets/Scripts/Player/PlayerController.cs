@@ -83,6 +83,9 @@ public class PlayerController : MonoBehaviour
 
 		audioSource = gameObject.AddComponent<AudioSource> ();
 
+		Debug.Log (maxSpeed);
+		Debug.Log (backAcc);
+
 	}
 
 	void Update ()
@@ -170,14 +173,16 @@ public class PlayerController : MonoBehaviour
 
 		//friction
 		if (isGrounded && horizontal == 0) {
+//			Debug.Log (myRigidbody.velocity.x);
+//			Debug.Log (backAcc);
 			if (myRigidbody.velocity.x > 0) {
 				xAcc = -backAcc * Time.fixedDeltaTime;
-				if (myRigidbody.velocity.x < backAcc) {
+				if (myRigidbody.velocity.x < backAcc * Time.fixedDeltaTime) {
 					xAcc = -myRigidbody.velocity.x; 
 				}
 			} else {
 				xAcc = backAcc * Time.fixedDeltaTime;
-				if (myRigidbody.velocity.x > -backAcc) {
+				if (myRigidbody.velocity.x > -backAcc * Time.fixedDeltaTime) {
 					xAcc = -myRigidbody.velocity.x; 
 				}
 			}
