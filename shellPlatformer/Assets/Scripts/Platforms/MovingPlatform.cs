@@ -86,7 +86,30 @@ public class MovingPlatform : MonoBehaviour
 
 	private void OnCollisionEnter2D (Collision2D collision)
 	{
-		foreach (Collider2D collisionCollider in collision.gameObject.GetComponents<Collider2D>()) {
+		GameObject colObject;
+		if (collision.gameObject.name == "MovementHitbox")
+			colObject = collision.transform.parent.gameObject;
+		else
+			colObject = collision.gameObject;
+
+		if (checkOnTop (colObject))
+			colObject.transform.SetParent (transform);
+	}
+
+	private void OnCollisionExit2D (Collision2D collision)
+	{
+		GameObject colObject;
+		if (collision.gameObject.name == "MovementHitbox")
+			colObject = collision.transform.parent.gameObject;
+		else
+			colObject = collision.gameObject;
+
+		if (colObject.transform.parent == transform && !checkOnTop(colObject))
+			colObject.transform.SetParent (null);
+	}
+
+	private bool checkOnTop(GameObject obj) {
+		foreach (Collider2D collisionCollider in obj.GetComponents<Collider2D>()) {
 			Bounds collisionBound = collisionCollider.bounds;
 
 			Vector2 left = new Vector2 (collisionBound.min.x, collisionBound.center.y);
@@ -95,16 +118,11 @@ public class MovingPlatform : MonoBehaviour
 			RaycastHit2D leftHit = Physics2D.Raycast (left, Vector2.down, GROUND_CHECK);
 			RaycastHit2D rightHit = Physics2D.Raycast (right, Vector2.down, GROUND_CHECK);
 			if ((leftHit.collider == selfCollider || rightHit.collider == selfCollider)
-			    && collision.gameObject.layer != LayerMask.NameToLayer ("Background")) {
-				collision.transform.SetParent (this.transform);
-				break;
+				&& obj.layer != LayerMask.NameToLayer ("Background")) {
+				return true;
 			}
 		}
-	}
 
-	private void OnCollisionExit2D (Collision2D collision)
-	{
-		if (collision.transform.parent == transform)
-			collision.transform.SetParent (null);
+		return false;
 	}
 }
