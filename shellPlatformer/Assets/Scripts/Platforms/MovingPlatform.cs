@@ -46,6 +46,11 @@ public class MovingPlatform : MonoBehaviour
 			queuedAnimation = false;
 			Interact ();
 		}
+
+		foreach (Transform child in transform) {
+			if (!checkOnTop (child.gameObject))
+				child.SetParent (null);
+		}
 	}
 
 	private void Interact ()
@@ -115,8 +120,8 @@ public class MovingPlatform : MonoBehaviour
 			Vector2 left = new Vector2 (collisionBound.min.x, collisionBound.center.y);
 			Vector2 right = left + new Vector2 (collisionBound.size.x, 0f);
 
-			RaycastHit2D leftHit = Physics2D.Raycast (left, Vector2.down, GROUND_CHECK);
-			RaycastHit2D rightHit = Physics2D.Raycast (right, Vector2.down, GROUND_CHECK);
+			RaycastHit2D leftHit = Physics2D.Raycast (left, Vector2.down, collisionBound.extents.y + 0.1f);
+			RaycastHit2D rightHit = Physics2D.Raycast (right, Vector2.down, collisionBound.extents.y + 0.1f);
 			if ((leftHit.collider == selfCollider || rightHit.collider == selfCollider)
 				&& obj.layer != LayerMask.NameToLayer ("Background")) {
 				return true;
