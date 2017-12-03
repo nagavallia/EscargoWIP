@@ -82,10 +82,6 @@ public class PlayerController : MonoBehaviour
 		processJump = false;
 
 		audioSource = gameObject.AddComponent<AudioSource> ();
-
-		Debug.Log (maxSpeed);
-		Debug.Log (backAcc);
-
 	}
 
 	void Update ()
@@ -115,7 +111,8 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate ()
 	{
 		move ();
-		Flip ();
+		if (!died)
+			Flip ();
 	}
 
 	/*

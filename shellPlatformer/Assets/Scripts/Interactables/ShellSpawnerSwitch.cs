@@ -28,6 +28,10 @@ public class ShellSpawnerSwitch : MonoBehaviour {
 		audioSource.clip = ActivateSound;
 		popUp = (GameObject) Instantiate(Resources.Load("interactPopup"), transform);
 		popUp.transform.position = transform.position + offset;
+		popUp.transform.localScale = new Vector3 (Mathf.Sign (transform.localScale.x)*popUp.transform.localScale.x, 
+			Mathf.Sign (transform.localScale.y)*popUp.transform.localScale.y, 1f);
+		popUp.GetComponent<SpriteRenderer> ().sortingLayerName = "Player";
+		popUp.GetComponent<SpriteRenderer> ().sortingOrder = -1;
 		popUp.SetActive (false);
 	}
 
