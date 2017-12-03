@@ -23,6 +23,8 @@ public class ParticleLauncher : MonoBehaviour {
     [SerializeField] private AudioClip faucetOn, faucetOff;
     private AudioSource audioSource;
 
+	[SerializeField] private bool salt = false;
+
 	// Use this for initialization
 	void Start () {
 		if (startEnabled) {
@@ -96,16 +98,24 @@ public class ParticleLauncher : MonoBehaviour {
 
 	public void Interact(){
 
+		if (salt) {
+			Destroy (this.gameObject);
+		}
+
 		CancelInvoke ();
+		StopCoroutine ("emitParticleRoutine");
 
 		if (!isEnabled) {
             audioSource.PlayOneShot(faucetOn);
 			StartCoroutine (emitParticleRoutine ());
 		} else {
             audioSource.PlayOneShot(faucetOff);
+			CancelInvoke ();
+			StopCoroutine ("emitParticleRoutine");
         }
 
 		isEnabled = !isEnabled;
 	
 	}
+		
 }
