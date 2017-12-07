@@ -1,13 +1,13 @@
 # shellPlatformer
 Our snail game that is gonna be huge. 
 
-Tasks for Monday 9/18
----------------------
-Nick - Movement  
-Arnesh - Shell Throwing  
-Jimmy - Interactables - good place to start would be a button/switch that spawns in the exit. you can reuse the exit stuff in the 1st prototype.  
-Grant - Shell Spawner  
-Justin + George - Level/Mechanics mockups  
+What is this?
+-------------
+This is a work in progress version of a game I am currently developing with a team of 5 others as part of the Analytics Driven Game Design course at Cornell.
+
+This repository has been cloned from the private Cornell GitHub Enterprise for the purpose of serving as a code sample. It will not be updated as the game continues development.
+
+Expect this page to become private within a couple months as my job search ends.  
 
 
 Organization
